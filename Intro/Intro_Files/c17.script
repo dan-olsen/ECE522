@@ -1,0 +1,47 @@
+set search_path "/synopsys/GPDK/SAED_EDK90nm/Digital_Standard_Cell_Library/synopsys/models"
+set link_library "saed90nm_max.db"
+set target_library "saed90nm_max.db"
+set symbol_library "saed90nm_max.db"
+analyze -library WORK -format verilog {/ugrad/dolsen/Git/ECE524/Lab1/c17/c17.v}
+elaborate c17 -library WORK
+write -hierarchy -format verilog -output /ugrad/dolsen/Git/ECE524/Lab1/c17/DC/c17Gen_dc_pre.v
+link
+compile -exact_map
+write -hierarchy -format verilog -output /ugrad/dolsen/Git/ECE524/Lab1/c17/DC/c17Map_dc_pre.v
+report_area > /ugrad/dolsen/Git/ECE524/Lab1/c17/DC/areaC17_dc_pre.txt
+report_timing > /ugrad/dolsen/Git/ECE524/Lab1/c17/DC/timingC17_dc_pre.txt
+report_power > /ugrad/dolsen/Git/ECE524/Lab1/c17/DC/powerC17_dc_pre.txt
+report_const > /ugrad/dolsen/Git/ECE524/Lab1/c17/DC/constC17_dc_pre.txt
+report_dft_drc_violations > /ugrad/dolsen/Git/ECE524/Lab1/c17/DC/violationsC17_dc_pre.txt
+create_clock -period 40 -waveform {0 20} {clk}
+set_input_delay 0.2 -min -clock clk [remove_from_collection [all_inputs] [get_port clk] ]
+set_input_delay 6 -max -clock clk [remove_from_collection [all_inputs] [get_port clk] ]
+set_output_delay 5 -max -clock clk [all_outputs]
+set_output_delay 0.1 -min -clock clk [all_outputs]
+set_wire_load_model -name 8000 -library saed90nm_max
+set_max_area 0
+link
+compile -exact_map
+write -hierarchy -format verilog -output /ugrad/dolsen/Git/ECE524/Lab1/c17/DC/c17Map_dc_40post.v
+check_timing
+report_area > /ugrad/dolsen/Git/ECE524/Lab1/c17/DC/areaC17_dc_40post.txt
+report_timing > /ugrad/dolsen/Git/ECE524/Lab1/c17/DC/timingC17_dc_40post.txt
+report_power > /ugrad/dolsen/Git/ECE524/Lab1/c17/DC/powerC17_dc_40post.txt
+report_const > /ugrad/dolsen/Git/ECE524/Lab1/c17/DC/constC17_dc_40post.txt
+report_dft_drc_violations > /ugrad/dolsen/Git/ECE524/Lab1/c17/DC/violationsC17_dc_40post.txt
+create_clock -period 12 -waveform {0 6} {clk}
+set_input_delay 0.2 -min -clock clk [remove_from_collection [all_inputs] [get_port clk] ]
+set_input_delay 6 -max -clock clk [remove_from_collection [all_inputs] [get_port clk] ]
+set_output_delay 5 -max -clock clk [all_outputs]
+set_output_delay 0.1 -min -clock clk [all_outputs]
+set_wire_load_model -name 8000 -library saed90nm_max
+set_max_area 0
+link
+compile -exact_map
+write -hierarchy -format verilog -output /ugrad/dolsen/Git/ECE524/Lab1/c17/DC/c17Map_dc_12post.v
+check_timing
+report_area > /ugrad/dolsen/Git/ECE524/Lab1/c17/DC/areaC17_dc_12post.txt
+report_timing > /ugrad/dolsen/Git/ECE524/Lab1/c17/DC/timingC17_dc_12post.txt
+report_power > /ugrad/dolsen/Git/ECE524/Lab1/c17/DC/powerC17_dc_12post.txt
+report_const > /ugrad/dolsen/Git/ECE524/Lab1/c17/DC/constC17_dc_12post.txt
+report_dft_drc_violations > /ugrad/dolsen/Git/ECE524/Lab1/c17/DC/violationsC17_dc_12post.txt
