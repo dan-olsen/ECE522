@@ -1,0 +1,47 @@
+# Daniel Olsen
+# FullAdder.tcl
+
+set myFiles [list ../HalfAdder.v ../FullAdder.v];
+set basename FullAdder;
+set virtual 1;
+
+set myPeriod_ns 10;
+set myClkLatency_ns 0.3;
+set myInDelay_ns 2.0;
+set myOutDelay_ns 1.65;
+set myOutputLoad 0.1;
+set mySetup 0.3;
+set myHold 0.2;
+
+set myClk CK;
+set runname _syn;
+set search_path "/synopsys/GPDK/SAED_EDK90nm/Digital_Standard_Cell_Library/synopsys/models";
+set link_library "saed90nm_max.db";
+set target_library "saed90nm_max.db";
+set symbol_library "saed90nm_max.db";
+set myInputBuf INVX1;
+set myMaxFanout 1;
+
+remove_design -all
+analyze -format verilog -library WORK $myFiles
+elaborate $basename -library WORK -update
+
+current_design $basename
+
+link
+uniquify
+
+if { $virtual == 0} {
+	create_clock -period $myPeriod_ns $myClk
+	set_input_delay $myInDelay_ns -clock $myClk [all_inputs]
+	set_driving_cell -lib_cell $myInputBuf [all_inputs]
+} else {
+	create_clock -period $myPeriod_ns -name $myClk
+	set_input_delay $myInDelay_ns -clock $myClk [remove_from_collection [all_inputs] $myClk]
+	set_driving_cell -lib_cell $myInputBuf [remove_from_collection [all_inputs] $myClk]
+}
+set_clock_latency $myClkLatency_ns $myClk
+set_output_delay $myOutDelay_ns -clock $myClk [all_outputs]
+
+
+
