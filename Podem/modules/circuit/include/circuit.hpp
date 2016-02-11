@@ -5,11 +5,13 @@
 #ifndef PODEM_CIRCUIT_HPP
 #define PODEM_CIRCUIT_HPP
 
+#include "gate_types.hpp"
+
 #include <string>
 #include <map>
 #include <fstream>
-
-enum GATE_TYPE {INPUT, OUTPUT, NOT, BUFFER, AND, NAND, OR, NOR, DFF};
+#include <iostream>
+#include <sstream>
 
 class circuit {
 public:
@@ -24,9 +26,9 @@ private:
     int _inverter_count;
     int _total_gate_count;
 
-    std::map<std::string, int> _gate_counts;
+    std::map<GATE_TYPE, int> _gate_counts;
 
-    void read_circuit(const std::string& benchmark_file);
+    void read_benchmark(const std::string &benchmark_file);
 };
 
 
