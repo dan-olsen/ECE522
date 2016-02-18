@@ -23,7 +23,7 @@ GATE_TYPE string_to_gate_type(const std::string &s)
     {
         return OR;
     }
-    else if(tmp == "NOR" || tmp == "nor")
+    else if(tmp == "NOR" || tmp == "nor_gate")
     {
         return NOR;
     }
