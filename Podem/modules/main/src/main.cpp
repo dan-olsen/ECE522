@@ -6,8 +6,9 @@
 using namespace std;
 
 int main() {
-    circuit c("./data/c17.bench");
+    circuit c("./data/c880.bench");
 
-    cout << "Hello, World!" << endl;
+    c.print_header();
+
     return 0;
 }
