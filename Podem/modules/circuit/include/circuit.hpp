@@ -6,9 +6,11 @@
 #define PODEM_CIRCUIT_HPP
 
 #include "gate_types.hpp"
-#include "gate.hpp"
+#include "gate_base.hpp"
+#include "nand.hpp"
 
 #include <string>
+#include <vector>
 #include <map>
 #include <fstream>
 #include <iostream>
@@ -20,6 +22,7 @@ public:
     ~circuit();
 
     void print_header();
+    void print_circuit();
 
 private:
     std::string _name;
@@ -32,9 +35,12 @@ private:
 
     std::map<GATE_TYPE, int> _gate_counts;
 
+    std::vector<gate_base> _circuit;
+
     void read_benchmark(const std::string &benchmark_file);
 
     void read_header(std::ifstream &benchmark);
+    void read_circuit(std::ifstream &benchmark);
 };
 
 

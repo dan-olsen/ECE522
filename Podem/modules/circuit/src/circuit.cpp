@@ -25,9 +25,19 @@ void circuit::print_header()
     std::cout << "Inverters: " << _inverter_count << std::endl;
     std::cout << "Gates: " << _total_gate_count << std::endl;
 
-    for(auto const& x : _gate_counts)
+    for(const auto& x : _gate_counts)
     {
         std::cout << gate_type_strings[x.first] << " Gates: " << x.second << std::endl;
+    }
+}
+
+void circuit::print_circuit()
+{
+    std::cout << std::endl << "ID\tNAME\tTYPE\tPO\tIN#\tOUT#\tVAL\tFVAL\tMARK\tFANIN\tFANOUT" << std::endl;
+
+    for(unsigned int i = 0; i < _circuit.size(); ++i)
+    {
+        std::cout << i << "\t" << _circuit[i].name() << "\t" <<gate_type_strings[_circuit[i].type()] << std::endl;
     }
 }
 
@@ -38,8 +48,11 @@ void circuit::read_benchmark(const std::string &benchmark_file)
 
         if(benchmark.good())
         {
-            std::cout << "Reading benchmark header ..." << std::endl;
+            std::cout << "Reading benchmark..." << std::endl;
+
             read_header(benchmark);
+
+            read_circuit(benchmark);
 
             benchmark.close();
         }
@@ -52,7 +65,6 @@ void circuit::read_benchmark(const std::string &benchmark_file)
         std::cerr << "ERROR: " << e.what() << std::endl;
 
     }
-
 }
 
 void circuit::read_header(std::ifstream &benchmark)
@@ -104,4 +116,9 @@ void circuit::read_header(std::ifstream &benchmark)
 
         }
     }
+}
+
+void circuit::read_circuit(std::ifstream &benchmark)
+{
+
 }
