@@ -4,7 +4,7 @@
 using namespace std;
 
 int main() {
-    circuit c("./data/c880.bench");
+    circuit c("./data/c17.bench");
 
     c.print_header();
 
