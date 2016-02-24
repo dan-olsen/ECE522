@@ -33,7 +33,7 @@ void circuit::print_header()
 
 void circuit::print_circuit()
 {
-    std::cout << std::endl << "ID\tNAME\tTYPE\tPO\tIN#\tOUT#\tVAL\tFVAL\tMARK\tFANIN\tFANOUT" << std::endl;
+    std::cout << std::endl << "ID\tNAME\tTYPE\tIN#\t\tOUT#\tVAL\t\tFVAL\tFANIN\t\tFANOUT" << std::endl;
 
     for(unsigned int i = 0; i < _circuit.size(); ++i)
     {
@@ -120,5 +120,46 @@ void circuit::read_header(std::ifstream &benchmark)
 
 void circuit::read_circuit(std::ifstream &benchmark)
 {
+    std::string tmp;
 
+    benchmark.ignore();
+
+    //Read inputs
+    while(getline(benchmark, tmp))
+    {
+        if (tmp.empty())
+        {
+            break;
+        }
+
+        tmp.erase (std::remove(tmp.begin(), tmp.end(), '('), tmp.end());
+        tmp.erase (std::remove(tmp.begin(), tmp.end(), ')'), tmp.end());
+
+        input in("gate" + tmp.substr(5));
+
+        _circuit.push_back(in);
+    }
+
+    //Read outputs
+    while(getline(benchmark, tmp))
+    {
+        if (tmp.empty())
+        {
+            break;
+        }
+
+        std::cout << tmp << std::endl;
+
+
+        tmp.erase (std::remove(tmp.begin(), tmp.end(), '('), tmp.end());
+        tmp.erase (std::remove(tmp.begin(), tmp.end(), ')'), tmp.end());
+
+        std::cout << tmp << std::endl;
+
+        std::cout << tmp.substr(6) << std::endl;
+
+        output out("gate" + tmp.substr(6));
+
+        _circuit.push_back(out);
+    }
 }
