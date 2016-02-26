@@ -122,44 +122,81 @@ void circuit::read_circuit(std::ifstream &benchmark)
 {
     std::string tmp;
 
+    std::unordered_map<std::string, gate_base> map;
+
     benchmark.ignore();
 
     //Read inputs
     while(getline(benchmark, tmp))
     {
-        if (tmp.empty())
+        if (!tmp.empty())
+        {
+            tmp.erase (std::remove(tmp.begin(), tmp.end(), '('), tmp.end());
+            tmp.erase (std::remove(tmp.begin(), tmp.end(), ')'), tmp.end());
+
+            input in(tmp.substr(5));
+
+            map.insert({tmp.substr(5), in});
+
+            //_circuit.push_back(in);
+        }
+        else
         {
             break;
         }
-
-        tmp.erase (std::remove(tmp.begin(), tmp.end(), '('), tmp.end());
-        tmp.erase (std::remove(tmp.begin(), tmp.end(), ')'), tmp.end());
-
-        input in("gate" + tmp.substr(5));
-
-        _circuit.push_back(in);
     }
 
     //Read outputs
     while(getline(benchmark, tmp))
     {
-        if (tmp.empty())
+        if (!tmp.empty())
+        {
+            tmp.erase (std::remove(tmp.begin(), tmp.end(), '('), tmp.end());
+            tmp.erase (std::remove(tmp.begin(), tmp.end(), ')'), tmp.end());
+
+            std::cout << tmp << std::endl;
+
+            std::cout << tmp.substr(6) << std::endl;
+
+            output out(tmp.substr(6));
+
+            map.insert({tmp.substr(6), out});
+
+            //_circuit.push_back(out);
+        }
+        else
         {
             break;
         }
-
-        std::cout << tmp << std::endl;
-
-
-        tmp.erase (std::remove(tmp.begin(), tmp.end(), '('), tmp.end());
-        tmp.erase (std::remove(tmp.begin(), tmp.end(), ')'), tmp.end());
-
-        std::cout << tmp << std::endl;
-
-        std::cout << tmp.substr(6) << std::endl;
-
-        output out("gate" + tmp.substr(6));
-
-        _circuit.push_back(out);
     }
+
+    while(getline(benchmark, tmp))
+    {
+        if (!tmp.empty())
+        {
+            tmp.erase (std::remove(tmp.begin(), tmp.end(), '='), tmp.end());
+            tmp.erase (std::remove(tmp.begin(), tmp.end(), ')'), tmp.end());
+            tmp.erase (std::remove(tmp.begin(), tmp.end(), ','), tmp.end());
+
+            std::cout << tmp << std::endl;
+
+            std::cout << tmp.substr(6) << std::endl;
+
+            output out(tmp.substr(6));
+
+            //map.insert({tmp.substr(6), out});
+
+            //_circuit.push_back(out);
+        }
+        else
+        {
+            break;
+        }
+    }
+}
+std::string myreplace(std::string &s,
+                      const std::string &toReplace,
+                      const std::string &replaceWith)
+{
+    return(s.replace(s.find(toReplace), toReplace.length(), replaceWith));
 }
