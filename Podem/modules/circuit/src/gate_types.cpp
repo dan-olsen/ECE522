@@ -39,13 +39,17 @@ GATE_TYPE string_to_gate_type(const std::string &s)
     {
         return NOT;
     }
-    else if(tmp == "BUFFER" || tmp == "buffer")
+    else if(tmp == "BUFFER" || tmp == "buffer" || tmp == "BUFF" || tmp == "buff")
     {
         return BUFFER;
     }
     else if(tmp == "DFF" || tmp == "dff")
     {
         return DFF;
+    }
+    else if (tmp == "FROM" || tmp == "from")
+    {
+        return FROM;
     }
     else
     {

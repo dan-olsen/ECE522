@@ -9,8 +9,8 @@
 #include <algorithm>
 #include <iostream>
 
-enum GATE_TYPE {INPUT, OUTPUT, NOT, BUFFER, AND, NAND, OR, NOR, DFF, UNKNOWN};
-static const std::string gate_type_strings [] = {"INPUT", "OUTPUT", "NOT", "BUFFER", "AND", "NAND", "OR", "NOR", "DFF", "UNKNOWN"};
+enum GATE_TYPE {INPUT, OUTPUT, NOT, BUFFER, AND, NAND, OR, NOR, DFF, FROM, UNKNOWN};
+static const std::string gate_type_strings [] = {"INPUT", "OUTPUT", "NOT", "BUFFER", "AND", "NAND", "OR", "NOR", "DFF", "FROM", "UNKNOWN"};
 
 GATE_TYPE string_to_gate_type(const std::string &s);
 
