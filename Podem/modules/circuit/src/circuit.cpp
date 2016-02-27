@@ -4,6 +4,13 @@
 
 #include "circuit.hpp"
 
+std::string myreplace(std::string &s,
+                      const std::string &toReplace,
+                      const std::string &replaceWith)
+{
+    return(s.replace(s.find(toReplace), toReplace.length(), replaceWith));
+}
+
 circuit::circuit(const std::string &benchmark_file)
 {
     read_benchmark(benchmark_file);
@@ -33,11 +40,13 @@ void circuit::print_header()
 
 void circuit::print_circuit()
 {
-    std::cout << std::endl << "ID\tNAME\tTYPE\tIN#\t\tOUT#\tVAL\t\tFVAL\tFANIN\t\tFANOUT" << std::endl;
+    std::cout << std::endl << "INDEX\tNAME\tTYPE\t#IN\t#OUT\tVAL\tFVAL\tFANIN\t\tFANOUT" << std::endl;
 
     for(unsigned int i = 0; i < _circuit.size(); ++i)
     {
-        std::cout << i << "\t" << _circuit[i].name() << "\t" <<gate_type_strings[_circuit[i].type()] << std::endl;
+        //std::cout << "Gate " << i << ": " << std::endl;
+        //std::cout << _circuit[i] << std::endl;
+        std::cout << i << "\t\t" << _circuit[i] << std::endl;
     }
 }
 
@@ -131,14 +140,22 @@ void circuit::read_circuit(std::ifstream &benchmark)
     {
         if (!tmp.empty())
         {
-            tmp.erase (std::remove(tmp.begin(), tmp.end(), '('), tmp.end());
+            myreplace(tmp, "(", " ");
             tmp.erase (std::remove(tmp.begin(), tmp.end(), ')'), tmp.end());
 
-            input in(tmp.substr(5));
+            std::stringstream s(tmp);
 
-            map.insert({tmp.substr(5), in});
+            s >> tmp;
 
-            //_circuit.push_back(in);
+            if (string_to_gate_type(tmp) == INPUT)
+            {
+                s >> tmp;
+                input in(tmp);
+
+                map.insert({tmp, in});
+
+                //_circuit.push_back(in);
+            }
         }
         else
         {
@@ -151,18 +168,22 @@ void circuit::read_circuit(std::ifstream &benchmark)
     {
         if (!tmp.empty())
         {
-            tmp.erase (std::remove(tmp.begin(), tmp.end(), '('), tmp.end());
+/*            myreplace(tmp, "(", " ");
             tmp.erase (std::remove(tmp.begin(), tmp.end(), ')'), tmp.end());
 
-            std::cout << tmp << std::endl;
+            std::stringstream s(tmp);
 
-            std::cout << tmp.substr(6) << std::endl;
+            s >> tmp;
 
-            output out(tmp.substr(6));
+            if (string_to_gate_type(tmp) == OUTPUT)
+            {
+                s >> tmp;
+                output out(tmp);
 
-            map.insert({tmp.substr(6), out});
+                //map.insert({tmp.substr(6), out});
 
-            //_circuit.push_back(out);
+                _circuit.push_back(out);
+            }*/
         }
         else
         {
@@ -170,33 +191,156 @@ void circuit::read_circuit(std::ifstream &benchmark)
         }
     }
 
+    //Read Gates
     while(getline(benchmark, tmp))
     {
         if (!tmp.empty())
         {
+            myreplace(tmp, "(", " ");
+
             tmp.erase (std::remove(tmp.begin(), tmp.end(), '='), tmp.end());
             tmp.erase (std::remove(tmp.begin(), tmp.end(), ')'), tmp.end());
             tmp.erase (std::remove(tmp.begin(), tmp.end(), ','), tmp.end());
 
             std::cout << tmp << std::endl;
+            std::stringstream s(tmp);
+            std::cout << s.str() << std::endl;
 
-            std::cout << tmp.substr(6) << std::endl;
+            std::string name, type, fin;
 
-            output out(tmp.substr(6));
+            s >> name;
+            std::cout << name << std::endl;
 
-            //map.insert({tmp.substr(6), out});
+            s >> type;
+            std::cout << type << std::endl;
 
-            //_circuit.push_back(out);
-        }
-        else
-        {
-            break;
+
+            not_gate notg(name);
+            buffer buff(name);
+            and_gate andg(name);
+            nand_gate nandg(name);
+            or_gate org(name);
+            nor_gate norg(name);
+            dff dffg(name);
+
+            switch(string_to_gate_type(type))
+            {
+
+                case NOT:
+                    while(s >> fin)
+                    {
+                        notg.add_fan_in(fin);
+
+                        map.at(fin).add_fan_out(name);
+                    }
+
+                    map.insert({name, notg});
+                    break;
+                case BUFFER:
+                    while(s >> fin)
+                    {
+                        buff.add_fan_in(fin);
+
+                        map.at(fin).add_fan_out(name);
+                    }
+
+                    map.insert({name, buff});
+                    break;
+                case AND:
+                    while(s >> fin)
+                    {
+                        andg.add_fan_in(fin);
+
+                        map.at(fin).add_fan_out(name);
+                    }
+
+                    map.insert({name, andg});
+                    break;
+                case NAND:
+                    while(s >> fin)
+                    {
+                        nandg.add_fan_in(fin);
+
+                        map.at(fin).add_fan_out(name);
+                    }
+
+                    map.insert({name, nandg});
+                    break;
+                case OR:
+                    while(s >> fin)
+                    {
+                        org.add_fan_in(fin);
+
+                        map.at(fin).add_fan_out(name);
+                    }
+
+                    map.insert({name, org});
+                    break;
+                case NOR:
+                    while(s >> fin)
+                    {
+                        norg.add_fan_in(fin);
+
+                        map.at(fin).add_fan_out(name);
+                    }
+
+                    map.insert({name, norg});
+                    break;
+                case DFF:
+                    while(s >> fin)
+                    {
+                        dffg.add_fan_in(fin);
+
+                        map.at(fin).add_fan_out(name);
+                    }
+
+                    map.insert({name, dffg});
+                    break;
+                case FROM:
+                case INPUT:
+                case OUTPUT:
+                case UNKNOWN:
+                default:
+                    std::cerr << "ERROR: Invalid gate type" << std::endl;
+                    exit(-1);
+            }
+
+
+            //_circuit.push_back(ng);
         }
     }
-}
-std::string myreplace(std::string &s,
-                      const std::string &toReplace,
-                      const std::string &replaceWith)
-{
-    return(s.replace(s.find(toReplace), toReplace.length(), replaceWith));
+    std::unordered_map<std::string, gate_base> map2 = map;
+
+    for(auto iter = map2.begin(); iter != map2.end(); ++iter)
+    {
+        if(iter->second.fan_out_count() > 1 && iter->second.type() != FROM)
+        {
+            int i = 0;
+            std::vector<std::string> old = iter->second.fan_out();
+
+            iter->second.fan_out().clear();
+
+            for(auto iter2 = old.begin(); iter2 != old.end(); ++iter2, ++i)
+            {
+                std::stringstream s;
+
+                s << iter->second.name() << "f" << i;
+                from f(s.str());
+
+                f.add_fan_in(iter->second.name());
+
+                f.add_fan_out(*iter2);
+
+                iter->second.add_fan_out(f.name());
+
+                map.insert({s.str(), f});
+            }
+        }
+    }
+
+    for(auto iter = map.begin(); iter != map.end(); ++iter)
+    {
+        std::cout << iter->second << std::endl;
+
+    }
 }
