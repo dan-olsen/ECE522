@@ -16,6 +16,7 @@
 #include "or_gate.hpp"
 #include "nor_gate.hpp"
 #include "dff.hpp"
+#include "from.hpp"
 
 #include <string>
 #include <vector>
