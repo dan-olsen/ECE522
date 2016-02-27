@@ -8,10 +8,10 @@
 #include "gate_base.hpp"
 #include "gate_types.hpp"
 
-class nand : public gate_base {
+class nand_gate : public gate_base {
 public:
-    nand(const std::string &name);
-    ~nand();
+    nand_gate(const std::string &name);
+    ~nand_gate();
 
 };
 

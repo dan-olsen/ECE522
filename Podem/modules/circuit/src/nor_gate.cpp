@@ -4,10 +4,9 @@
 
 #include "nor_gate.hpp"
 
-nor_gate::nor_gate(const std::string &name)
+nor_gate::nor_gate(const std::string &name) : gate_base(name, NOR)
 {
-    _name = name;
-    _type = NOR;
+
 }
 
 nor_gate::~nor_gate()

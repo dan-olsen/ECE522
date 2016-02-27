@@ -4,10 +4,9 @@
 
 #include "input.hpp"
 
-input::input(const std::string &name)
+input::input(const std::string &name) : gate_base(name, INPUT)
 {
-    _name = name;
-    _type = INPUT;
+
 }
 
 input::~input()

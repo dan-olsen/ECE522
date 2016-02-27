@@ -4,10 +4,9 @@
 
 #include "buffer.hpp"
 
-buffer::buffer(const std::string &name)
+buffer::buffer(const std::string &name) : gate_base(name, BUFFER)
 {
-    _name = name;
-    _type = BUFFER;
+
 }
 
 buffer::~buffer()

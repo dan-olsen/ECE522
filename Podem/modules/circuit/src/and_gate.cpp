@@ -4,10 +4,9 @@
 
 #include "and_gate.hpp"
 
-and_gate::and_gate(const std::string &name)
+and_gate::and_gate(const std::string &name) : gate_base(name, AND)
 {
-    _name = name;
-    _type = AND;
+
 }
 
 and_gate::~and_gate()

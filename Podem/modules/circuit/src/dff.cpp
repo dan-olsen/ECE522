@@ -4,10 +4,9 @@
 
 #include "dff.hpp"
 
-dff::dff(const std::string &name)
+dff::dff(const std::string &name) : gate_base(name, DFF)
 {
-    _name = name;
-    _type = DFF;
+
 }
 
 dff::~dff()

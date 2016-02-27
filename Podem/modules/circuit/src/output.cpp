@@ -4,10 +4,9 @@
 
 #include "output.hpp"
 
-output::output(const std::string &name)
+output::output(const std::string &name) : gate_base(name, OUTPUT)
 {
-    _name = name;
-    _type = OUTPUT;
+
 }
 
 output::~output()

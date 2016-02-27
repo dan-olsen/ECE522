@@ -4,13 +4,12 @@
 
 #include "nand.hpp"
 
-nand::nand(const std::string &name)
+nand_gate::nand_gate(const std::string &name) : gate_base(name, NAND)
 {
-    _name = name;
-    _type = NAND;
+
 }
 
-nand::~nand()
+nand_gate::~nand_gate()
 {
 
 }

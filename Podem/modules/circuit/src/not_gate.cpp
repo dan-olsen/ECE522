@@ -4,10 +4,9 @@
 
 #include "not_gate.hpp"
 
-not_gate::not_gate(const std::string &name)
+not_gate::not_gate(const std::string &name) : gate_base(name, NOT)
 {
-    _name = name;
-    _type = NOT;
+
 }
 
 not_gate::~not_gate()
