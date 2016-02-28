@@ -202,18 +202,13 @@ void circuit::read_circuit(std::ifstream &benchmark)
             tmp.erase (std::remove(tmp.begin(), tmp.end(), ')'), tmp.end());
             tmp.erase (std::remove(tmp.begin(), tmp.end(), ','), tmp.end());
 
-            std::cout << tmp << std::endl;
             std::stringstream s(tmp);
-            std::cout << s.str() << std::endl;
 
             std::string name, type, fin;
 
             s >> name;
-            std::cout << name << std::endl;
 
             s >> type;
-            std::cout << type << std::endl;
-
 
             not_gate notg(name);
             buffer buff(name);
@@ -309,34 +304,34 @@ void circuit::read_circuit(std::ifstream &benchmark)
             //_circuit.push_back(ng);
         }
     }
-    std::unordered_map<std::string, gate_base> map2 = map;
+    std::unordered_map<std::string, gate_base> map2;// = map;
 
-    for(auto iter = map2.begin(); iter != map2.end(); ++iter)
+    for(auto iter = map.begin(); iter != map.end(); ++iter)
     {
         if(iter->second.fan_out_count() > 1 && iter->second.type() != FROM)
         {
             int i = 0;
             std::vector<std::string> old = iter->second.fan_out();
 
-            iter->second.fan_out().clear();
-
             for(auto iter2 = old.begin(); iter2 != old.end(); ++iter2, ++i)
             {
                 std::stringstream s;
-
                 s << iter->second.name() << "f" << i;
+
                 from f(s.str());
 
                 f.add_fan_in(iter->second.name());
-
                 f.add_fan_out(*iter2);
 
-                iter->second.add_fan_out(f.name());
+                iter->second.replace_fan_out(*iter2, f.name());
+                map.at(*iter2).replace_fan_in(iter->second.name(), f.name());
 
-                map.insert({s.str(), f});
+                map2.insert({s.str(), f});
             }
         }
     }
+
+    map.insert(map2.begin(), map2.end());
 
     for(auto iter = map.begin(); iter != map.end(); ++iter)
     {
