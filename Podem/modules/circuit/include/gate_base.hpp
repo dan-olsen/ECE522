@@ -27,6 +27,9 @@ public:
     void add_fan_in(const std::string &id);
     void add_fan_out(const std::string &id);
 
+    void replace_fan_in(const std::string &old_fan_in, const std::string &new_fan_in);
+    void replace_fan_out(const std::string &old_fan_out, const std::string &new_fan_out);
+
     friend std::ostream &operator<<( std::ostream &output, const gate_base &g );
 
 protected:

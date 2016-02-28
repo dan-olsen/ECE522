@@ -36,6 +36,16 @@ void gate_base::add_fan_out(const std::string &id)
     _fan_out.push_back(id);
 }
 
+void gate_base::replace_fan_in(const std::string &old_fan_in, const std::string &new_fan_in)
+{
+    std::replace(_fan_in.begin(), _fan_in.end(), old_fan_in, new_fan_in);
+}
+
+void gate_base::replace_fan_out(const std::string &old_fan_out, const std::string &new_fan_out)
+{
+    std::replace(_fan_out.begin(), _fan_out.end(), old_fan_out, new_fan_out);
+}
+
 std::vector<std::string> &gate_base::fan_in()
 {
     return _fan_in;
