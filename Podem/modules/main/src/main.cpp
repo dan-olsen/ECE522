@@ -1,10 +1,18 @@
 
 #include "circuit.hpp"
 
-using namespace std;
+const std::string usage = "Usage: %s [ options ] CIRCUIT\n";
 
-int main() {
-    circuit c("./data/c17.bench");
+int main(int argc, char* const argv[])
+{
+    if (argc != 2)
+    {
+        std::cout << usage << std::endl;
+
+        exit(-1);
+    }
+
+    circuit c(argv[1]);
 
     c.print_header();
 
