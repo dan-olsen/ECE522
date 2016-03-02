@@ -11,7 +11,7 @@
 #include "not_gate.hpp"
 #include "buffer.hpp"
 #include "and_gate.hpp"
-#include "nand.hpp"
+#include "nand_gate.hpp"
 #include "or_gate.hpp"
 #include "nor_gate.hpp"
 #include "dff.hpp"
