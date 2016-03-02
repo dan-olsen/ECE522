@@ -8,7 +8,6 @@
 #include "gate_types.hpp"
 #include "gate_base.hpp"
 #include "input.hpp"
-#include "output.hpp"
 #include "not_gate.hpp"
 #include "buffer.hpp"
 #include "and_gate.hpp"
