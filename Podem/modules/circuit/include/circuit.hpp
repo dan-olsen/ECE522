@@ -5,27 +5,9 @@
 #ifndef PODEM_CIRCUIT_HPP
 #define PODEM_CIRCUIT_HPP
 
-#include "gate_types.hpp"
-#include "gate_base.hpp"
-#include "input.hpp"
-#include "not_gate.hpp"
-#include "buffer.hpp"
-#include "and_gate.hpp"
-#include "nand_gate.hpp"
-#include "or_gate.hpp"
-#include "nor_gate.hpp"
-#include "dff.hpp"
-#include "from.hpp"
+#include "benchmark_parser.hpp"
 
-#include <string>
-#include <vector>
-#include <map>
-#include <unordered_map>
-#include <fstream>
-#include <iostream>
-#include <sstream>
-
-class circuit {
+class circuit : public benchmark_parser {
 public:
     circuit(const std::string &benchmark_file);
     ~circuit();
@@ -34,23 +16,7 @@ public:
     void print_circuit();
 
 private:
-    std::string _name;
 
-    int _input_count;
-    int _output_count;
-    int _dff_count;
-    int _inverter_count;
-    int _total_gate_count;
-
-    std::map<GATE_TYPE, int> _gate_counts;
-
-    std::vector<gate_base> _circuit;
-
-    void read_benchmark(const std::string &benchmark_file);
-
-    void read_header(std::ifstream &benchmark);
-    void read_circuit(std::ifstream &benchmark);
 };
-
 
 #endif //PODEM_CIRCUIT_HPP
