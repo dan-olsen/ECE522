@@ -1,0 +1,210 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -nworst 5
+        -max_paths 5
+Design : FullAdder
+Version: F-2011.09-SP4
+Date   : Tue Mar  8 12:04:36 2016
+****************************************
+
+Operating Conditions: WORST   Library: saed90nm_max
+Wire Load Model Mode: enclosed
+
+  Startpoint: A (input port clocked by CK)
+  Endpoint: Cout (output port clocked by CK)
+  Path Group: CK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  FullAdder          8000                  saed90nm_max
+  HalfAdder_1        ForQA                 saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  A (in)                                   0.01       0.56 f
+  HA1/X (HalfAdder_1)                      0.00       0.56 f
+  HA1/U4/Z (NBUFFX2)                       0.19       0.75 f
+  HA1/U1/Q (XOR2X1)                        0.59       1.34 r
+  HA1/Sum (HalfAdder_1)                    0.00       1.34 r
+  HA2/X (HalfAdder_0)                      0.00       1.34 r
+  HA2/U2/Q (AND2X1)                        0.44       1.79 r
+  HA2/Cout (HalfAdder_0)                   0.00       1.79 r
+  U1/Q (OR2X1)                             0.23       2.02 r
+  Cout (out)                               0.14       2.16 r
+  data arrival time                                   2.16
+
+  clock CK (rise edge)                     1.80       1.80
+  clock network delay (ideal)              0.55       2.35
+  clock uncertainty                       -0.30       2.05
+  output external delay                    0.00       2.05
+  data required time                                  2.05
+  -----------------------------------------------------------
+  data required time                                  2.05
+  data arrival time                                  -2.16
+  -----------------------------------------------------------
+  slack (VIOLATED)                                   -0.11
+
+
+  Startpoint: A (input port clocked by CK)
+  Endpoint: Cout (output port clocked by CK)
+  Path Group: CK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  FullAdder          8000                  saed90nm_max
+  HalfAdder_1        ForQA                 saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  A (in)                                   0.01       0.56 r
+  HA1/X (HalfAdder_1)                      0.00       0.56 r
+  HA1/U4/Z (NBUFFX2)                       0.18       0.74 r
+  HA1/U1/Q (XOR2X1)                        0.58       1.32 f
+  HA1/Sum (HalfAdder_1)                    0.00       1.32 f
+  HA2/X (HalfAdder_0)                      0.00       1.32 f
+  HA2/U2/Q (AND2X1)                        0.43       1.75 f
+  HA2/Cout (HalfAdder_0)                   0.00       1.75 f
+  U1/Q (OR2X1)                             0.26       2.01 f
+  Cout (out)                               0.14       2.16 f
+  data arrival time                                   2.16
+
+  clock CK (rise edge)                     1.80       1.80
+  clock network delay (ideal)              0.55       2.35
+  clock uncertainty                       -0.30       2.05
+  output external delay                    0.00       2.05
+  data required time                                  2.05
+  -----------------------------------------------------------
+  data required time                                  2.05
+  data arrival time                                  -2.16
+  -----------------------------------------------------------
+  slack (VIOLATED)                                   -0.11
+
+
+  Startpoint: A (input port clocked by CK)
+  Endpoint: S (output port clocked by CK)
+  Path Group: CK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  FullAdder          8000                  saed90nm_max
+  HalfAdder_1        ForQA                 saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  A (in)                                   0.01       0.56 f
+  HA1/X (HalfAdder_1)                      0.00       0.56 f
+  HA1/U4/Z (NBUFFX2)                       0.19       0.75 f
+  HA1/U1/Q (XOR2X1)                        0.59       1.34 r
+  HA1/Sum (HalfAdder_1)                    0.00       1.34 r
+  HA2/X (HalfAdder_0)                      0.00       1.34 r
+  HA2/U1/Q (XOR2X1)                        0.66       2.00 f
+  HA2/Sum (HalfAdder_0)                    0.00       2.00 f
+  S (out)                                  0.14       2.15 f
+  data arrival time                                   2.15
+
+  clock CK (rise edge)                     1.80       1.80
+  clock network delay (ideal)              0.55       2.35
+  clock uncertainty                       -0.30       2.05
+  output external delay                    0.00       2.05
+  data required time                                  2.05
+  -----------------------------------------------------------
+  data required time                                  2.05
+  data arrival time                                  -2.15
+  -----------------------------------------------------------
+  slack (VIOLATED)                                   -0.10
+
+
+  Startpoint: B (input port clocked by CK)
+  Endpoint: Cout (output port clocked by CK)
+  Path Group: CK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  FullAdder          8000                  saed90nm_max
+  HalfAdder_1        ForQA                 saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  B (in)                                   0.01       0.56 f
+  HA1/Y (HalfAdder_1)                      0.00       0.56 f
+  HA1/U3/Z (NBUFFX2)                       0.19       0.75 f
+  HA1/U1/Q (XOR2X1)                        0.58       1.32 r
+  HA1/Sum (HalfAdder_1)                    0.00       1.32 r
+  HA2/X (HalfAdder_0)                      0.00       1.32 r
+  HA2/U2/Q (AND2X1)                        0.44       1.77 r
+  HA2/Cout (HalfAdder_0)                   0.00       1.77 r
+  U1/Q (OR2X1)                             0.23       2.00 r
+  Cout (out)                               0.14       2.14 r
+  data arrival time                                   2.14
+
+  clock CK (rise edge)                     1.80       1.80
+  clock network delay (ideal)              0.55       2.35
+  clock uncertainty                       -0.30       2.05
+  output external delay                    0.00       2.05
+  data required time                                  2.05
+  -----------------------------------------------------------
+  data required time                                  2.05
+  data arrival time                                  -2.14
+  -----------------------------------------------------------
+  slack (VIOLATED)                                   -0.09
+
+
+  Startpoint: B (input port clocked by CK)
+  Endpoint: Cout (output port clocked by CK)
+  Path Group: CK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  FullAdder          8000                  saed90nm_max
+  HalfAdder_1        ForQA                 saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  B (in)                                   0.01       0.56 r
+  HA1/Y (HalfAdder_1)                      0.00       0.56 r
+  HA1/U3/Z (NBUFFX2)                       0.18       0.74 r
+  HA1/U1/Q (XOR2X1)                        0.56       1.30 f
+  HA1/Sum (HalfAdder_1)                    0.00       1.30 f
+  HA2/X (HalfAdder_0)                      0.00       1.30 f
+  HA2/U2/Q (AND2X1)                        0.43       1.73 f
+  HA2/Cout (HalfAdder_0)                   0.00       1.73 f
+  U1/Q (OR2X1)                             0.26       1.99 f
+  Cout (out)                               0.14       2.13 f
+  data arrival time                                   2.13
+
+  clock CK (rise edge)                     1.80       1.80
+  clock network delay (ideal)              0.55       2.35
+  clock uncertainty                       -0.30       2.05
+  output external delay                    0.00       2.05
+  data required time                                  2.05
+  -----------------------------------------------------------
+  data required time                                  2.05
+  data arrival time                                  -2.13
+  -----------------------------------------------------------
+  slack (VIOLATED)                                   -0.08
+
+
+1

@@ -1,0 +1,46 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : ClkRstRipAdder4
+Version: F-2011.09-SP4
+Date   : Tue Mar  8 12:32:29 2016
+****************************************
+
+
+   max_delay/setup ('CK' group)
+
+                             Required        Actual
+   Endpoint                 Path Delay     Path Delay        Slack
+   -----------------------------------------------------------------
+   COUT                         0.08           1.79 r        -1.71  (VIOLATED)
+   SUM[3]                       0.08           1.77 r        -1.69  (VIOLATED)
+   SUM[0]                       0.08           1.69 f        -1.61  (VIOLATED)
+   SUM[1]                       0.08           1.69 f        -1.61  (VIOLATED)
+   SUM[2]                       0.08           1.69 f        -1.61  (VIOLATED)
+
+
+   min_capacitance
+
+                             Required        Actual
+   Net                      Capacitance    Capacitance       Slack
+   -----------------------------------------------------------------
+   COUT                         0.10           0.00          -0.10  (VIOLATED)
+   SUM[0]                       0.10           0.00          -0.10  (VIOLATED)
+   SUM[1]                       0.10           0.00          -0.10  (VIOLATED)
+   SUM[2]                       0.10           0.00          -0.10  (VIOLATED)
+   SUM[3]                       0.10           0.00          -0.10  (VIOLATED)
+
+   -----------------------------------------------------------------
+   Total                      5                  -0.48  
+
+   max_area
+
+                             Required        Actual
+   Design                      Area           Area           Slack
+   -----------------------------------------------------------------
+   ClkRstRipAdder4              0.00         505.82        -505.82  (VIOLATED)
+
+
+1

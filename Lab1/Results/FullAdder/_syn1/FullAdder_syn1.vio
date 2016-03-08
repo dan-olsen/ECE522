@@ -1,0 +1,29 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : FullAdder
+Version: F-2011.09-SP4
+Date   : Tue Mar  8 11:59:24 2016
+****************************************
+
+
+   max_delay/setup ('CK' group)
+
+                             Required        Actual
+   Endpoint                 Path Delay     Path Delay        Slack
+   -----------------------------------------------------------------
+   Cout                         0.25           1.99 r        -1.74  (VIOLATED)
+   S                            0.25           1.97 r        -1.72  (VIOLATED)
+
+
+   max_area
+
+                             Required        Actual
+   Design                      Area           Area           Slack
+   -----------------------------------------------------------------
+   FullAdder                    0.00         120.53        -120.53  (VIOLATED)
+
+
+1

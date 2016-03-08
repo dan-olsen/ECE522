@@ -1,0 +1,67 @@
+ 
+****************************************
+Report : qor
+Design : FullAdder
+Version: F-2011.09-SP4
+Date   : Tue Mar  8 12:05:33 2016
+****************************************
+
+
+  Timing Path Group 'CK'
+  -----------------------------------
+  Levels of Logic:             4.0000
+  Critical Path Length:        1.5511
+  Critical Path Slack:        -0.0511
+  Critical Path Clk Period:    1.8000
+  Total Negative Slack:       -0.0819
+  No. of Violating Paths:      2.0000
+  Worst Hold Violation:        0.0000
+  Total Hold Violation:        0.0000
+  No. of Hold Violations:      0.0000
+  -----------------------------------
+
+
+  Cell Count
+  -----------------------------------
+  Hierarchical Cell Count:          2
+  Hierarchical Port Count:          8
+  Leaf Cell Count:                  9
+  Buf/Inv Cell Count:               4
+  CT Buf/Inv Cell Count:            0
+  Combinational Cell Count:         9
+  Sequential Cell Count:            0
+  Macro Count:                      0
+  -----------------------------------
+
+
+  Area
+  -----------------------------------
+  Combinational Area:         75.5712
+  Noncombinational Area:       0.0000
+  Net Area:                    2.1211
+  -----------------------------------
+  Cell Area:                  75.5712
+  Design Area:                77.6923
+
+
+  Design Rules
+  -----------------------------------
+  Total Number of Nets:            12
+  Nets With Violations:             0
+  Max Trans Violations:             0
+  Max Cap Violations:               0
+  -----------------------------------
+
+
+  Hostname: engr-e132-d21
+
+  Compile CPU Statistics
+  -----------------------------------------
+  Resource Sharing:                  0.0000
+  Logic Optimization:                0.0240
+  Mapping Optimization:              0.3840
+  -----------------------------------------
+  Overall Compile Time:              1.9720
+  Overall Compile Wall Clock Time:   2.1758
+
+1

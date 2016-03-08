@@ -5,16 +5,16 @@ set myFiles [list ./../HalfAdder.v ./../FullAdder.v];
 set basename FullAdder;
 set virtual 1;
 
-set myPeriod_ns 10;
-set myClkLatency_ns 0.3;
-set myInDelay_ns 2.0;
-set myOutDelay_ns 1.65;
-set myOutputLoad 0.1;
+set myPeriod_ns 2;
+set myClkLatency_ns 0.55;
+set myInDelay_ns 0.07;
+set myOutDelay_ns 0.07;
+set myOutputLoad 4;
 set mySetup 0.3;
 set myHold 0.2;
 
 set myClk CK;
-set runname _syn;
+set runname _syn17;
 set search_path "/synopsys/GPDK/SAED_EDK90nm/Digital_Standard_Cell_Library/synopsys/models";
 set link_library "saed90nm_max.db";
 set target_library "saed90nm_max.db";
@@ -33,15 +33,18 @@ uniquify
 
 if { $virtual == 0} {
 	create_clock -period $myPeriod_ns $myClk
-	set_input_delay $myInDelay_ns -clock $myClk [all_inputs]
+	set_input_delay 0.0 -min -clock $myClk [all_inputs]
+	set_input_delay $myInDelay_ns -max -clock $myClk [all_inputs]
 	set_driving_cell -lib_cell $myInputBuf [all_inputs]
 } else {
 	create_clock -period $myPeriod_ns -name $myClk
-	set_input_delay $myInDelay_ns -clock $myClk [remove_from_collection [all_inputs] $myClk]
+	set_input_delay 0.0 -min -clock $myClk [remove_from_collection [all_inputs] $myClk]
+	set_input_delay $myInDelay_ns -max -clock $myClk [remove_from_collection [all_inputs] $myClk]
 	set_driving_cell -lib_cell $myInputBuf [remove_from_collection [all_inputs] $myClk]
 }
 set_clock_latency $myClkLatency_ns $myClk
-set_output_delay $myOutDelay_ns -clock $myClk [all_outputs]
+set_output_delay $myOutDelay_ns -max -clock $myClk [all_outputs]
+set_output_delay 0.0 -min -clock $myClk [all_outputs]
 
 set_load $myOutputLoad [all_outputs]
 set_max_fanout $myMaxFanout [all_inputs]
@@ -58,25 +61,13 @@ check_design
 
 set filebase [concat $basename$runname]
 set fileext .v
-write -format verilog -hierarchy -output [concat $filebase$fileext]
+write -format verilog -hierarchy -output [concat ./$basename/$runname/$filebase$fileext]
 set fileext .vio
-redirect [concat $filebase$fileext] { report_constraint -all_violators }
+redirect [concat ./$basename/$runname/$filebase$fileext] { report_constraint -all_violators }
 set fileext .maxtiming
-redirect [concat $filebase$fileext] { report_timing -path full -delay max -nworst 5 }
+redirect [concat ./$basename/$runname/$filebase$fileext] { report_timing -path full -delay max -nworst 5 }
 set fileext .mintiming
-redirect [concat $filebase$fileext] { report_timing -path full -delay min -nworst 5 }
+redirect [concat ./$basename/$runname/$filebase$fileext] { report_timing -path full -delay min -nworst 5 }
 set fileext .qor
-redirect [concat $filebase$fileext] { report_qor -significant_digits 4 }
-
-
-
-
-
-
-
-
-
-
-
-
+redirect [concat ./$basename/$runname/$filebase$fileext] { report_qor -significant_digits 4 }
 
