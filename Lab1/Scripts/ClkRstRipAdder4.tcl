@@ -1,5 +1,5 @@
 # Daniel Olsen
-# FullAdder.tcl
+# ClkRstRipAdder4.tcl
 
 set myFiles [list ./../HalfAdder.v ./../FullAdder.v ./../RipAdder4.v ./../ClkRstRipAdder4.v];
 set basename ClkRstRipAdder4;
