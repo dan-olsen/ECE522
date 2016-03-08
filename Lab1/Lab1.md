@@ -17,13 +17,18 @@
 
 ### Procedure
 1. Find minimum clock period with no input/output delay or load.
+  * Iteration 1
 2. Using minimum clock period, find maximum output load.
+  * Iteration 9
 3. Slightly increase clock period to support some input/output delay.
 4. Using increased clock rate, find maximum input/output delay.
+  * Iteration 11
   * This gives a good lower bound to work from if a higher input or output delay is needed.
 5. Try to increase output load.
+  * Iteration 12
   * Found that with a higher output load the input/output delays could be increased.
 6. Increase output load to find maximum input/output delays.
+  * Iteration 17
 
 ### Results
 | Iteration | Clock Period    | Input Delay | Output Delay | Output Load | Max Timing Slack |
@@ -144,13 +149,15 @@ redirect [concat ./$basename/$runname/$filebase$fileext] { report_qor -significa
 
 ### Procedure
 1. Find minimum clock period with no input/output delay or load.
+  * Iteration 1
 2. Using minimum clock period, find maximum output load.
+  * Iteration 4 (Verified with iteration 5)
 3. Slightly increase clock period to support some input/output delay.
 4. Using increased clock rate, find maximum input/output delay.
+  * Iteration 6 (Verified with iteration 7)
   * This gives a good lower bound to work from if a higher input or output delay is needed.
-5. Try to increase output load.
-  * Found that with a higher output load the input/output delays could be increased.
 6. Increase output load to find maximum input/output delays.
+  * Iteration 11
 
 ### Results
 | Iteration | Clock Period    | Input Delay | Output Delay | Output Load | Max Timing Slack |
@@ -161,9 +168,9 @@ redirect [concat ./$basename/$runname/$filebase$fileext] { report_qor -significa
 | 4         | 1.8             | 0           | 0            | 3           | 0.00             |
 | 5         | 1.8             | 0           | 0            | 4           | -0.02            |
 | 6         | 2               | 0.1         | 0.1          | 3           | 0.00             |
-| 7         | 1.8             | 0.2         | 0.2          | 3           | -0.19            |
-| 8         | 1.8             | 0.1         | 0.1          | 4           | -0.02            |
-| 9         | 1.8             | 0.1         | 0.1          | 3.5         | 0.00 (sig. dig.) |
+| 7         | 2               | 0.2         | 0.2          | 3           | -0.19            |
+| 8         | 2               | 0.1         | 0.1          | 4           | -0.02            |
+| 9         | 2               | 0.1         | 0.1          | 3.5         | 0.00 (sig. dig.) |
 | 10        | 2               | 0.1         | 0.1          | 3.4         | 0.00 (sig. dig.) |
 | 11        | 2               | 0.1         | 0.1          | 3.2         | 0.00             |
 
