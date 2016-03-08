@@ -20,9 +20,9 @@
 2. Using minimum clock period, find maximum output load.
 3. Slightly increase clock period to support some input/output delay.
 4. Using increased clock rate, find maximum input/output delay.
-..* This gives a good lower bound to work from if a higher input or output delay is needed.
+  * This gives a good lower bound to work from if a higher input or output delay is needed.
 5. Try to increase output load.
-..* Found that with a higher output load the input/output delays could be increased.
+  * Found that with a higher output load the input/output delays could be increased.
 6. Increase output load to find maximum input/output delays.
 
 ### Results
