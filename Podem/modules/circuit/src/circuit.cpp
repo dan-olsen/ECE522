@@ -4,9 +4,11 @@
 
 #include "circuit.hpp"
 
-circuit::circuit(const std::string &benchmark_file) : benchmark_parser(benchmark_file)
+circuit::circuit(const std::string &benchmark_file)
 {
+    benchmark_parser parser(benchmark_file);
 
+    parser.read_benchmark(*this);
 }
 
 circuit::~circuit()
@@ -34,11 +36,17 @@ void circuit::print_circuit()
 {
     std::cout << std::endl << "INDEX\tNAME\tTYPE\t#IN\t#OUT\tVAL\tFVAL\tFANIN\t\tFANOUT" << std::endl;
 
-    for(unsigned int i = 0; i < _circuit.size(); ++i)
+/*    for(unsigned int i = 0; i < _circuit.size(); ++i)
     {
         //std::cout << "Gate " << i << ": " << std::endl;
         //std::cout << _circuit[i] << std::endl;
-        std::cout << i << "\t\t" << _circuit[i] << std::endl;
+        std::cout << i << "\t\t" << _sorted_circuit[i] << std::endl;
+    }*/
+
+    for(auto iter = _circuit.begin(); iter != _circuit.end(); ++iter)
+    {
+        std::cout << iter->second << std::endl;
+
     }
 }
 

@@ -4,42 +4,37 @@
 
 #include "benchmark_parser.hpp"
 
-std::string myreplace(std::string &s,
-                      const std::string &toReplace,
-                      const std::string &replaceWith)
-{
-    return(s.replace(s.find(toReplace), toReplace.length(), replaceWith));
-}
-
 benchmark_parser::benchmark_parser(const std::string &benchmark_file)
 {
-    read_benchmark(benchmark_file);
-
+    _benchmark_file = benchmark_file;
 }
 
 benchmark_parser::~benchmark_parser()
 {
-
+    if(_benchmark.is_open())
+    {
+        _benchmark.close();
+    }
 }
 
-void benchmark_parser::read_benchmark(const std::string &benchmark_file)
+void benchmark_parser::read_benchmark(circuit &c)
 {
     try {
-        std::ifstream benchmark(benchmark_file);
+        _benchmark.open(_benchmark_file);
 
-        if(benchmark.good())
+        if(_benchmark.good())
         {
-            std::cout << "Reading benchmark..." << std::endl;
+            std::cout << "Reading benchmark file: " << _benchmark_file << std::endl;
 
-            read_header(benchmark);
+            read_header(c);
 
-            read_circuit(benchmark);
+            read_gates(c);
 
-            benchmark.close();
+            _benchmark.close();
         }
         else
         {
-            std::cerr << "ERROR: Cannot open " << benchmark_file << std::endl;
+            std::cerr << "ERROR: Cannot open " << _benchmark_file << std::endl;
         }
 
     } catch(std::exception e) {
@@ -48,36 +43,41 @@ void benchmark_parser::read_benchmark(const std::string &benchmark_file)
     }
 }
 
-void benchmark_parser::read_header(std::ifstream &benchmark)
+std::string benchmark_parser::my_replace(std::string &s, const std::string &toReplace, const std::string &replaceWith)
+{
+    return(s.replace(s.find(toReplace), toReplace.length(), replaceWith));
+}
+
+void benchmark_parser::read_header(circuit &c)
 {
     std::string tmp;
 
-    benchmark >> tmp >> _name;
-    benchmark >> tmp >> _input_count >> tmp;
+    _benchmark >> tmp >> c._name;
+    _benchmark >> tmp >> c._input_count >> tmp;
 
-    if (_name.front() == 'b')
+    if (c._name.front() == 'b')
     {
-        benchmark.ignore();
-        getline(benchmark, tmp);
+        _benchmark.ignore();
+        getline(_benchmark, tmp);
 
     }
 
-    benchmark >> tmp >> _output_count >> tmp;
+    _benchmark >> tmp >> c._output_count >> tmp;
 
-    if (_name.front() == 'b' || _name.front() == 's')
+    if (c._name.front() == 'b' || c._name.front() == 's')
     {
-        benchmark >> tmp >> _dff_count >> tmp >> tmp;
+        _benchmark >> tmp >> c._dff_count >> tmp >> tmp;
 
     }
     else
     {
-        _dff_count = 0;
+        c._dff_count = 0;
     }
 
-    benchmark >> tmp >> _inverter_count >> tmp;
-    benchmark >> tmp >> _total_gate_count >> tmp;
+    _benchmark >> tmp >> c._inverter_count >> tmp;
+    _benchmark >> tmp >> c._total_gate_count >> tmp;
 
-    getline(benchmark, tmp);
+    getline(_benchmark, tmp);
 
     tmp.erase (std::remove(tmp.begin(), tmp.end(), '('), tmp.end());
     tmp.erase (std::remove(tmp.begin(), tmp.end(), ')'), tmp.end());
@@ -93,26 +93,24 @@ void benchmark_parser::read_header(std::ifstream &benchmark)
 
         if (x != 0)
         {
-            _gate_counts[string_to_gate_type(tmp)] = x;
+            c._gate_counts[string_to_gate_type(tmp)] = x;
 
         }
     }
 }
 
-void benchmark_parser::read_circuit(std::ifstream &benchmark)
+void benchmark_parser::read_gates(circuit &c)
 {
     std::string tmp;
 
-    std::unordered_map<std::string, gate_base> map;
-
-    benchmark.ignore();
+    _benchmark.ignore();
 
     //Read inputs
-    while(getline(benchmark, tmp))
+    while(getline(_benchmark, tmp))
     {
         if (!tmp.empty())
         {
-            myreplace(tmp, "(", " ");
+            my_replace(tmp, "(", " ");
             tmp.erase (std::remove(tmp.begin(), tmp.end(), ')'), tmp.end());
 
             std::stringstream s(tmp);
@@ -124,7 +122,7 @@ void benchmark_parser::read_circuit(std::ifstream &benchmark)
                 s >> tmp;
                 input in(tmp);
 
-                map.insert({tmp, in});
+                c._circuit.insert({tmp, in});
 
                 //_circuit.push_back(in);
             }
@@ -136,26 +134,11 @@ void benchmark_parser::read_circuit(std::ifstream &benchmark)
     }
 
     //Read outputs
-    while(getline(benchmark, tmp))
+    while(getline(_benchmark, tmp))
     {
         if (!tmp.empty())
         {
-/*            myreplace(tmp, "(", " ");
-            tmp.erase (std::remove(tmp.begin(), tmp.end(), ')'), tmp.end());
 
-            std::stringstream s(tmp);
-
-            s >> tmp;
-
-            if (string_to_gate_type(tmp) == OUTPUT)
-            {
-                s >> tmp;
-                output out(tmp);
-
-                //map.insert({tmp.substr(6), out});
-
-                _circuit.push_back(out);
-            }*/
         }
         else
         {
@@ -164,11 +147,11 @@ void benchmark_parser::read_circuit(std::ifstream &benchmark)
     }
 
     //Read Gates
-    while(getline(benchmark, tmp))
+    while(getline(_benchmark, tmp))
     {
         if (!tmp.empty())
         {
-            myreplace(tmp, "(", " ");
+            my_replace(tmp, "(", " ");
 
             tmp.erase (std::remove(tmp.begin(), tmp.end(), '='), tmp.end());
             tmp.erase (std::remove(tmp.begin(), tmp.end(), ')'), tmp.end());
@@ -198,70 +181,70 @@ void benchmark_parser::read_circuit(std::ifstream &benchmark)
                     {
                         notg.add_fan_in(fin);
 
-                        map.at(fin).add_fan_out(name);
+                        c._circuit.at(fin).add_fan_out(name);
                     }
 
-                    map.insert({name, notg});
+                    c._circuit.insert({name, notg});
                     break;
                 case BUFFER:
                     while(s >> fin)
                     {
                         buff.add_fan_in(fin);
 
-                        map.at(fin).add_fan_out(name);
+                        c._circuit.at(fin).add_fan_out(name);
                     }
 
-                    map.insert({name, buff});
+                    c._circuit.insert({name, buff});
                     break;
                 case AND:
                     while(s >> fin)
                     {
                         andg.add_fan_in(fin);
 
-                        map.at(fin).add_fan_out(name);
+                        c._circuit.at(fin).add_fan_out(name);
                     }
 
-                    map.insert({name, andg});
+                    c._circuit.insert({name, andg});
                     break;
                 case NAND:
                     while(s >> fin)
                     {
                         nandg.add_fan_in(fin);
 
-                        map.at(fin).add_fan_out(name);
+                        c._circuit.at(fin).add_fan_out(name);
                     }
 
-                    map.insert({name, nandg});
+                    c._circuit.insert({name, nandg});
                     break;
                 case OR:
                     while(s >> fin)
                     {
                         org.add_fan_in(fin);
 
-                        map.at(fin).add_fan_out(name);
+                        c._circuit.at(fin).add_fan_out(name);
                     }
 
-                    map.insert({name, org});
+                    c._circuit.insert({name, org});
                     break;
                 case NOR:
                     while(s >> fin)
                     {
                         norg.add_fan_in(fin);
 
-                        map.at(fin).add_fan_out(name);
+                        c._circuit.at(fin).add_fan_out(name);
                     }
 
-                    map.insert({name, norg});
+                    c._circuit.insert({name, norg});
                     break;
                 case DFF:
                     while(s >> fin)
                     {
                         dffg.add_fan_in(fin);
 
-                        map.at(fin).add_fan_out(name);
+                        c._circuit.at(fin).add_fan_out(name);
                     }
 
-                    map.insert({name, dffg});
+                    c._circuit.insert({name, dffg});
                     break;
                 case FROM:
                 case INPUT:
@@ -278,7 +261,7 @@ void benchmark_parser::read_circuit(std::ifstream &benchmark)
     }
     std::unordered_map<std::string, gate_base> map2;// = map;
 
-    for(auto iter = map.begin(); iter != map.end(); ++iter)
+    for(auto iter = c._circuit.begin(); iter != c._circuit.end(); ++iter)
     {
         if(iter->second.fan_out_count() > 1 && iter->second.type() != FROM)
         {
@@ -296,18 +279,13 @@ void benchmark_parser::read_circuit(std::ifstream &benchmark)
                 f.add_fan_out(*iter2);
 
                 iter->second.replace_fan_out(*iter2, f.name());
-                map.at(*iter2).replace_fan_in(iter->second.name(), f.name());
+                c._circuit.at(*iter2).replace_fan_in(iter->second.name(), f.name());
 
                 map2.insert({s.str(), f});
             }
         }
     }
 
-    map.insert(map2.begin(), map2.end());
+    c._circuit.insert(map2.begin(), map2.end());
 
-    for(auto iter = map.begin(); iter != map.end(); ++iter)
-    {
-        std::cout << iter->second << std::endl;
-
-    }
 }
