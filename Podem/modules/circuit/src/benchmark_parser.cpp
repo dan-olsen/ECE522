@@ -165,6 +165,7 @@ void benchmark_parser::read_gates(circuit &c)
 
             s >> type;
 
+            //TODO: Replace with gate factory
             not_gate notg(name);
             buffer buff(name);
             and_gate andg(name);
@@ -173,9 +174,9 @@ void benchmark_parser::read_gates(circuit &c)
             nor_gate norg(name);
             dff dffg(name);
 
+            //TODO: Move fan outs to after whole circuit is read
             switch(string_to_gate_type(type))
             {
-
                 case NOT:
                     while(s >> fin)
                     {
@@ -254,9 +255,6 @@ void benchmark_parser::read_gates(circuit &c)
                     std::cerr << "ERROR: Invalid gate type" << std::endl;
                     exit(-1);
             }
-
-
-            //_circuit.push_back(ng);
         }
     }
     std::unordered_map<std::string, gate_base> map2;// = map;

@@ -19,7 +19,6 @@ public:
     benchmark_parser(const std::string &benchmark_file);
     ~benchmark_parser();
 
-protected:
     void read_benchmark(circuit &c);
 
 private:
