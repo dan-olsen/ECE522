@@ -14,7 +14,6 @@
 class circuit;
 
 class benchmark_parser {
-    friend class circuit;
 public:
     benchmark_parser(const std::string &benchmark_file);
     ~benchmark_parser();
