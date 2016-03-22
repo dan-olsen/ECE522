@@ -21,6 +21,7 @@
 #include <vector>
 #include <map>
 #include <unordered_map>
+#include <memory>
 
 class circuit {
     friend class benchmark_parser;

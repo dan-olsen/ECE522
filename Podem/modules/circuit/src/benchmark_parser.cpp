@@ -165,99 +165,21 @@ void benchmark_parser::read_gates(circuit &c)
 
             s >> type;
 
-            //TODO: Replace with gate factory
-            not_gate notg(name);
-            buffer buff(name);
-            and_gate andg(name);
-            nand_gate nandg(name);
-            or_gate org(name);
-            nor_gate norg(name);
-            dff dffg(name);
+            std::unique_ptr<gate_base> gate = gate_factory::create_gate(type, name);
 
             //TODO: Move fan outs to after whole circuit is read
-            switch(string_to_gate_type(type))
+            while(s >> fin)
             {
-                case NOT:
-                    while(s >> fin)
-                    {
-                        notg.add_fan_in(fin);
+                gate->add_fan_in(fin);
 
-                        c._circuit.at(fin).add_fan_out(name);
-                    }
-
-                    c._circuit.insert({name, notg});
-                    break;
-                case BUFFER:
-                    while(s >> fin)
-                    {
-                        buff.add_fan_in(fin);
-
-                        c._circuit.at(fin).add_fan_out(name);
-                    }
-
-                    c._circuit.insert({name, buff});
-                    break;
-                case AND:
-                    while(s >> fin)
-                    {
-                        andg.add_fan_in(fin);
-
-                        c._circuit.at(fin).add_fan_out(name);
-                    }
-
-                    c._circuit.insert({name, andg});
-                    break;
-                case NAND:
-                    while(s >> fin)
-                    {
-                        nandg.add_fan_in(fin);
-
-                        c._circuit.at(fin).add_fan_out(name);
-                    }
-
-                    c._circuit.insert({name, nandg});
-                    break;
-                case OR:
-                    while(s >> fin)
-                    {
-                        org.add_fan_in(fin);
-
-                        c._circuit.at(fin).add_fan_out(name);
-                    }
-
-                    c._circuit.insert({name, org});
-                    break;
-                case NOR:
-                    while(s >> fin)
-                    {
-                        norg.add_fan_in(fin);
-
-                        c._circuit.at(fin).add_fan_out(name);
-                    }
-
-                    c._circuit.insert({name, norg});
-                    break;
-                case DFF:
-                    while(s >> fin)
-                    {
-                        dffg.add_fan_in(fin);
-
-                        c._circuit.at(fin).add_fan_out(name);
-                    }
-
-                    c._circuit.insert({name, dffg});
-                    break;
-                case FROM:
-                case INPUT:
-                case OUTPUT:
-                case UNKNOWN:
-                default:
-                    std::cerr << "ERROR: Invalid gate type" << std::endl;
-                    exit(-1);
+                c._circuit.at(fin).add_fan_out(name);
             }
+
+            c._circuit.insert({name, *gate});
+
         }
     }
-    std::unordered_map<std::string, gate_base> map2;// = map;
+    std::unordered_map<std::string, gate_base> map2;
 
     for(auto iter = c._circuit.begin(); iter != c._circuit.end(); ++iter)
     {
