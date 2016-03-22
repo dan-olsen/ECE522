@@ -55,13 +55,6 @@ void benchmark_parser::read_header(circuit &c)
     _benchmark >> tmp >> c._name;
     _benchmark >> tmp >> c._input_count >> tmp;
 
-    if (c._name.front() == 'b')
-    {
-        _benchmark.ignore();
-        getline(_benchmark, tmp);
-
-    }
-
     _benchmark >> tmp >> c._output_count >> tmp;
 
     if (c._name.front() == 'b' || c._name.front() == 's')
@@ -124,7 +117,6 @@ void benchmark_parser::read_gates(circuit &c)
 
                 c._circuit.insert({tmp, in});
 
-                //_circuit.push_back(in);
             }
         }
         else
@@ -174,7 +166,6 @@ void benchmark_parser::read_gates(circuit &c)
             }
 
             c._circuit.insert({name, *gate});
-
         }
     }
 
