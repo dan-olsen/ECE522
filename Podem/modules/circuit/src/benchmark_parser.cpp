@@ -167,18 +167,25 @@ void benchmark_parser::read_gates(circuit &c)
 
             std::unique_ptr<gate_base> gate = gate_factory::create_gate(type, name);
 
-            //TODO: Move fan outs to after whole circuit is read
             while(s >> fin)
             {
                 gate->add_fan_in(fin);
 
-                c._circuit.at(fin).add_fan_out(name);
             }
 
             c._circuit.insert({name, *gate});
 
         }
     }
+
+    for(auto iter = c._circuit.begin(); iter != c._circuit.end(); ++iter)
+    {
+        for(auto iter2 = iter->second.fan_in().begin(); iter2 != iter->second.fan_in().end(); ++iter2)
+        {
+            c._circuit.at(*iter2).add_fan_out(iter->second.name());
+        }
+    }
+
     std::unordered_map<std::string, gate_base> map2;
 
     for(auto iter = c._circuit.begin(); iter != c._circuit.end(); ++iter)
