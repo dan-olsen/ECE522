@@ -9,6 +9,8 @@ circuit::circuit(const std::string &benchmark_file)
     benchmark_parser parser(benchmark_file);
 
     parser.read_benchmark(*this);
+
+    topological_sort();
 }
 
 circuit::~circuit()
@@ -50,4 +52,43 @@ void circuit::print_circuit()
     }
 }
 
+void circuit::topological_sort()
+{
+    std::stack<std::string> s;
+    std::map<std::string, bool> visited;
 
+    _sorted_circuit.reserve(_circuit.size());
+
+    // Mark all the vertices as not visited
+    for(auto iter = _circuit.begin(); iter != _circuit.end(); ++iter)
+        visited.insert({iter->second.name(), false});
+
+    // Call the recursive helper function to store Topological
+    // Sort starting from all vertices one by one
+    for (auto iter = _circuit.begin(); iter != _circuit.end(); ++iter)
+        if (!visited.at(iter->second.name()))
+            topological_sort_util(iter->second.name(), visited, s);
+
+    // Print contents of stack
+    while (!s.empty())
+    {
+        std::cout << s.top() << " ";
+        s.pop();
+    }
+}
+
+void circuit::topological_sort_util(const std::string &name, std::map<std::string, bool> &visited, std::stack<std::string> &s)
+{
+    // Mark the current node as visited.
+    visited.at(name) = true;
+
+    // Recur for all the vertices adjacent to this vertex
+    std::list<int>::iterator i;
+    //for (i = adj[v].begin(); i != adj[v].end(); ++i)
+    for (auto iter = _circuit.at(name).fan_out().begin(); iter != _circuit.at(name).fan_out().end(); ++iter)
+        if (!visited.at(*iter))
+            topological_sort_util(*iter, visited, s);
+
+    // Push current vertex to stack which stores result
+    s.push(name);
+}
