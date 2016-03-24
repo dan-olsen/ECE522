@@ -1,4 +1,3 @@
-
 #include "circuit.hpp"
 
 const std::string usage = "Usage: %s [ options ] CIRCUIT\n";
