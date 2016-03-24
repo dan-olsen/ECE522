@@ -53,7 +53,6 @@ private:
     std::vector<std::string> _sorted_circuit;
 
     void topological_sort();
-    void topological_sort_util(const std::string &name, std::map<std::string, bool> &visited);
 };
 
 #endif //PODEM_CIRCUIT_HPP

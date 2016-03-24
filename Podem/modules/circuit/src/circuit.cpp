@@ -36,12 +36,10 @@ void circuit::print_header()
 
 void circuit::print_circuit()
 {
-    std::cout << std::endl << "INDEX\tNAME\tTYPE\t#IN\t#OUT\tVAL\tFVAL\tFANIN\t\tFANOUT" << std::endl;
+    std::cout << std::endl << "NAME\tTYPE\t#IN\t#OUT\tVAL\tFVAL\tFANIN\tFANOUT" << std::endl;
 
     for(unsigned int i = 0; i < _sorted_circuit.size(); ++i)
     {
-        //std::cout << "Gate " << i << ": " << std::endl;
-        //std::cout << _circuit[i] << std::endl;
         std::cout << _circuit.at(_sorted_circuit[i]) << std::endl;
     }
 /*
@@ -54,47 +52,36 @@ void circuit::print_circuit()
 
 void circuit::topological_sort()
 {
-    std::map<std::string, bool> visited;
-    std::vector<std::string> v;
+    std::queue<std::string> q;
+    std::map<std::string, int> in_degree;
 
-    _sorted_circuit.reserve(_circuit.size());
-
-    // Mark all the vertices as not visited
     for(auto iter = _circuit.begin(); iter != _circuit.end(); ++iter)
     {
-        v.push_back(iter->second.name());
-
-        visited.insert({iter->second.name(), false});
-
+        in_degree.insert({iter->first, iter->second.fan_in_count()});
     }
 
-    // Call the recursive helper function to store Topological
-    // Sort starting from all vertices one by one
-    while(!v.empty())
+    for(auto iter = _primary_inputs.begin(); iter != _primary_inputs.end(); ++iter)
     {
-        std::string curr = v.front();
-
-        topological_sort_util(curr, visited);
-
-        v.erase(std::remove(v.begin(), v.end(), curr), v.end());
+        q.push(*iter);
     }
-}
 
-void circuit::topological_sort_util(const std::string &name, std::map<std::string, bool> &visited)
-{
-    // Mark the current node as visited.
-
-    if (!visited.at(name))
+    while(!q.empty())
     {
-        for (auto iter = _circuit.at(name).fan_out().begin(); iter != _circuit.at(name).fan_out().end(); ++iter)
+        std::string curr = q.front();
+        q.pop();
+        _sorted_circuit.push_back(curr);
+
+        std::vector<std::string> curr_fan_out = _circuit.at(curr).fan_out();
+
+        for (auto iter = curr_fan_out.begin(); iter != curr_fan_out.end(); ++iter)
         {
-            topological_sort_util(*iter, visited);
+            in_degree.at(*iter) -= 1;
+
+            if(in_degree.at(*iter) == 0)
+            {
+                q.push(*iter);
+            }
+
         }
-
-        //std::cout << "Pushing " << name << std::endl;
-        // Push current vertex to stack which stores result
-        visited.at(name) = true;
-
-        _sorted_circuit.insert(_sorted_circuit.begin(), name);
     }
 }
