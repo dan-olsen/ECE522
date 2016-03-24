@@ -38,23 +38,22 @@ void circuit::print_circuit()
 {
     std::cout << std::endl << "INDEX\tNAME\tTYPE\t#IN\t#OUT\tVAL\tFVAL\tFANIN\t\tFANOUT" << std::endl;
 
-/*    for(unsigned int i = 0; i < _circuit.size(); ++i)
+    for(unsigned int i = 0; i < _sorted_circuit.size(); ++i)
     {
         //std::cout << "Gate " << i << ": " << std::endl;
         //std::cout << _circuit[i] << std::endl;
-        std::cout << i << "\t\t" << _sorted_circuit[i] << std::endl;
-    }*/
-
+        std::cout << _circuit.at(_sorted_circuit[i]) << std::endl;
+    }
+/*
     for(auto iter = _circuit.begin(); iter != _circuit.end(); ++iter)
     {
         std::cout << iter->second << std::endl;
 
-    }
+    }*/
 }
 
 void circuit::topological_sort()
 {
-    std::stack<std::string> s;
     std::map<std::string, bool> visited;
     std::vector<std::string> v;
 
@@ -74,40 +73,28 @@ void circuit::topological_sort()
     while(!v.empty())
     {
         std::string curr = v.front();
-        v.pop();
 
-        topological_sort_util(curr, visited, s);
-    }
+        topological_sort_util(curr, visited);
 
-    // Print contents of stack
-    while (!s.empty())
-    {
-        std::cout << s.top() << " ";
-        s.pop();
+        v.erase(std::remove(v.begin(), v.end(), curr), v.end());
     }
 }
 
-void circuit::topological_sort_util(const std::string &name, std::map<std::string, bool> &visited, std::stack<std::string> &s)
+void circuit::topological_sort_util(const std::string &name, std::map<std::string, bool> &visited)
 {
     // Mark the current node as visited.
-    visited.at(name) = true;
 
-    //std::cout << "Visited " << name << std::endl;
-
-    // Recur for all the vertices adjacent to this vertex
-    //for (i = adj[v].begin(); i != adj[v].end(); ++i)
-    for (auto iter = _circuit.at(name).fan_out().begin(); iter != _circuit.at(name).fan_out().end(); ++iter)
+    if (!visited.at(name))
     {
-        if (!visited.at(*iter))
+        for (auto iter = _circuit.at(name).fan_out().begin(); iter != _circuit.at(name).fan_out().end(); ++iter)
         {
-            //std::cout << "Not Visted = " << *iter << std::endl;
-
-            topological_sort_util(*iter, visited, s);
-
+            topological_sort_util(*iter, visited);
         }
-    }
 
-    //std::cout << "Pushing " << name << std::endl;
-    // Push current vertex to stack which stores result
-    s.push(name);
+        //std::cout << "Pushing " << name << std::endl;
+        // Push current vertex to stack which stores result
+        visited.at(name) = true;
+
+        _sorted_circuit.insert(_sorted_circuit.begin(), name);
+    }
 }

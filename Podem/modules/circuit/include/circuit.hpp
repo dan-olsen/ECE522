@@ -46,11 +46,14 @@ private:
 
     std::map<GATE_TYPE, int> _gate_counts;
 
+    std::vector<std::string> _primary_inputs;
+    std::vector<std::string> _primary_outputs;
+
     std::unordered_map<std::string, gate_base> _circuit;
     std::vector<std::string> _sorted_circuit;
 
     void topological_sort();
-    void topological_sort_util(const std::string &name, std::map<std::string, bool> &visited, std::stack<std::string> &s);
+    void topological_sort_util(const std::string &name, std::map<std::string, bool> &visited);
 };
 
 #endif //PODEM_CIRCUIT_HPP

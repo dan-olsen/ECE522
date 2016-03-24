@@ -116,7 +116,7 @@ void benchmark_parser::read_gates(circuit &c)
                 input in(tmp);
 
                 c._circuit.insert({tmp, in});
-
+                c._primary_inputs.push_back(tmp);
             }
         }
         else
