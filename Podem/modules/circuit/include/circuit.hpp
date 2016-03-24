@@ -24,6 +24,7 @@
 #include <memory>
 #include <stack>
 #include <list>
+#include <queue>
 
 class circuit {
     friend class benchmark_parser;
