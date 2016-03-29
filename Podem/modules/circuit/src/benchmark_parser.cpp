@@ -170,7 +170,6 @@ void benchmark_parser::read_gates(circuit &c)
                 }
 
                 gate->add_fan_in(fin);
-
             }
 
             if (gate->type() == DFF)
@@ -197,9 +196,34 @@ void benchmark_parser::read_gates(circuit &c)
     }
     for(auto iter = c._circuit.begin(); iter != c._circuit.end(); ++iter)
     {
+        std::vector<std::string> fin = iter->second.fan_in();
+
+        for(auto iter2 = fin.begin(); iter2 != fin.end(); ++iter2)
+        {
+            for(auto iter3 = c._dff.begin(); iter3 != c._dff.end(); ++iter3)
+            {
+                if(*iter2 == iter3->name())
+                {
+                    iter->second.replace_fan_in(*iter2, *iter2 + "_IN");
+
+                    break;
+                }
+            }
+        }
+
+    }
+
+    for(auto iter = c._circuit.begin(); iter != c._circuit.end(); ++iter)
+    {
         for(auto iter2 = iter->second.fan_in().begin(); iter2 != iter->second.fan_in().end(); ++iter2)
         {
-            c._circuit.at(*iter2).add_fan_out(iter->second.name());
+            try{
+                c._circuit.at(*iter2).add_fan_out(iter->second.name());
+
+            } catch (std::exception e) {
+                std::cerr << "ERROR: " << e.what() << std::endl;
+                std::cerr << *iter2 << " fan-in of " << iter->second.name() << " was not found in circuit" << std::endl;
+            }
 
         }
     }
