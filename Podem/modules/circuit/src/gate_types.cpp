@@ -47,9 +47,9 @@ GATE_TYPE string_to_gate_type(const std::string &s)
     {
         return DFF;
     }
-    else if (tmp == "FROM" || tmp == "from")
+    else if (tmp == "STEM" || tmp == "stem")
     {
-        return FROM;
+        return STEM;
     }
     else
     {

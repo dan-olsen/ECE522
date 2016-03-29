@@ -163,6 +163,8 @@ void benchmark_parser::read_gates(circuit &c)
                     {
                         fin = fin + "_IN";
 
+                        iter->add_fan_out(gate->name());
+
                         break;
                     }
                 }
@@ -175,8 +177,9 @@ void benchmark_parser::read_gates(circuit &c)
             {
                 c._dff.push_back(*gate);
 
-                dff d(name + "_OUT");
+                c._primary_inputs.push_back(gate->name() + "_IN");
 
+                dff d(name + "_OUT");
                 d.add_fan_in(gate->fan_in()[0]);
 
                 c._circuit.insert({name + "_OUT", d});
@@ -194,20 +197,18 @@ void benchmark_parser::read_gates(circuit &c)
     }
     for(auto iter = c._circuit.begin(); iter != c._circuit.end(); ++iter)
     {
-        std::cout << iter->second << std::endl;
         for(auto iter2 = iter->second.fan_in().begin(); iter2 != iter->second.fan_in().end(); ++iter2)
         {
-
             c._circuit.at(*iter2).add_fan_out(iter->second.name());
+
         }
     }
-    std::cout << "here" << std::endl;
 
     std::unordered_map<std::string, gate_base> map2;
 
     for(auto iter = c._circuit.begin(); iter != c._circuit.end(); ++iter)
     {
-        if(iter->second.fan_out_count() > 1 && iter->second.type() != FROM)
+        if(iter->second.fan_out_count() > 1 && iter->second.type() != STEM)
         {
             int i = 0;
             std::vector<std::string> old = iter->second.fan_out();

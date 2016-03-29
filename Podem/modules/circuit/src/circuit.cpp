@@ -41,9 +41,19 @@ void circuit::print_circuit()
     for(unsigned int i = 0; i < _sorted_circuit.size(); ++i)
     {
         std::cout << _circuit.at(_sorted_circuit[i]) << std::endl;
+
     }
-/*
-    for(auto iter = _circuit.begin(); iter != _circuit.end(); ++iter)
+
+    std::cout << std::endl << "DFF's" << std::endl;
+    std::cout << "NAME\tTYPE\t#IN\t#OUT\tVAL\tFVAL\tFANIN\tFANOUT" << std::endl;
+
+    for(unsigned int i = 0; i < _dff.size(); ++i)
+    {
+        std::cout << _dff[i] << std::endl;
+
+    }
+
+/*    for(auto iter = _circuit.begin(); iter != _circuit.end(); ++iter)
     {
         std::cout << iter->second << std::endl;
 

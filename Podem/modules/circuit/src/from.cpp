@@ -4,7 +4,7 @@
 
 #include "from.hpp"
 
-from::from(const std::string &name) : gate_base(name, FROM)
+from::from(const std::string &name) : gate_base(name, STEM)
 {
 
 }

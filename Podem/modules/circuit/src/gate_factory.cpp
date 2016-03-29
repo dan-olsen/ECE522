@@ -21,7 +21,7 @@ std::unique_ptr<gate_base> gate_factory::create_gate(const std::string &type, co
             return std::unique_ptr<nor_gate>(new nor_gate(name));
         case DFF:
             return std::unique_ptr<dff>(new dff(name));
-        case FROM:
+        case STEM:
         case INPUT:
         case OUTPUT:
         case UNKNOWN:
