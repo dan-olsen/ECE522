@@ -128,11 +128,7 @@ void benchmark_parser::read_gates(circuit &c)
     //Read outputs
     while(getline(_benchmark, tmp))
     {
-        if (!tmp.empty())
-        {
-
-        }
-        else
+        if (tmp.empty())
         {
             break;
         }
@@ -161,21 +157,51 @@ void benchmark_parser::read_gates(circuit &c)
 
             while(s >> fin)
             {
+                for(auto iter = c._dff.begin(); iter != c._dff.end(); ++iter)
+                {
+                    if(iter->name() == fin)
+                    {
+                        fin = fin + "_IN";
+
+                        break;
+                    }
+                }
+
                 gate->add_fan_in(fin);
 
             }
 
-            c._circuit.insert({name, *gate});
+            if (gate->type() == DFF)
+            {
+                c._dff.push_back(*gate);
+
+                dff d(name + "_OUT");
+
+                d.add_fan_in(gate->fan_in()[0]);
+
+                c._circuit.insert({name + "_OUT", d});
+
+                dff d2(name + "_IN");
+
+                c._circuit.insert({name + "_IN", d2});
+
+            }
+            else
+            {
+                c._circuit.insert({name, *gate});
+            }
         }
     }
-
     for(auto iter = c._circuit.begin(); iter != c._circuit.end(); ++iter)
     {
+        std::cout << iter->second << std::endl;
         for(auto iter2 = iter->second.fan_in().begin(); iter2 != iter->second.fan_in().end(); ++iter2)
         {
+
             c._circuit.at(*iter2).add_fan_out(iter->second.name());
         }
     }
+    std::cout << "here" << std::endl;
 
     std::unordered_map<std::string, gate_base> map2;
 
