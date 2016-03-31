@@ -18,6 +18,11 @@ public:
     std::string name() const;
     GATE_TYPE type() const;
 
+    std::vector<std::string>::iterator fan_in_begin();
+    std::vector<std::string>::iterator fan_in_end();
+    std::vector<std::string>::iterator fan_out_begin();
+    std::vector<std::string>::iterator fan_out_end();
+
     std::vector<std::string>& fan_in();
     std::vector<std::string>& fan_out();
 

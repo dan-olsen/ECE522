@@ -194,6 +194,7 @@ void benchmark_parser::read_gates(circuit &c)
             }
         }
     }
+
     for(auto iter = c._circuit.begin(); iter != c._circuit.end(); ++iter)
     {
         std::vector<std::string> fin = iter->second.fan_in();
@@ -215,7 +216,7 @@ void benchmark_parser::read_gates(circuit &c)
 
     for(auto iter = c._circuit.begin(); iter != c._circuit.end(); ++iter)
     {
-        for(auto iter2 = iter->second.fan_in().begin(); iter2 != iter->second.fan_in().end(); ++iter2)
+        for(auto iter2 = iter->second.fan_in_begin(); iter2 != iter->second.fan_in_end(); ++iter2)
         {
             try{
                 c._circuit.at(*iter2).add_fan_out(iter->second.name());

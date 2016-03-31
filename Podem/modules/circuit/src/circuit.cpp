@@ -32,11 +32,50 @@ void circuit::print_header()
     {
         std::cout << gate_type_strings[x.first] << " Gates: " << x.second << std::endl;
     }
+
+    std::cout <<std::endl;
+
+    std::map<GATE_TYPE, int> gate_counts;
+
+    for(unsigned int i = 0; i < _sorted_circuit.size(); ++i)
+    {
+        std::map<GATE_TYPE, int>::iterator lb = gate_counts.lower_bound(_circuit.at(_sorted_circuit[i]).type());
+
+        if(lb != gate_counts.end() && !(gate_counts.key_comp()(_circuit.at(_sorted_circuit[i]).type(), lb->first)))
+        {
+            gate_counts.at(_circuit.at(_sorted_circuit[i]).type())++;
+
+        }
+        else
+        {
+            gate_counts.insert(lb, std::map<GATE_TYPE, int>::value_type(_circuit.at(_sorted_circuit[i]).type(), 1));
+        }
+
+    }
+
+    int total = 0;
+
+    for(const auto& x : gate_counts)
+    {
+        if(x.first == DFF)
+        {
+            std::cout << gate_type_strings[x.first] << " Gates: " << x.second/2 << std::endl;
+            total+=x.second/2;
+        }
+        else
+        {
+            std::cout << gate_type_strings[x.first] << " Gates: " << x.second << std::endl;
+            total+=x.second;
+
+        }
+    }
+    std::cout << "Total Gates: " << total << std::endl;
+
 }
 
 void circuit::print_circuit()
 {
-    std::cout << std::endl << "NAME\tTYPE\t#IN\t#OUT\tVAL\tFVAL\tFANIN\tFANOUT" << std::endl;
+    std::cout << std::endl << "NAME\tTYPE\t#IN\t#OUT\tVAL\tFANIN\tFANOUT" << std::endl;
 
     for(unsigned int i = 0; i < _sorted_circuit.size(); ++i)
     {
@@ -45,7 +84,7 @@ void circuit::print_circuit()
     }
 
     std::cout << std::endl << "DFF's" << std::endl;
-    std::cout << "NAME\tTYPE\t#IN\t#OUT\tVAL\tFVAL\tFANIN\tFANOUT" << std::endl;
+    std::cout << "NAME\tTYPE\t#IN\t#OUT\tVAL\tFANIN\tFANOUT" << std::endl;
 
     for(unsigned int i = 0; i < _dff.size(); ++i)
     {
