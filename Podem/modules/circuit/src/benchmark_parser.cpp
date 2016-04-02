@@ -241,7 +241,7 @@ void benchmark_parser::read_gates(circuit &c)
             for(auto iter2 = old.begin(); iter2 != old.end(); ++iter2, ++i)
             {
                 std::stringstream s;
-                s << iter->second.name() << "f" << i;
+                s << iter->second.name() << "_" << i;
 
                 from f(s.str());
 

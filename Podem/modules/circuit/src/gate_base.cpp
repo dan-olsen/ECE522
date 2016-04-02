@@ -8,6 +8,8 @@ gate_base::gate_base(const std::string& name, GATE_TYPE type)
 {
     _name = name;
     _type = type;
+
+    _value = X;
 }
 
 gate_base::~gate_base()
@@ -88,14 +90,14 @@ unsigned int gate_base::fan_out_count() {
 
 std::ostream &operator<<( std::ostream &output, const gate_base &g )
 {
-    output << g._name;// << std::endl;
-    output << "\t\t" << gate_type_strings[g._type];// << std::endl;
-    output << "\t" <<  g._fan_in.size();
-    output << "\t" <<  g._fan_out.size();
+    output << std::setw(20) << std::left << g._name;// << std::endl;
+    output << std::setw(10) << std::left << gate_type_strings[g._type];// << std::endl;
+    output << std::setw(10) << std::left <<  g._fan_in.size();
+    output << std::setw(10) << std::left <<  g._fan_out.size();
 
-    output << "\t\t0\t";
+    output << std::setw(10) << std::left << simulation_value_strings[g._value];
 
-    output << "\t{";
+    output << "{";
     for (auto iter = g._fan_in.begin(); iter != g._fan_in.end(); iter++)
     {
         if (iter != g._fan_in.begin())

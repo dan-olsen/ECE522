@@ -75,7 +75,14 @@ void circuit::print_header()
 
 void circuit::print_circuit()
 {
-    std::cout << std::endl << "NAME\tTYPE\t#IN\t#OUT\tVAL\tFANIN\tFANOUT" << std::endl;
+    std::cout << std::endl;
+    std::cout << std::setw(20) << std::left << "NAME";
+    std::cout << std::setw(10) << std::left << "TYPE";
+    std::cout << std::setw(10) << std::left << "#IN";
+    std::cout << std::setw(10) << std::left << "#OUT";
+    std::cout << std::setw(10) << std::left << "VAL";
+
+    std::cout << "FANIN\tFANOUT" << std::endl;
 
     for(unsigned int i = 0; i < _sorted_circuit.size(); ++i)
     {
@@ -83,8 +90,15 @@ void circuit::print_circuit()
 
     }
 
-    std::cout << std::endl << "DFF's" << std::endl;
-    std::cout << "NAME\tTYPE\t#IN\t#OUT\tVAL\tFANIN\tFANOUT" << std::endl;
+    std::cout << std::endl;
+    std::cout << "DFF's" << std::endl;
+    std::cout << std::setw(20) << std::left << "NAME";
+    std::cout << std::setw(10) << std::left << "TYPE";
+    std::cout << std::setw(10) << std::left << "#IN";
+    std::cout << std::setw(10) << std::left << "#OUT";
+    std::cout << std::setw(10) << std::left << "VAL";
+
+    std::cout << "FANIN\tFANOUT" << std::endl;
 
     for(unsigned int i = 0; i < _dffs.size(); ++i)
     {

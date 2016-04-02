@@ -6,9 +6,11 @@
 #define PODEM_GATE_HPP
 
 #include "gate_types.hpp"
+#include "simulation_values.hpp"
 
 #include <vector>
 #include <iostream>
+#include <iomanip>
 
 class gate_base {
 public:
@@ -40,6 +42,8 @@ public:
 protected:
     std::string _name;
     GATE_TYPE _type;
+
+    SIMULATION_VALUE _value;
 
     std::vector<std::string> _fan_in;
     std::vector<std::string> _fan_out;

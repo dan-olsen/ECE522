@@ -20,7 +20,7 @@ int main(int argc, char* const argv[])
 
     c.print_header();
 
-    //c.print_circuit();
+    c.print_circuit();
 
     end = std::chrono::system_clock::now();
 
