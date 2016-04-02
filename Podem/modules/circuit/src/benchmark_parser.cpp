@@ -157,7 +157,7 @@ void benchmark_parser::read_gates(circuit &c)
 
             while(s >> fin)
             {
-                for(auto iter = c._dff.begin(); iter != c._dff.end(); ++iter)
+                for(auto iter = c._dffs.begin(); iter != c._dffs.end(); ++iter)
                 {
                     if(iter->name() == fin)
                     {
@@ -174,7 +174,7 @@ void benchmark_parser::read_gates(circuit &c)
 
             if (gate->type() == DFF)
             {
-                c._dff.push_back(*gate);
+                c._dffs.push_back(*gate);
 
                 c._primary_inputs.push_back(gate->name() + "_IN");
 
@@ -201,7 +201,7 @@ void benchmark_parser::read_gates(circuit &c)
 
         for(auto iter2 = fin.begin(); iter2 != fin.end(); ++iter2)
         {
-            for(auto iter3 = c._dff.begin(); iter3 != c._dff.end(); ++iter3)
+            for(auto iter3 = c._dffs.begin(); iter3 != c._dffs.end(); ++iter3)
             {
                 if(*iter2 == iter3->name())
                 {

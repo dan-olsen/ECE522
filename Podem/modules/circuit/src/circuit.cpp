@@ -86,9 +86,9 @@ void circuit::print_circuit()
     std::cout << std::endl << "DFF's" << std::endl;
     std::cout << "NAME\tTYPE\t#IN\t#OUT\tVAL\tFANIN\tFANOUT" << std::endl;
 
-    for(unsigned int i = 0; i < _dff.size(); ++i)
+    for(unsigned int i = 0; i < _dffs.size(); ++i)
     {
-        std::cout << _dff[i] << std::endl;
+        std::cout << _dffs[i] << std::endl;
 
     }
 

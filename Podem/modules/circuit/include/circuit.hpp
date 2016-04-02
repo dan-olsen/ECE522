@@ -52,7 +52,7 @@ private:
     std::unordered_map<std::string, gate_base> _circuit;
     std::vector<std::string> _sorted_circuit;
 
-    std::vector<gate_base> _dff;
+    std::vector<gate_base> _dffs;
 
     void topological_sort();
 };
