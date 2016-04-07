@@ -7,7 +7,10 @@
 
 #include <string>
 
-enum SIMULATION_VALUE {D, D_BAR, ONE, ZERO, X};
-static const std::string simulation_value_strings [] = {"D", "D_BAR", "ONE", "ZERO", "X"};
+enum SIMULATION_VALUE {ZERO, ONE, X, D, D_BAR};
+static const std::string simulation_value_strings [] = {"ZERO", "ONE", "X", "D", "D_BAR"};
+
+enum FAULT_VALUE {SA0, SA1};
+static const std::string fault_value_strings [] = {"SA0", "SA1"};
 
 #endif //PODEM_SIMULATION_VALUES_HPP
