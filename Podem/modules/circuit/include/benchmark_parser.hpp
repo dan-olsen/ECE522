@@ -12,6 +12,7 @@
 #include <fstream>
 #include <map>
 #include <sstream>
+#include <unordered_set>
 
 class circuit;
 
@@ -28,6 +29,8 @@ private:
 
     std::map<GATE_TYPE, int> _gate_counts;
     int _total_gate_count;
+
+    std::unordered_set<std::string> _dff_set;
 
     std::string my_replace(std::string &s, const std::string &toReplace, const std::string &replaceWith);
 

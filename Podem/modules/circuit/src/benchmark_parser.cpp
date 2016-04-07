@@ -160,18 +160,13 @@ void benchmark_parser::read_gates(circuit &c)
 
             std::unique_ptr<gate_base> gate = gate_factory::create_gate(type, name);
 
-            while(s >> fin)
-            {
-                for(auto iter = c._dffs.begin(); iter != c._dffs.end(); ++iter)
+            while(s >> fin) {
+                auto iter = _dff_set.find(fin);
+
+                if (iter != _dff_set.end())
                 {
-                    if(iter->name() == fin)
-                    {
-                        fin = fin + "_IN";
+                    fin = fin + "_IN";
 
-                        iter->add_fan_out(gate->name());
-
-                        break;
-                    }
                 }
 
                 gate->add_fan_in(fin);
@@ -180,6 +175,7 @@ void benchmark_parser::read_gates(circuit &c)
             if (gate->type() == DFF)
             {
                 c._dffs.push_back(*gate);
+                _dff_set.insert(gate->name());
 
                 c._primary_inputs.push_back(gate->name() + "_IN");
 
@@ -206,17 +202,14 @@ void benchmark_parser::read_gates(circuit &c)
 
         for(auto iter2 = fin.begin(); iter2 != fin.end(); ++iter2)
         {
-            for(auto iter3 = c._dffs.begin(); iter3 != c._dffs.end(); ++iter3)
-            {
-                if(*iter2 == iter3->name())
-                {
-                    iter->second.replace_fan_in(*iter2, *iter2 + "_IN");
+            auto iter3 = _dff_set.find(*iter2);
 
-                    break;
-                }
+            if(iter3 != _dff_set.end())
+            {
+                iter->second.replace_fan_in(*iter2, *iter2 + "_IN");
+
             }
         }
-
     }
 
     for(auto iter = c._circuit.begin(); iter != c._circuit.end(); ++iter)
