@@ -1,4 +1,4 @@
-#include "circuit.hpp"
+#include "podem.hpp"
 
 #include <chrono>
 
@@ -20,7 +20,9 @@ int main(int argc, char* const argv[])
 
     c.print_header();
 
-    c.print_circuit();
+    //c.print_circuit();
+
+    podem p(c);
 
     end = std::chrono::system_clock::now();
 
