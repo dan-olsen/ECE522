@@ -7,6 +7,12 @@
 benchmark_parser::benchmark_parser(const std::string &benchmark_file)
 {
     _benchmark_file = benchmark_file;
+
+    _gate_counts.insert({INPUT, 0});
+    _gate_counts.insert({OUTPUT, 0});
+    _gate_counts.insert({NOT, 0});
+
+    _total_gate_count = 0;
 }
 
 benchmark_parser::~benchmark_parser()
@@ -52,23 +58,22 @@ void benchmark_parser::read_header(circuit &c)
 {
     std::string tmp;
 
-    _benchmark >> tmp >> c._name;
-    _benchmark >> tmp >> c._input_count >> tmp;
 
-    _benchmark >> tmp >> c._output_count >> tmp;
+    _benchmark >> tmp >> c._name;
+    _benchmark >> tmp >> _gate_counts.at(INPUT) >> tmp;
+
+    _benchmark >> tmp >> _gate_counts.at(OUTPUT) >> tmp;
 
     if (c._name.front() == 'b' || c._name.front() == 's')
     {
-        _benchmark >> tmp >> c._dff_count >> tmp >> tmp;
+        _gate_counts.insert({DFF, 0});
+
+        _benchmark >> tmp >> _gate_counts.at(DFF) >> tmp >> tmp;
 
     }
-    else
-    {
-        c._dff_count = 0;
-    }
 
-    _benchmark >> tmp >> c._inverter_count >> tmp;
-    _benchmark >> tmp >> c._total_gate_count >> tmp;
+    _benchmark >> tmp >> _gate_counts.at(NOT) >> tmp;
+    _benchmark >> tmp >> _total_gate_count >> tmp;
 
     getline(_benchmark, tmp);
 
@@ -86,7 +91,7 @@ void benchmark_parser::read_header(circuit &c)
 
         if (x != 0)
         {
-            c._gate_counts[string_to_gate_type(tmp)] = x;
+            _gate_counts[string_to_gate_type(tmp)] = x;
 
         }
     }
@@ -258,4 +263,31 @@ void benchmark_parser::read_gates(circuit &c)
 
     c._circuit.insert(map2.begin(), map2.end());
 
+    //Calculate actual gate counts
+    for(auto iter = c._circuit.begin(); iter != c._circuit.end(); ++iter)
+    {
+        GATE_TYPE type = c._circuit.at(iter->first).type();
+        std::map<GATE_TYPE, int>::iterator lb = c._gate_counts.lower_bound(type);
+
+        if(lb != c._gate_counts.end() && !(c._gate_counts.key_comp()(type, lb->first)))
+        {
+            c._gate_counts.at(type)++;
+
+        }
+        else
+        {
+            c._gate_counts.insert(lb, std::map<GATE_TYPE, int>::value_type(type, 1));
+        }
+
+    }
+
+    for(const auto& x : c._gate_counts)
+    {
+        if(x.first == DFF)
+        {
+            c._gate_counts.at(DFF)/=2;
+        }
+
+        c._size+=x.second;
+    }
 }

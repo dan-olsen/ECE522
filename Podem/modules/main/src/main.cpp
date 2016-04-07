@@ -26,7 +26,7 @@ int main(int argc, char* const argv[])
 
     std::chrono::duration<double> elapsed_seconds = end - start;
 
-    std::cout << "Elapsed Time: " << elapsed_seconds.count() << std::endl;
+    std::cout << std::endl << "Elapsed Time: " << elapsed_seconds.count() << std::endl;
 
     return 0;
 }

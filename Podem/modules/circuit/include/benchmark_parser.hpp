@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <map>
 #include <sstream>
 
 class circuit;
@@ -25,11 +26,15 @@ private:
     std::string _benchmark_file;
     std::ifstream _benchmark;
 
+    std::map<GATE_TYPE, int> _gate_counts;
+    int _total_gate_count;
+
     std::string my_replace(std::string &s, const std::string &toReplace, const std::string &replaceWith);
 
     void read_header(circuit &c);
     void read_inputs(circuit &c);
     void read_gates(circuit &c);
+
 
 };
 

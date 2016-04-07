@@ -38,11 +38,7 @@ public:
 private:
     std::string _name;
 
-    int _input_count;
-    int _output_count;
-    int _dff_count;
-    int _inverter_count;
-    int _total_gate_count;
+    int _size;
 
     std::map<GATE_TYPE, int> _gate_counts;
 
