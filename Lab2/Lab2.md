@@ -1,4 +1,4 @@
-# ECE 522 - Lab 1 - Daniel Olsen
+# ECE 522 - Lab 2 - Daniel Olsen
 
 ## Part 1
 
@@ -78,27 +78,46 @@ redirect [concat ../Results/$basename/$filebase$fileext] {report_scan_path -view
 ```
 
 ### Test Setup Variables
-* ``test_default_delay``: A positive real number in nanoseconds that defines default time in a test cycle that values are applied to the inputs.
-* ``test_default_bidir_delay``: A positive real number in nanoseconds that defines default switching time of bidirectional ports in a test cycle.
-* ``test_default_strobe``: A positive real number in nanoseconds that defines the default strobe time in a test cycle for output ports and bidirectional ports in output mode.
-* ``test_default_period``: A positive nonzero real number in nanoseconds that defines the length of a test vector cycle.
-* ``test_default_scan_style``: Defines the scan style to be used by the ``set_scan_configuration`` command
+* ``test_default_delay``
+  * A positive real number in nanoseconds that defines default time in a test cycle that values are applied to the inputs.
+* ``test_default_bidir_delay``
+  * A positive real number in nanoseconds that defines default switching time of bidirectional ports in a test cycle.
+* ``test_default_strobe``
+  * A positive real number in nanoseconds that defines the default strobe time in a test cycle for output ports and bidirectional ports in output mode.
+* ``test_default_period``
+  * A positive nonzero real number in nanoseconds that defines the length of a test vector cycle.
+* ``test_default_scan_style``
+  * Defines the scan style to be used by the ``set_scan_configuration`` command
 
 ### Test Setup Commands
-* ``set_scan_configuration -create_dedicated_scan_out_ports true``: Used to specify the scan chain design used by ``insert_dft``. The ``-create_dedicated_scan_out_ports true`` is used to specify that dedicated scan-out ports are inserted.
-* ``create_test_protocol -infer_async -infer_clock``: Used to create a test protocol. ``-infer_async`` is used to infer asynchronous set/reset signals. ``-infer_clock`` is used to infer the test clocks.
-* ``dft_drc -verbose``: Used to check the current design against the test design rules previously specified.
-* ``compile -scan``: Used to perform synthesis and optimization on the current design. The ``-scan`` option is used to consider the impact of scan on mission-mode constraints.
-* ``insert_dft``: Used to insert DFT logic into the current design.
-* ``set_drive``: Used to set the resistance to a specified value on a specified input/output. Used in script to set the resistance of the insert test ports so they are not assumed to be infinite.
-* ``set_scan_configuration -replace false``: Used to disable replacement of sequential elements, the scan cells are already inserted.
-* ``insert_dft``: Used to set the drive strength of the test ports.
-* ``write -format verilog -hierarchy -output [concat ../Results/$basename/$filebase$fileext]``: Used to ouput final verilog design with scan.
-* ``redirect [concat ../Results/$basename/$filebase$fileext] { report_constraint -all_violators }``: Used to output any viloations.
-* ``write_sdc [concat ../Results/$basename/$filebase$fileext]``: Used to output a Synopsys Design Constraints (SDC) script.
-* ``write_test_protocol -output [concat ../Results/$basename/$filebase$fileext]``: Used to output the STIL test protocol file.
-* ``redirect [concat ../Results/$basename/$filebase$fileext] {dft_drc -verbose -coverage_estimate}``: Used to output the estimate of test coverage.
-* ``redirect [concat ../Results/$basename/$filebase$fileext] {report_scan_path -view existing -chain all}``: Used to output the scan chains in the current design.
+* ``set_scan_configuration -create_dedicated_scan_out_ports true``
+  * Used to specify the scan chain design used by ``insert_dft``. The ``-create_dedicated_scan_out_ports true`` is used to specify that dedicated scan-out ports are inserted.
+* ``create_test_protocol -infer_async -infer_clock``
+  * Used to create a test protocol. ``-infer_async`` is used to infer asynchronous set/reset signals. ``-infer_clock`` is used to infer the test clocks.
+* ``dft_drc -verbose``
+  * Used to check the current design against the test design rules previously specified.
+* ``compile -scan``
+  * Used to perform synthesis and optimization on the current design. The ``-scan`` option is used to consider the impact of scan on mission-mode constraints.
+* ``insert_dft``
+  * Used to insert DFT logic into the current design.
+* ``set_drive``
+  * Used to set the resistance to a specified value on a specified input/output. Used in script to set the resistance of the insert test ports so they are not assumed to be infinite.
+* ``set_scan_configuration -replace false``
+  * Used to disable replacement of sequential elements, the scan cells are already inserted.
+* ``insert_dft``
+  * Used to set the drive strength of the test ports.
+* ``write -format verilog -hierarchy -output [concat ../Results/$basename/$filebase$fileext]``
+  * Used to ouput final verilog design with scan.
+* ``redirect [concat ../Results/$basename/$filebase$fileext] { report_constraint -all_violators }``
+  * Used to output any viloations.
+* ``write_sdc [concat ../Results/$basename/$filebase$fileext]``
+  * Used to output a Synopsys Design Constraints (SDC) script.
+* ``write_test_protocol -output [concat ../Results/$basename/$filebase$fileext]``
+  * Used to output the STIL test protocol file.
+* ``redirect [concat ../Results/$basename/$filebase$fileext] {dft_drc -verbose -coverage_estimate}``
+  * Used to output the estimate of test coverage.
+* ``redirect [concat ../Results/$basename/$filebase$fileext] {report_scan_path -view existing -chain all}``
+  * Used to output the scan chains in the current design.
 
 ## Part 2- ATPG
 The final verilog design with scan and the STIL test protocol file are imported into TetraMax. They are used to generate test patterns for the given circuits. 
