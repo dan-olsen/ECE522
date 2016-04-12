@@ -1,0 +1,29 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : HalfAdder
+Version: F-2011.09-SP4
+Date   : Mon Apr 11 20:30:57 2016
+****************************************
+
+
+   max_delay/setup ('CK' group)
+
+                             Required        Actual
+   Endpoint                 Path Delay     Path Delay        Slack
+   -----------------------------------------------------------------
+   Sum                          1.35           1.47 r        -0.12  (VIOLATED)
+   Cout                         1.35           1.40 f        -0.05  (VIOLATED)
+
+
+   max_area
+
+                             Required        Actual
+   Design                      Area           Area           Slack
+   -----------------------------------------------------------------
+   HalfAdder                    0.00          37.14         -37.14  (VIOLATED)
+
+
+1

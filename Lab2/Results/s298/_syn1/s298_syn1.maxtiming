@@ -1,0 +1,233 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -nworst 5
+        -max_paths 5
+Design : s298
+Version: F-2011.09-SP4
+Date   : Mon Apr 11 20:48:50 2016
+****************************************
+
+Operating Conditions: WORST   Library: saed90nm_max
+Wire Load Model Mode: enclosed
+
+  Startpoint: DFF_4/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: DFF_9/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s298               8000                  saed90nm_max
+  dff_9              ForQA                 saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_4/Q_reg/CLK (DFFX1)                  0.00       0.55 r
+  DFF_4/Q_reg/QN (DFFX1)                   0.48       1.03 r
+  DFF_4/U3/ZN (INVX1)                      0.16       1.18 f
+  DFF_4/Q (dff_9)                          0.00       1.18 f
+  U141/Z (NBUFFX2)                         0.63       1.81 f
+  U130/ZN (INVX0)                          0.26       2.07 r
+  U183/QN (NAND4X0)                        0.37       2.44 f
+  U178/QN (NAND2X0)                        0.27       2.71 r
+  U175/QN (NAND2X0)                        0.16       2.87 f
+  U161/QN (NAND2X0)                        0.15       3.03 r
+  U185/Q (OA21X1)                          0.38       3.41 r
+  DFF_9/D (dff_4)                          0.00       3.41 r
+  DFF_9/Q_reg/D (DFFX1)                    0.05       3.46 r
+  data arrival time                                   3.46
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                       -0.30       0.25
+  DFF_9/Q_reg/CLK (DFFX1)                  0.00       0.25 r
+  library setup time                      -0.29      -0.04
+  data required time                                 -0.04
+  -----------------------------------------------------------
+  data required time                                 -0.04
+  data arrival time                                  -3.46
+  -----------------------------------------------------------
+  slack (VIOLATED)                                   -3.49
+
+
+  Startpoint: DFF_3/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: DFF_10/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s298               8000                  saed90nm_max
+  dff_10             ForQA                 saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_3/Q_reg/CLK (DFFX1)                  0.00       0.55 r
+  DFF_3/Q_reg/QN (DFFX1)                   0.46       1.01 r
+  DFF_3/U3/ZN (INVX0)                      0.14       1.16 f
+  DFF_3/Q (dff_10)                         0.00       1.16 f
+  U148/Z (NBUFFX2)                         0.36       1.52 f
+  U139/Z (NBUFFX2)                         0.58       2.10 f
+  U183/QN (NAND4X0)                        0.32       2.42 r
+  U177/QN (NAND2X0)                        0.32       2.73 f
+  U162/QN (NAND3X1)                        0.46       3.19 r
+  U159/Q (AND2X1)                          0.23       3.42 r
+  DFF_10/D (dff_3)                         0.00       3.42 r
+  DFF_10/Q_reg/D (DFFX1)                   0.05       3.47 r
+  data arrival time                                   3.47
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                       -0.30       0.25
+  DFF_10/Q_reg/CLK (DFFX1)                 0.00       0.25 r
+  library setup time                      -0.28      -0.03
+  data required time                                 -0.03
+  -----------------------------------------------------------
+  data required time                                 -0.03
+  data arrival time                                  -3.47
+  -----------------------------------------------------------
+  slack (VIOLATED)                                   -3.49
+
+
+  Startpoint: DFF_2/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: DFF_4/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s298               8000                  saed90nm_max
+  dff_11             ForQA                 saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_2/Q_reg/CLK (DFFX1)                  0.00       0.55 r
+  DFF_2/Q_reg/QN (DFFX1)                   0.42       0.97 f
+  DFF_2/U3/ZN (INVX0)                      0.14       1.11 r
+  DFF_2/Q (dff_11)                         0.00       1.11 r
+  U97/Z (NBUFFX2)                          0.36       1.47 r
+  U129/ZN (INVX0)                          0.25       1.72 f
+  U170/Z (NBUFFX2)                         0.35       2.07 f
+  U171/QN (NAND2X0)                        0.43       2.50 r
+  U157/ZN (INVX0)                          0.27       2.77 f
+  U188/QN (NAND4X0)                        0.31       3.08 r
+  U190/Q (AND3X1)                          0.32       3.40 r
+  DFF_4/D (dff_9)                          0.00       3.40 r
+  DFF_4/Q_reg/D (DFFX1)                    0.05       3.45 r
+  data arrival time                                   3.45
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                       -0.30       0.25
+  DFF_4/Q_reg/CLK (DFFX1)                  0.00       0.25 r
+  library setup time                      -0.29      -0.04
+  data required time                                 -0.04
+  -----------------------------------------------------------
+  data required time                                 -0.04
+  data arrival time                                  -3.45
+  -----------------------------------------------------------
+  slack (VIOLATED)                                   -3.49
+
+
+  Startpoint: DFF_4/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: DFF_9/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s298               8000                  saed90nm_max
+  dff_9              ForQA                 saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_4/Q_reg/CLK (DFFX1)                  0.00       0.55 r
+  DFF_4/Q_reg/QN (DFFX1)                   0.43       0.98 f
+  DFF_4/U3/ZN (INVX1)                      0.15       1.13 r
+  DFF_4/Q (dff_9)                          0.00       1.13 r
+  U141/Z (NBUFFX2)                         0.63       1.76 r
+  U121/ZN (INVX0)                          0.26       2.02 f
+  U182/QN (NAND4X0)                        0.32       2.33 r
+  U175/QN (NAND2X0)                        0.53       2.87 f
+  U161/QN (NAND2X0)                        0.15       3.02 r
+  U185/Q (OA21X1)                          0.38       3.40 r
+  DFF_9/D (dff_4)                          0.00       3.40 r
+  DFF_9/Q_reg/D (DFFX1)                    0.05       3.45 r
+  data arrival time                                   3.45
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                       -0.30       0.25
+  DFF_9/Q_reg/CLK (DFFX1)                  0.00       0.25 r
+  library setup time                      -0.29      -0.04
+  data required time                                 -0.04
+  -----------------------------------------------------------
+  data required time                                 -0.04
+  data arrival time                                  -3.45
+  -----------------------------------------------------------
+  slack (VIOLATED)                                   -3.48
+
+
+  Startpoint: DFF_2/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: DFF_5/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s298               8000                  saed90nm_max
+  dff_11             ForQA                 saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_2/Q_reg/CLK (DFFX1)                  0.00       0.55 r
+  DFF_2/Q_reg/QN (DFFX1)                   0.42       0.97 f
+  DFF_2/U3/ZN (INVX0)                      0.14       1.11 r
+  DFF_2/Q (dff_11)                         0.00       1.11 r
+  U97/Z (NBUFFX2)                          0.36       1.47 r
+  U129/ZN (INVX0)                          0.25       1.72 f
+  U170/Z (NBUFFX2)                         0.35       2.07 f
+  U123/Q (AND4X1)                          0.60       2.67 f
+  U106/QN (AOI21X1)                        0.41       3.08 r
+  U187/Q (OA21X1)                          0.32       3.40 r
+  DFF_5/D (dff_8)                          0.00       3.40 r
+  DFF_5/Q_reg/D (DFFX1)                    0.05       3.45 r
+  data arrival time                                   3.45
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                       -0.30       0.25
+  DFF_5/Q_reg/CLK (DFFX1)                  0.00       0.25 r
+  library setup time                      -0.29      -0.04
+  data required time                                 -0.04
+  -----------------------------------------------------------
+  data required time                                 -0.04
+  data arrival time                                  -3.45
+  -----------------------------------------------------------
+  slack (VIOLATED)                                   -3.48
+
+
+1

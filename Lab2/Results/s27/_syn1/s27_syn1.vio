@@ -1,0 +1,41 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : s27
+Version: F-2011.09-SP4
+Date   : Mon Apr 11 20:43:57 2016
+****************************************
+
+
+   max_delay/setup ('CK' group)
+
+                             Required        Actual
+   Endpoint                 Path Delay     Path Delay        Slack
+   -----------------------------------------------------------------
+   DFF_1/Q_reg/D               -0.06           2.06 r        -2.12  (VIOLATED)
+   DFF_0/Q_reg/D               -0.11           1.99 r        -2.09  (VIOLATED)
+   DFF_2/Q_reg/D               -0.02           1.96 r        -1.98  (VIOLATED)
+   G17                          0.25           2.22 r        -1.97  (VIOLATED)
+
+
+   min_capacitance
+
+                             Required        Actual
+   Net                      Capacitance    Capacitance       Slack
+   -----------------------------------------------------------------
+   G17                          0.10           0.00          -0.10  (VIOLATED)
+
+   -----------------------------------------------------------------
+   Total                      1                  -0.10  
+
+   max_area
+
+                             Required        Actual
+   Design                      Area           Area           Slack
+   -----------------------------------------------------------------
+   s27                          0.00         210.09        -210.09  (VIOLATED)
+
+
+1

@@ -1,0 +1,28 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : RipAdder4
+Version: F-2011.09-SP4
+Date   : Mon Apr 11 20:41:28 2016
+****************************************
+
+
+   max_delay/setup ('CK' group)
+
+                             Required        Actual
+   Endpoint                 Path Delay     Path Delay        Slack
+   -----------------------------------------------------------------
+   COUT                         3.48           3.48 f         0.00  (VIOLATED: increase signficant digits)
+
+
+   max_area
+
+                             Required        Actual
+   Design                      Area           Area           Slack
+   -----------------------------------------------------------------
+   RipAdder4                    0.00         367.63        -367.63  (VIOLATED)
+
+
+1

@@ -1,0 +1,67 @@
+ 
+****************************************
+Report : qor
+Design : s9234
+Version: F-2011.09-SP4
+Date   : Mon Apr 11 21:47:22 2016
+****************************************
+
+
+  Timing Path Group 'CK'
+  -----------------------------------
+  Levels of Logic:             9.0000
+  Critical Path Length:        6.6143
+  Critical Path Slack:         0.0001
+  Critical Path Clk Period:    7.2000
+  Total Negative Slack:        0.0000
+  No. of Violating Paths:      0.0000
+  Worst Hold Violation:        0.0000
+  Total Hold Violation:        0.0000
+  No. of Hold Violations:      0.0000
+  -----------------------------------
+
+
+  Cell Count
+  -----------------------------------
+  Hierarchical Cell Count:        211
+  Hierarchical Port Count:        633
+  Leaf Cell Count:               1350
+  Buf/Inv Cell Count:             418
+  CT Buf/Inv Cell Count:            0
+  Combinational Cell Count:      1139
+  Sequential Cell Count:          211
+  Macro Count:                      0
+  -----------------------------------
+
+
+  Area
+  -----------------------------------
+  Combinational Area:       9310.9249
+  Noncombinational Area:    5276.1599
+  Net Area:                  645.8181
+  -----------------------------------
+  Cell Area:               14587.0848
+  Design Area:             15232.9029
+
+
+  Design Rules
+  -----------------------------------
+  Total Number of Nets:          1389
+  Nets With Violations:             0
+  Max Trans Violations:             0
+  Max Cap Violations:               0
+  -----------------------------------
+
+
+  Hostname: engr-e132-d19
+
+  Compile CPU Statistics
+  -----------------------------------------
+  Resource Sharing:                  0.0000
+  Logic Optimization:                3.1120
+  Mapping Optimization:             10.3200
+  -----------------------------------------
+  Overall Compile Time:             15.7000
+  Overall Compile Wall Clock Time:  19.5201
+
+1

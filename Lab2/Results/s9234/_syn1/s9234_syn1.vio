@@ -1,0 +1,65 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : s9234
+Version: F-2011.09-SP4
+Date   : Mon Apr 11 21:25:55 2016
+****************************************
+
+
+   min_delay/hold ('CK' group)
+
+                             Required        Actual
+   Endpoint                 Path Delay     Path Delay        Slack
+   -----------------------------------------------------------------
+   g3222                        0.75           0.73 r        -0.02  (VIOLATED)
+   g4098                        0.75           0.73 r        -0.02  (VIOLATED)
+   g4107                        0.75           0.73 r        -0.02  (VIOLATED)
+
+
+   min_capacitance
+
+                             Required        Actual
+   Net                      Capacitance    Capacitance       Slack
+   -----------------------------------------------------------------
+   g666                         0.10           0.00          -0.10  (VIOLATED)
+   g1802                        0.10           0.00          -0.10  (VIOLATED)
+   g2433                        0.10           0.00          -0.10  (VIOLATED)
+   g3222                        0.10           0.00          -0.10  (VIOLATED)
+   g4098                        0.10           0.00          -0.10  (VIOLATED)
+   g4104                        0.10           0.00          -0.10  (VIOLATED)
+   g4106                        0.10           0.00          -0.10  (VIOLATED)
+   g4107                        0.10           0.00          -0.10  (VIOLATED)
+   g4108                        0.10           0.00          -0.10  (VIOLATED)
+   g4109                        0.10           0.00          -0.10  (VIOLATED)
+   g4112                        0.10           0.00          -0.10  (VIOLATED)
+   g4422                        0.10           0.00          -0.10  (VIOLATED)
+   g5137                        0.10           0.00          -0.10  (VIOLATED)
+   g5468                        0.10           0.00          -0.10  (VIOLATED)
+   g5469                        0.10           0.00          -0.10  (VIOLATED)
+   g5692                        0.10           0.00          -0.10  (VIOLATED)
+   g6110                        0.10           0.00          -0.10  (VIOLATED)
+   g6167                        0.10           0.00          -0.10  (VIOLATED)
+   g6170                        0.10           0.00          -0.10  (VIOLATED)
+   g6173                        0.10           0.00          -0.10  (VIOLATED)
+   g6176                        0.10           0.00          -0.10  (VIOLATED)
+   g6179                        0.10           0.00          -0.10  (VIOLATED)
+   g6182                        0.10           0.00          -0.10  (VIOLATED)
+   g6185                        0.10           0.00          -0.10  (VIOLATED)
+   g6189                        0.10           0.00          -0.10  (VIOLATED)
+   g6728                        0.10           0.00          -0.10  (VIOLATED)
+
+   -----------------------------------------------------------------
+   Total                      26                 -2.48  
+
+   max_area
+
+                             Required        Actual
+   Design                      Area           Area           Slack
+   -----------------------------------------------------------------
+   s9234                        0.00       15028.92       -15028.92 (VIOLATED)
+
+
+1

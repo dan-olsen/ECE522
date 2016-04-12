@@ -1,0 +1,67 @@
+ 
+****************************************
+Report : qor
+Design : s298
+Version: F-2011.09-SP4
+Date   : Mon Apr 11 20:50:29 2016
+****************************************
+
+
+  Timing Path Group 'CK'
+  -----------------------------------
+  Levels of Logic:             9.0000
+  Critical Path Length:        3.5010
+  Critical Path Slack:         0.0000
+  Critical Path Clk Period:    4.1000
+  Total Negative Slack:        0.0000
+  No. of Violating Paths:      0.0000
+  Worst Hold Violation:        0.0000
+  Total Hold Violation:        0.0000
+  No. of Hold Violations:      0.0000
+  -----------------------------------
+
+
+  Cell Count
+  -----------------------------------
+  Hierarchical Cell Count:         14
+  Hierarchical Port Count:         42
+  Leaf Cell Count:                119
+  Buf/Inv Cell Count:              44
+  CT Buf/Inv Cell Count:            0
+  Combinational Cell Count:       105
+  Sequential Cell Count:           14
+  Macro Count:                      0
+  -----------------------------------
+
+
+  Area
+  -----------------------------------
+  Combinational Area:        747.4176
+  Noncombinational Area:     354.8160
+  Net Area:                   41.2545
+  -----------------------------------
+  Cell Area:                1102.2336
+  Design Area:              1143.4881
+
+
+  Design Rules
+  -----------------------------------
+  Total Number of Nets:           123
+  Nets With Violations:             0
+  Max Trans Violations:             0
+  Max Cap Violations:               0
+  -----------------------------------
+
+
+  Hostname: engr-e132-d19
+
+  Compile CPU Statistics
+  -----------------------------------------
+  Resource Sharing:                  0.0000
+  Logic Optimization:                0.8361
+  Mapping Optimization:              0.6400
+  -----------------------------------------
+  Overall Compile Time:              3.2280
+  Overall Compile Wall Clock Time:   3.4604
+
+1

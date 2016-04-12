@@ -1,0 +1,218 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -nworst 5
+        -max_paths 5
+Design : s27
+Version: F-2011.09-SP4
+Date   : Mon Apr 11 20:43:58 2016
+****************************************
+
+Operating Conditions: WORST   Library: saed90nm_max
+Wire Load Model Mode: enclosed
+
+  Startpoint: DFF_0/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: DFF_1/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s27                8000                  saed90nm_max
+  dff_2              ForQA                 saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_0/Q_reg/CLK (DFFX2)                  0.00       0.55 r
+  DFF_0/Q_reg/QN (DFFX2)                   0.44       0.99 r
+  DFF_0/U3/ZN (INVX0)                      0.14       1.13 f
+  DFF_0/Q (dff_2)                          0.00       1.13 f
+  U21/ZN (INVX0)                           0.28       1.41 r
+  U25/QN (NAND3X0)                         0.33       1.74 f
+  U22/QN (NAND2X0)                         0.27       2.01 r
+  DFF_1/D (dff_1)                          0.00       2.01 r
+  DFF_1/Q_reg/D (DFFX1)                    0.05       2.06 r
+  data arrival time                                   2.06
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                       -0.30       0.25
+  DFF_1/Q_reg/CLK (DFFX1)                  0.00       0.25 r
+  library setup time                      -0.31      -0.06
+  data required time                                 -0.06
+  -----------------------------------------------------------
+  data required time                                 -0.06
+  data arrival time                                  -2.06
+  -----------------------------------------------------------
+  slack (VIOLATED)                                   -2.12
+
+
+  Startpoint: DFF_0/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: DFF_1/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s27                8000                  saed90nm_max
+  dff_2              ForQA                 saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_0/Q_reg/CLK (DFFX2)                  0.00       0.55 r
+  DFF_0/Q_reg/QN (DFFX2)                   0.44       0.99 r
+  DFF_0/U3/ZN (INVX0)                      0.14       1.13 f
+  DFF_0/Q (dff_2)                          0.00       1.13 f
+  U21/ZN (INVX0)                           0.28       1.41 r
+  U23/QN (NAND3X0)                         0.33       1.74 f
+  U22/QN (NAND2X0)                         0.27       2.01 r
+  DFF_1/D (dff_1)                          0.00       2.01 r
+  DFF_1/Q_reg/D (DFFX1)                    0.05       2.06 r
+  data arrival time                                   2.06
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                       -0.30       0.25
+  DFF_1/Q_reg/CLK (DFFX1)                  0.00       0.25 r
+  library setup time                      -0.31      -0.06
+  data required time                                 -0.06
+  -----------------------------------------------------------
+  data required time                                 -0.06
+  data arrival time                                  -2.06
+  -----------------------------------------------------------
+  slack (VIOLATED)                                   -2.12
+
+
+  Startpoint: DFF_2/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: DFF_0/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s27                8000                  saed90nm_max
+  dff_0              ForQA                 saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_2/Q_reg/CLK (DFFX1)                  0.00       0.55 r
+  DFF_2/Q_reg/QN (DFFX1)                   0.42       0.97 f
+  DFF_2/U3/ZN (INVX0)                      0.14       1.11 r
+  DFF_2/Q (dff_0)                          0.00       1.11 r
+  U18/ZN (INVX0)                           0.27       1.38 f
+  U19/ZN (INVX0)                           0.23       1.62 r
+  U26/QN (NOR3X0)                          0.17       1.79 f
+  U11/QN (NOR2X0)                          0.16       1.95 r
+  DFF_0/D (dff_2)                          0.00       1.95 r
+  DFF_0/Q_reg/D (DFFX2)                    0.03       1.99 r
+  data arrival time                                   1.99
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                       -0.30       0.25
+  DFF_0/Q_reg/CLK (DFFX2)                  0.00       0.25 r
+  library setup time                      -0.36      -0.11
+  data required time                                 -0.11
+  -----------------------------------------------------------
+  data required time                                 -0.11
+  data arrival time                                  -1.99
+  -----------------------------------------------------------
+  slack (VIOLATED)                                   -2.09
+
+
+  Startpoint: DFF_2/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: DFF_0/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s27                8000                  saed90nm_max
+  dff_0              ForQA                 saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_2/Q_reg/CLK (DFFX1)                  0.00       0.55 r
+  DFF_2/Q_reg/QN (DFFX1)                   0.46       1.01 r
+  DFF_2/U3/ZN (INVX0)                      0.14       1.16 f
+  DFF_2/Q (dff_0)                          0.00       1.16 f
+  U18/ZN (INVX0)                           0.26       1.42 r
+  U19/ZN (INVX0)                           0.24       1.66 f
+  U26/QN (NOR3X0)                          0.19       1.85 r
+  U11/QN (NOR2X0)                          0.19       2.04 f
+  DFF_0/D (dff_2)                          0.00       2.04 f
+  DFF_0/Q_reg/D (DFFX2)                    0.03       2.07 f
+  data arrival time                                   2.07
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                       -0.30       0.25
+  DFF_0/Q_reg/CLK (DFFX2)                  0.00       0.25 r
+  library setup time                      -0.24       0.01
+  data required time                                  0.01
+  -----------------------------------------------------------
+  data required time                                  0.01
+  data arrival time                                  -2.07
+  -----------------------------------------------------------
+  slack (VIOLATED)                                   -2.06
+
+
+  Startpoint: DFF_0/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: DFF_0/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s27                8000                  saed90nm_max
+  dff_2              ForQA                 saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_0/Q_reg/CLK (DFFX2)                  0.00       0.55 r
+  DFF_0/Q_reg/QN (DFFX2)                   0.45       1.00 f
+  DFF_0/U3/ZN (INVX0)                      0.14       1.14 r
+  DFF_0/Q (dff_2)                          0.00       1.14 r
+  U12/Z (NBUFFX4)                          0.42       1.56 r
+  U26/QN (NOR3X0)                          0.20       1.75 f
+  U11/QN (NOR2X0)                          0.16       1.92 r
+  DFF_0/D (dff_2)                          0.00       1.92 r
+  DFF_0/Q_reg/D (DFFX2)                    0.03       1.95 r
+  data arrival time                                   1.95
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                       -0.30       0.25
+  DFF_0/Q_reg/CLK (DFFX2)                  0.00       0.25 r
+  library setup time                      -0.36      -0.11
+  data required time                                 -0.11
+  -----------------------------------------------------------
+  data required time                                 -0.11
+  data arrival time                                  -1.95
+  -----------------------------------------------------------
+  slack (VIOLATED)                                   -2.06
+
+
+1
