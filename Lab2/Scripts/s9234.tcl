@@ -3,18 +3,18 @@
 
 set myFiles [list ./../s9234.v];
 set basename s9234;
-set virtual 1;
+set virtual 0;
 
-set myPeriod_ns 2;
+set myPeriod_ns 7.2;
 set myClkLatency_ns 0.55;
-set myInDelay_ns 0.07;
-set myOutDelay_ns 0.07;
-set myOutputLoad 4;
+set myInDelay_ns 1.2;
+set myOutDelay_ns 1.2;
+set myOutputLoad 20;
 set mySetup 0.3;
 set myHold 0.2;
 
 set myClk CK;
-set runname _syn1;
+set runname _syn3;
 set search_path "/synopsys/GPDK/SAED_EDK90nm/Digital_Standard_Cell_Library/synopsys/models";
 set link_library "saed90nm_max.db";
 set target_library "saed90nm_max.db";
@@ -61,13 +61,13 @@ check_design
 
 set filebase [concat $basename$runname]
 set fileext .v
-write -format verilog -hierarchy -output [concat ./$basename/$runname/$filebase$fileext]
+write -format verilog -hierarchy -output [concat ../Results/$basename/$runname/$filebase$fileext]
 set fileext .vio
-redirect [concat ./$basename/$runname/$filebase$fileext] { report_constraint -all_violators }
+redirect [concat ../Results/$basename/$runname/$filebase$fileext] { report_constraint -all_violators }
 set fileext .maxtiming
-redirect [concat ./$basename/$runname/$filebase$fileext] { report_timing -path full -delay max -nworst 5 }
+redirect [concat ../Results/$basename/$runname/$filebase$fileext] { report_timing -path full -delay max -nworst 100 }
 set fileext .mintiming
-redirect [concat ./$basename/$runname/$filebase$fileext] { report_timing -path full -delay min -nworst 5 }
+redirect [concat ../Results/$basename/$runname/$filebase$fileext] { report_timing -path full -delay min -nworst 100 }
 set fileext .qor
-redirect [concat ./$basename/$runname/$filebase$fileext] { report_qor -significant_digits 4 }
+redirect [concat ../Results/$basename/$runname/$filebase$fileext] { report_qor -significant_digits 4 }
 

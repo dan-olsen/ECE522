@@ -61,13 +61,13 @@ check_design
 
 set filebase [concat $basename$runname]
 set fileext .v
-write -format verilog -hierarchy -output [concat ./$basename/$runname/$filebase$fileext]
+write -format verilog -hierarchy -output [concat ../Results/$basename/$runname/$filebase$fileext]
 set fileext .vio
-redirect [concat ./$basename/$runname/$filebase$fileext] { report_constraint -all_violators }
+redirect [concat ../Results/$basename/$runname/$filebase$fileext] { report_constraint -all_violators }
 set fileext .maxtiming
-redirect [concat ./$basename/$runname/$filebase$fileext] { report_timing -path full -delay max -nworst 5 }
+redirect [concat ../Results/$basename/$runname/$filebase$fileext] { report_timing -path full -delay max -nworst 100 }
 set fileext .mintiming
-redirect [concat ./$basename/$runname/$filebase$fileext] { report_timing -path full -delay min -nworst 5 }
+redirect [concat ../Results/$basename/$runname/$filebase$fileext] { report_timing -path full -delay min -nworst 100 }
 set fileext .qor
-redirect [concat ./$basename/$runname/$filebase$fileext] { report_qor -significant_digits 4 }
+redirect [concat ../Results/$basename/$runname/$filebase$fileext] { report_qor -significant_digits 4 }
 
