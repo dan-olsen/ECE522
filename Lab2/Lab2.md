@@ -1,8 +1,8 @@
 # ECE 522 - Lab 1 - Daniel Olsen
 
-## Full Adder
+## Part 1
 
-### Design Constraints
+### Design Constraints for Full Adder, Half Adder, s27, s298, s9234
 * Clock Latency = 0.55
 * Min. Input and Output Delay = 0.0
 * Driving Cell = INVX1
@@ -10,131 +10,7 @@
 * Fanout Load = 8
 * Wire Load Model = 8000 in "saed90nm_max"
 
-### Objectives
-* Clock Period: Least feasible value
-* Input and Output Delay: Highest feasible values
-* Output Load: Highest feasible value
-
-### Procedure
-1. Find minimum clock period with no input/output delay or load.
-  * Iteration 1
-2. Using minimum clock period, find maximum output load.
-  * Iteration 9
-3. Slightly increase clock period to support some input/output delay.
-4. Using increased clock rate, find maximum input/output delay.
-  * Iteration 11
-  * This gives a good lower bound to work from if a higher input or output delay is needed.
-5. Try to increase output load.
-  * Iteration 12
-  * Found that with a higher output load the input/output delays could be increased.
-6. Increase output load to find maximum input/output delays.
-  * Iteration 17
-
-### Results
-| Iteration | Clock Period    | Input Delay | Output Delay | Output Load | Max Timing Slack |
-|:---------:|:---------------:|:-----------:|:------------:|:-----------:|:----------------:|
-| 1         | 0               | 0           | 0            | 0           | -1.74            |
-| 2         | 1.8             | 0           | 0            | 0           | 0.01             |
-| 3         | 1.8             | 0           | 0            | 10          | -0.23            |
-| 4         | 1.8             | 0           | 0            | 8           | -0.17            |
-| 5         | 1.8             | 0           | 0            | 6           | -0.11            |
-| 6         | 1.8             | 0           | 0            | 4           | -0.05            |
-| 7         | 1.8             | 0           | 0            | 3.8         | -0.05            |
-| 8         | 1.8             | 0           | 0            | 3           | -0.02            |
-| 9         | 1.8             | 0           | 0            | 2           | 0.00             |
-| 10        | 2               | 0           | 0            | 2           | 0.08             |
-| 11        | 2               | 0.04        | 0.04         | 2           | 0.00             |
-| 12        | 2               | 0.04        | 0.04         | 3           | 0.02             |
-| 13        | 2               | 0.05        | 0.05         | 3           | 0.02             |
-| 14        | 2               | 0.06        | 0.06         | 3           | 0.01             |
-| 15        | 2               | 0.06        | 0.06         | 4           | 0.02             |
-| 16        | 2               | 0.08        | 0.08         | 4           | -0.01            |
-| 17        | 2               | 0.07        | 0.07         | 4           | 0.00             |
-
-###Final Values
-* Clock Period: 2
-* Input Delay: 0.07
-* Output Delay: 0.07
-* Output Load: 4
-
-### TCL Script
-```tcl
-# Daniel Olsen
-# FullAdder.tcl
-
-set myFiles [list ./../HalfAdder.v ./../FullAdder.v];
-set basename FullAdder;
-set virtual 1;
-
-set myPeriod_ns 2;
-set myClkLatency_ns 0.55;
-set myInDelay_ns 0.07;
-set myOutDelay_ns 0.07;
-set myOutputLoad 4;
-set mySetup 0.3;
-set myHold 0.2;
-
-set myClk CK;
-set runname _syn17;
-set search_path "/synopsys/GPDK/SAED_EDK90nm/Digital_Standard_Cell_Library/synopsys/models";
-set link_library "saed90nm_max.db";
-set target_library "saed90nm_max.db";
-set symbol_library "saed90nm_max.db";
-set myInputBuf INVX1;
-set myMaxFanout 1;
-
-remove_design -all
-analyze -format verilog -library WORK $myFiles
-elaborate $basename -library WORK -update
-
-current_design $basename
-
-link
-uniquify
-
-if { $virtual == 0} {
-	create_clock -period $myPeriod_ns $myClk
-	set_input_delay 0.0 -min -clock $myClk [all_inputs]
-	set_input_delay $myInDelay_ns -max -clock $myClk [all_inputs]
-	set_driving_cell -lib_cell $myInputBuf [all_inputs]
-} else {
-	create_clock -period $myPeriod_ns -name $myClk
-	set_input_delay 0.0 -min -clock $myClk [remove_from_collection [all_inputs] $myClk]
-	set_input_delay $myInDelay_ns -max -clock $myClk [remove_from_collection [all_inputs] $myClk]
-	set_driving_cell -lib_cell $myInputBuf [remove_from_collection [all_inputs] $myClk]
-}
-set_clock_latency $myClkLatency_ns $myClk
-set_output_delay $myOutDelay_ns -max -clock $myClk [all_outputs]
-set_output_delay 0.0 -min -clock $myClk [all_outputs]
-
-set_load $myOutputLoad [all_outputs]
-set_max_fanout $myMaxFanout [all_inputs]
-set_fanout_load 8 [all_outputs]
-set_wire_load_model -name 8000 -library saed90nm_max
-set_max_area 0
-set_clock_uncertainty -setup $mySetup [get_clocks $myClk]
-set_clock_uncertainty -hold $myHold [get_clocks $myClk]
-
-set_fix_multiple_port_nets -all -buffer_constants
-
-compile -map_effort medium -exact_map
-check_design
-
-set filebase [concat $basename$runname]
-set fileext .v
-write -format verilog -hierarchy -output [concat ./$basename/$runname/$filebase$fileext]
-set fileext .vio
-redirect [concat ./$basename/$runname/$filebase$fileext] { report_constraint -all_violators }
-set fileext .maxtiming
-redirect [concat ./$basename/$runname/$filebase$fileext] { report_timing -path full -delay max -nworst 5 }
-set fileext .mintiming
-redirect [concat ./$basename/$runname/$filebase$fileext] { report_timing -path full -delay min -nworst 5 }
-set fileext .qor
-redirect [concat ./$basename/$runname/$filebase$fileext] { report_qor -significant_digits 4 }
-```
-
-##Clocked Ripple Carry Adder
-### Design Constraints
+### Design Constraints for Ripple Carry Adder, Clocked Reset Ripple Carry Adder
 * Clock Latency = 0.38
 * Min. Input and Output Delay = 0.0
 * Driving Cell = INVX1
@@ -147,111 +23,92 @@ redirect [concat ./$basename/$runname/$filebase$fileext] { report_qor -significa
 * Input and Output Delay: Highest feasible values
 * Output Load: Highest feasible value
 
-### Procedure
-1. Find minimum clock period with no input/output delay or load.
-  * Iteration 1
-2. Using minimum clock period, find maximum output load.
-  * Iteration 4 (Verified with iteration 5)
-3. Slightly increase clock period to support some input/output delay.
-4. Using increased clock rate, find maximum input/output delay.
-  * Iteration 6 (Verified with iteration 7)
-  * This gives a good lower bound to work from if a higher input or output delay is needed.
-6. Increase output load to find maximum input/output delays.
-  * Iteration 11
-
 ### Results
-| Iteration | Clock Period    | Input Delay | Output Delay | Output Load | Max Timing Slack |
-|:---------:|:---------------:|:-----------:|:------------:|:-----------:|:----------------:|
-| 1         | 0               | 0           | 0            | 0           | -1.71            |
-| 2         | 1.8             | 0           | 0            | 0           | 0.00             |
-| 3         | 1.8             | 0           | 0            | 2           | 0.00             |
-| 4         | 1.8             | 0           | 0            | 3           | 0.00             |
-| 5         | 1.8             | 0           | 0            | 4           | -0.02            |
-| 6         | 2               | 0.1         | 0.1          | 3           | 0.00             |
-| 7         | 2               | 0.2         | 0.2          | 3           | -0.19            |
-| 8         | 2               | 0.1         | 0.1          | 4           | -0.02            |
-| 9         | 2               | 0.1         | 0.1          | 3.5         | 0.00 (sig. dig.) |
-| 10        | 2               | 0.1         | 0.1          | 3.4         | 0.00 (sig. dig.) |
-| 11        | 2               | 0.1         | 0.1          | 3.2         | 0.00             |
+| Design       | Clock Period | Input Delay | Output Delay | Output Load |
+|:------------:|:------------:|:-----------:|:------------:|:-----------:|
+| HalfAdder    | 1.3          | 0.1         | 0.1          | 0.35        |
+| FullAdder    | 2            | 0.07        | 0.07         | 4           |
+| RipAdder4    | 3.6          | 0.1         | 0.1          | 1           |
+| ClkRstAdder4 | 2.7          | 0.1         | 0.1          | 3.2         |
+| s27          | 3            | 0.1         | 0.1          | 0.2         |
+| s298         | 4.7          | 2.2         | 2.2          | 14          |
+| s9234        | 7.2          | 1.2         | 1.2          | 20          |
 
-###Final Values
-* Clock Period: 2
-* Input Delay: 0.1
-* Output Delay: 0.1
-* Output Load: 3.2
+## Part 2- Test Setup
+The designs from Part 1 need to have the testing procedure setup, test structures inserted, and in the case of the clocked circuits, the scan chains inserted. This is done by inserting the following commands at the end of the scripts.
 
-### TCL Script
+### Test Setup Script
 ```tcl
-# Daniel Olsen
-# ClkRstRipAdder4.tcl
+set test_default_delay 0;
+set test_default_bidir_delay 0;
+set test_default_strobe 40;
+set test_default_period 100;
 
-set myFiles [list ./../HalfAdder.v ./../FullAdder.v ./../RipAdder4.v ./../ClkRstRipAdder4.v];
-set basename ClkRstRipAdder4;
-set virtual 1;
+set test_default_scan_style multiplexed_flip_flop;
+set_scan_configuration -create_dedicated_scan_out_ports true
 
-set myPeriod_ns 2;
-set myClkLatency_ns 0.38;
-set myInDelay_ns 0.1;
-set myOutDelay_ns 0.1;
-set myOutputLoad 3.2;
-set mySetup 0.3;
-set myHold 0.2;
+create_test_protocol -infer_async -infer_clock
+dft_drc -verbose
 
-set myClk CK;
-set runname _syn11;
-set search_path "/synopsys/GPDK/SAED_EDK90nm/Digital_Standard_Cell_Library/synopsys/models";
-set link_library "saed90nm_max.db";
-set target_library "saed90nm_max.db";
-set symbol_library "saed90nm_max.db";
-set myInputBuf INVX1;
-set myMaxFanout 1;
+compile -scan
 
-remove_design -all
-analyze -format verilog -library WORK $myFiles
-elaborate $basename -library WORK -update
+insert_dft
 
-current_design $basename
+set_drive 0.5 test_si
+set_drive 0.5 test_se
 
-link
-uniquify
+set_scan_configuration -replace false
 
-if { $virtual == 0} {
-	create_clock -period $myPeriod_ns $myClk
-	set_input_delay 0.0 -min -clock $myClk [all_inputs]
-	set_input_delay $myInDelay_ns -max -clock $myClk [all_inputs]
-	set_driving_cell -lib_cell $myInputBuf [all_inputs]
-} else {
-	create_clock -period $myPeriod_ns -name $myClk
-	set_input_delay 0.0 -min -clock $myClk [remove_from_collection [all_inputs] $myClk]
-	set_input_delay $myInDelay_ns -max -clock $myClk [remove_from_collection [all_inputs] $myClk]
-	set_driving_cell -lib_cell $myInputBuf [remove_from_collection [all_inputs] $myClk]
-}
-set_clock_latency $myClkLatency_ns $myClk
-set_output_delay $myOutDelay_ns -max -clock $myClk [all_outputs]
-set_output_delay 0.0 -min -clock $myClk [all_outputs]
+insert_dft
 
-set_load $myOutputLoad [all_outputs]
-set_max_fanout $myMaxFanout [all_inputs]
-set_fanout_load 8 [all_outputs]
-set_wire_load_model -name 8000 -library saed90nm_max
-set_max_area 0
-set_clock_uncertainty -setup $mySetup [get_clocks $myClk]
-set_clock_uncertainty -hold $myHold [get_clocks $myClk]
-
-set_fix_multiple_port_nets -all -buffer_constants
-
-compile -map_effort medium -exact_map
-check_design
-
+set runname _scan
 set filebase [concat $basename$runname]
 set fileext .v
-write -format verilog -hierarchy -output [concat ./$basename/$runname/$filebase$fileext]
+write -format verilog -hierarchy -output [concat ../Results/$basename/$filebase$fileext]
 set fileext .vio
-redirect [concat ./$basename/$runname/$filebase$fileext] { report_constraint -all_violators }
-set fileext .maxtiming
-redirect [concat ./$basename/$runname/$filebase$fileext] { report_timing -path full -delay max -nworst 100 }
-set fileext .mintiming
-redirect [concat ./$basename/$runname/$filebase$fileext] { report_timing -path full -delay min -nworst 100 }
-set fileext .qor
-redirect [concat ./$basename/$runname/$filebase$fileext] { report_qor -significant_digits 4 }
+redirect [concat ../Results/$basename/$filebase$fileext] { report_constraint -all_violators }
+set fileext .sdc
+write_sdc [concat ../Results/$basename/$filebase$fileext]
+set fileext .spf
+write_test_protocol -output [concat ../Results/$basename/$filebase$fileext]
+set fileext .dftdrc
+redirect [concat ../Results/$basename/$filebase$fileext] {dft_drc -verbose -coverage_estimate}
+set fileext .scanpath
+redirect [concat ../Results/$basename/$filebase$fileext] {report_scan_path -view existing -chain all}
 ```
+
+### Test Setup Variables
+* ``test_default_delay``: A positive real number in nanoseconds that defines default time in a test cycle that values are applied to the inputs.
+* ``test_default_bidir_delay``: A positive real number in nanoseconds that defines default switching time of bidirectional ports in a test cycle.
+* ``test_default_strobe``: A positive real number in nanoseconds that defines the default strobe time in a test cycle for output ports and bidirectional ports in output mode.
+* ``test_default_period``: A positive nonzero real number in nanoseconds that defines the length of a test vector cycle.
+* ``test_default_scan_style``: Defines the scan style to be used by the ``set_scan_configuration`` command
+
+### Test Setup Commands
+* ``set_scan_configuration -create_dedicated_scan_out_ports true``: Used to specify the scan chain design used by ``insert_dft``. The ``-create_dedicated_scan_out_ports true`` is used to specify that dedicated scan-out ports are inserted.
+* ``create_test_protocol -infer_async -infer_clock``: Used to create a test protocol. ``-infer_async`` is used to infer asynchronous set/reset signals. ``-infer_clock`` is used to infer the test clocks.
+* ``dft_drc -verbose``: Used to check the current design against the test design rules previously specified.
+* ``compile -scan``: Used to perform synthesis and optimization on the current design. The ``-scan`` option is used to consider the impact of scan on mission-mode constraints.
+* ``insert_dft``: Used to insert DFT logic into the current design.
+* ``set_drive``: Used to set the resistance to a specified value on a specified input/output. Used in script to set the resistance of the insert test ports so they are not assumed to be infinite.
+* ``set_scan_configuration -replace false``: Used to disable replacement of sequential elements, the scan cells are already inserted.
+* ``insert_dft``: Used to set the drive strength of the test ports.
+* ``write -format verilog -hierarchy -output [concat ../Results/$basename/$filebase$fileext]``: Used to ouput final verilog design with scan.
+* ``redirect [concat ../Results/$basename/$filebase$fileext] { report_constraint -all_violators }``: Used to output any viloations.
+* ``write_sdc [concat ../Results/$basename/$filebase$fileext]``: Used to output a Synopsys Design Constraints (SDC) script.
+* ``write_test_protocol -output [concat ../Results/$basename/$filebase$fileext]``: Used to output the STIL test protocol file.
+* ``redirect [concat ../Results/$basename/$filebase$fileext] {dft_drc -verbose -coverage_estimate}``: Used to output the estimate of test coverage.
+* ``redirect [concat ../Results/$basename/$filebase$fileext] {report_scan_path -view existing -chain all}``: Used to output the scan chains in the current design.
+
+## Part 2- ATPG
+The final verilog design with scan and the STIL test protocol file are imported into TetraMax. They are used to generate test patterns for the given circuits. 
+
+### Results
+| Design       | Detected Faults | Undetectable Faults | Total Faults | Fault Coverage |
+|:------------:|:---------------:|:-------------------:|:------------:|:--------------:|
+| FullAdder    | 56              | 0                   | 56           | 100.00%        |
+| RipAdder4    | 228             | 0                   | 228          | 100.00%        |
+| ClkRstAdder4 | 304             | 0                   | 304          | 100.00%        |
+| s27          | 155             | 1                   | 156          | 100.00%        |
+| s298         | 786             | 0                   | 786          | 100.00%        |
+| s9234        | 10252           | 14                  | 10266        | 100.00%        |
