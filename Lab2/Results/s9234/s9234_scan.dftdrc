@@ -1,0 +1,289 @@
+In mode: Internal_scan...
+  Design has scan chains in this mode
+  Design is scan routed
+  Post-DFT DRC enabled
+
+Information: Starting test design rule checking. (TEST-222)
+  Loading test protocol
+  ...basic checks...
+  ...basic sequential cell checks...
+  ...checking vector rules...
+  ...checking clock rules...
+  ...checking scan chain rules...
+  ...checking scan compression rules...
+  ...checking X-state rules...
+  ...checking tristate rules...
+  ...extracting scan details...
+
+-----------------------------------------------------------------
+  DRC Report
+
+  Total violations: 0
+
+-----------------------------------------------------------------
+
+
+Test Design rule checking did not find violations
+
+-----------------------------------------------------------------
+  Sequential Cell Report
+
+  0 out of 211 sequential cells have violations
+
+-----------------------------------------------------------------
+
+SEQUENTIAL CELLS WITHOUT VIOLATIONS
+      * 211 cells are valid scan cells
+         DFF_1/Q_reg
+         DFF_2/Q_reg
+         DFF_3/Q_reg
+         DFF_4/Q_reg
+         DFF_5/Q_reg
+         DFF_6/Q_reg
+         DFF_7/Q_reg
+         DFF_8/Q_reg
+         DFF_9/Q_reg
+         DFF_10/Q_reg
+         DFF_11/Q_reg
+         DFF_12/Q_reg
+         DFF_13/Q_reg
+         DFF_14/Q_reg
+         DFF_15/Q_reg
+         DFF_16/Q_reg
+         DFF_17/Q_reg
+         DFF_18/Q_reg
+         DFF_19/Q_reg
+         DFF_20/Q_reg
+         DFF_21/Q_reg
+         DFF_22/Q_reg
+         DFF_23/Q_reg
+         DFF_24/Q_reg
+         DFF_25/Q_reg
+         DFF_26/Q_reg
+         DFF_27/Q_reg
+         DFF_28/Q_reg
+         DFF_29/Q_reg
+         DFF_30/Q_reg
+         DFF_31/Q_reg
+         DFF_32/Q_reg
+         DFF_33/Q_reg
+         DFF_34/Q_reg
+         DFF_35/Q_reg
+         DFF_36/Q_reg
+         DFF_37/Q_reg
+         DFF_38/Q_reg
+         DFF_39/Q_reg
+         DFF_40/Q_reg
+         DFF_41/Q_reg
+         DFF_42/Q_reg
+         DFF_43/Q_reg
+         DFF_44/Q_reg
+         DFF_45/Q_reg
+         DFF_46/Q_reg
+         DFF_47/Q_reg
+         DFF_48/Q_reg
+         DFF_49/Q_reg
+         DFF_50/Q_reg
+         DFF_51/Q_reg
+         DFF_52/Q_reg
+         DFF_53/Q_reg
+         DFF_54/Q_reg
+         DFF_55/Q_reg
+         DFF_56/Q_reg
+         DFF_57/Q_reg
+         DFF_58/Q_reg
+         DFF_59/Q_reg
+         DFF_60/Q_reg
+         DFF_61/Q_reg
+         DFF_62/Q_reg
+         DFF_63/Q_reg
+         DFF_64/Q_reg
+         DFF_65/Q_reg
+         DFF_66/Q_reg
+         DFF_67/Q_reg
+         DFF_68/Q_reg
+         DFF_69/Q_reg
+         DFF_70/Q_reg
+         DFF_71/Q_reg
+         DFF_72/Q_reg
+         DFF_73/Q_reg
+         DFF_74/Q_reg
+         DFF_75/Q_reg
+         DFF_76/Q_reg
+         DFF_77/Q_reg
+         DFF_78/Q_reg
+         DFF_79/Q_reg
+         DFF_80/Q_reg
+         DFF_81/Q_reg
+         DFF_82/Q_reg
+         DFF_83/Q_reg
+         DFF_84/Q_reg
+         DFF_85/Q_reg
+         DFF_86/Q_reg
+         DFF_87/Q_reg
+         DFF_88/Q_reg
+         DFF_89/Q_reg
+         DFF_90/Q_reg
+         DFF_91/Q_reg
+         DFF_92/Q_reg
+         DFF_93/Q_reg
+         DFF_94/Q_reg
+         DFF_95/Q_reg
+         DFF_96/Q_reg
+         DFF_97/Q_reg
+         DFF_98/Q_reg
+         DFF_99/Q_reg
+         DFF_100/Q_reg
+         DFF_101/Q_reg
+         DFF_102/Q_reg
+         DFF_103/Q_reg
+         DFF_104/Q_reg
+         DFF_105/Q_reg
+         DFF_106/Q_reg
+         DFF_107/Q_reg
+         DFF_108/Q_reg
+         DFF_109/Q_reg
+         DFF_110/Q_reg
+         DFF_111/Q_reg
+         DFF_112/Q_reg
+         DFF_113/Q_reg
+         DFF_114/Q_reg
+         DFF_115/Q_reg
+         DFF_116/Q_reg
+         DFF_117/Q_reg
+         DFF_118/Q_reg
+         DFF_119/Q_reg
+         DFF_120/Q_reg
+         DFF_121/Q_reg
+         DFF_122/Q_reg
+         DFF_123/Q_reg
+         DFF_124/Q_reg
+         DFF_125/Q_reg
+         DFF_126/Q_reg
+         DFF_127/Q_reg
+         DFF_128/Q_reg
+         DFF_129/Q_reg
+         DFF_130/Q_reg
+         DFF_131/Q_reg
+         DFF_132/Q_reg
+         DFF_133/Q_reg
+         DFF_134/Q_reg
+         DFF_135/Q_reg
+         DFF_136/Q_reg
+         DFF_137/Q_reg
+         DFF_138/Q_reg
+         DFF_139/Q_reg
+         DFF_140/Q_reg
+         DFF_141/Q_reg
+         DFF_142/Q_reg
+         DFF_143/Q_reg
+         DFF_144/Q_reg
+         DFF_145/Q_reg
+         DFF_146/Q_reg
+         DFF_147/Q_reg
+         DFF_148/Q_reg
+         DFF_149/Q_reg
+         DFF_150/Q_reg
+         DFF_151/Q_reg
+         DFF_152/Q_reg
+         DFF_153/Q_reg
+         DFF_154/Q_reg
+         DFF_155/Q_reg
+         DFF_156/Q_reg
+         DFF_157/Q_reg
+         DFF_158/Q_reg
+         DFF_159/Q_reg
+         DFF_160/Q_reg
+         DFF_161/Q_reg
+         DFF_162/Q_reg
+         DFF_163/Q_reg
+         DFF_164/Q_reg
+         DFF_165/Q_reg
+         DFF_166/Q_reg
+         DFF_167/Q_reg
+         DFF_168/Q_reg
+         DFF_169/Q_reg
+         DFF_170/Q_reg
+         DFF_171/Q_reg
+         DFF_172/Q_reg
+         DFF_173/Q_reg
+         DFF_174/Q_reg
+         DFF_175/Q_reg
+         DFF_176/Q_reg
+         DFF_177/Q_reg
+         DFF_178/Q_reg
+         DFF_179/Q_reg
+         DFF_180/Q_reg
+         DFF_181/Q_reg
+         DFF_182/Q_reg
+         DFF_183/Q_reg
+         DFF_184/Q_reg
+         DFF_185/Q_reg
+         DFF_186/Q_reg
+         DFF_187/Q_reg
+         DFF_188/Q_reg
+         DFF_189/Q_reg
+         DFF_190/Q_reg
+         DFF_191/Q_reg
+         DFF_192/Q_reg
+         DFF_193/Q_reg
+         DFF_194/Q_reg
+         DFF_195/Q_reg
+         DFF_196/Q_reg
+         DFF_197/Q_reg
+         DFF_198/Q_reg
+         DFF_199/Q_reg
+         DFF_200/Q_reg
+         DFF_201/Q_reg
+         DFF_202/Q_reg
+         DFF_203/Q_reg
+         DFF_204/Q_reg
+         DFF_205/Q_reg
+         DFF_206/Q_reg
+         DFF_207/Q_reg
+         DFF_208/Q_reg
+         DFF_209/Q_reg
+         DFF_210/Q_reg
+         DFF_0/Q_reg
+
+....Inferring feed-through connections....
+Information: Test design rule checking completed. (TEST-123)
+  Running test coverage estimation...
+ 10270 faults were added to fault list.
+ 0            6087   2683         0/0/0    73.85%      0.01
+ 0             783   1900         0/0/0    81.49%      0.01
+ 0             633   1267         0/0/0    87.65%      0.01
+ 0             312    954         1/0/0    90.70%      0.02
+ 0             229    725         1/0/0    92.93%      0.02
+ 0             195    529         2/0/0    94.84%      0.02
+ 0             127    402         2/0/0    96.08%      0.02
+ 0              94    308         2/0/0    97.00%      0.03
+ 0              73    234         3/0/0    97.72%      0.03
+ 0              84    149         4/0/0    98.55%      0.03
+ 0              60     88         5/0/0    99.14%      0.03
+ 0              50     38         5/0/0    99.63%      0.04
+ 0              35      0         7/0/0   100.00%      0.04
+ 
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                           0
+ -----------------------------------------------
+ 
+
+     Uncollapsed Stuck Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT      10254
+ Possibly detected                PT          0
+ Undetectable                     UD         16
+ ATPG untestable                  AU          0
+ Not detected                     ND          0
+ -----------------------------------------------
+ total faults                             10270
+ test coverage                           100.00%
+ -----------------------------------------------
+  Information: The test coverage above may be inferior
+               than the real test coverage with customized
+               protocol and test simulation library.
+1

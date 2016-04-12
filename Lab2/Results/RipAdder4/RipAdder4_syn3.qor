@@ -1,0 +1,67 @@
+ 
+****************************************
+Report : qor
+Design : RipAdder4
+Version: F-2011.09-SP4
+Date   : Tue Apr 12 11:04:58 2016
+****************************************
+
+
+  Timing Path Group 'CK'
+  -----------------------------------
+  Levels of Logic:            10.0000
+  Critical Path Length:        3.0976
+  Critical Path Slack:         0.0024
+  Critical Path Clk Period:    3.6000
+  Total Negative Slack:        0.0000
+  No. of Violating Paths:      0.0000
+  Worst Hold Violation:        0.0000
+  Total Hold Violation:        0.0000
+  No. of Hold Violations:      0.0000
+  -----------------------------------
+
+
+  Cell Count
+  -----------------------------------
+  Hierarchical Cell Count:         12
+  Hierarchical Port Count:         52
+  Leaf Cell Count:                 40
+  Buf/Inv Cell Count:              20
+  CT Buf/Inv Cell Count:            0
+  Combinational Cell Count:        40
+  Sequential Cell Count:            0
+  Macro Count:                      0
+  -----------------------------------
+
+
+  Area
+  -----------------------------------
+  Combinational Area:        359.4240
+  Noncombinational Area:       0.0000
+  Net Area:                    8.2104
+  -----------------------------------
+  Cell Area:                 359.4240
+  Design Area:               367.6344
+
+
+  Design Rules
+  -----------------------------------
+  Total Number of Nets:            49
+  Nets With Violations:             0
+  Max Trans Violations:             0
+  Max Cap Violations:               0
+  -----------------------------------
+
+
+  Hostname: engr-e132-d19
+
+  Compile CPU Statistics
+  -----------------------------------------
+  Resource Sharing:                  0.0000
+  Logic Optimization:                0.0640
+  Mapping Optimization:              0.4680
+  -----------------------------------------
+  Overall Compile Time:              2.1600
+  Overall Compile Wall Clock Time:   2.3439
+
+1

@@ -1,0 +1,327 @@
+STIL 1.0 {
+    Design 2005;
+}
+Header {
+    Title "Minimal STIL for design `FullAdder'";
+    Date "Tue Apr 12 10:55:55 2016";
+    Source "DFT Compiler F-2011.09-SP4";
+}
+Signals {
+    "A" In;
+    "B" In;
+    "Cin" In;
+    "Cout" Out;
+    "S" Out;
+}
+SignalGroups {
+    "all_inputs" = '"A" + "B" + "Cin"';
+    "all_outputs" = '"Cout" + "S"';
+    "all_ports" = '"all_inputs" + "all_outputs"';
+    "_pi" = '"all_inputs"';
+    "_po" = '"all_outputs"';
+}
+ScanStructures {
+}
+Timing {
+    WaveformTable "_default_WFT_" {
+        Period '100ns';
+        Waveforms {
+            "all_inputs" {
+                0 {
+                    '0ns' D;
+                }
+            }
+            "all_inputs" {
+                1 {
+                    '0ns' U;
+                }
+            }
+            "all_inputs" {
+                Z {
+                    '0ns' Z;
+                }
+            }
+            "all_inputs" {
+                N {
+                    '0ns' N;
+                }
+            }
+            "all_outputs" {
+                X {
+                    '0ns' X;
+                    '40ns' X;
+                }
+            }
+            "all_outputs" {
+                H {
+                    '0ns' X;
+                    '40ns' H;
+                }
+            }
+            "all_outputs" {
+                T {
+                    '0ns' X;
+                    '40ns' T;
+                }
+            }
+            "all_outputs" {
+                L {
+                    '0ns' X;
+                    '40ns' L;
+                }
+            }
+        }
+    }
+    WaveformTable "_multiclock_capture_WFT_" {
+        Period '100ns';
+        Waveforms {
+            "all_inputs" {
+                0 {
+                    '0ns' D;
+                }
+            }
+            "all_inputs" {
+                1 {
+                    '0ns' U;
+                }
+            }
+            "all_inputs" {
+                Z {
+                    '0ns' Z;
+                }
+            }
+            "all_inputs" {
+                N {
+                    '0ns' N;
+                }
+            }
+            "all_outputs" {
+                X {
+                    '0ns' X;
+                    '40ns' X;
+                }
+            }
+            "all_outputs" {
+                H {
+                    '0ns' X;
+                    '40ns' H;
+                }
+            }
+            "all_outputs" {
+                T {
+                    '0ns' X;
+                    '40ns' T;
+                }
+            }
+            "all_outputs" {
+                L {
+                    '0ns' X;
+                    '40ns' L;
+                }
+            }
+        }
+    }
+    WaveformTable "_allclock_capture_WFT_" {
+        Period '100ns';
+        Waveforms {
+            "all_inputs" {
+                0 {
+                    '0ns' D;
+                }
+            }
+            "all_inputs" {
+                1 {
+                    '0ns' U;
+                }
+            }
+            "all_inputs" {
+                Z {
+                    '0ns' Z;
+                }
+            }
+            "all_inputs" {
+                N {
+                    '0ns' N;
+                }
+            }
+            "all_outputs" {
+                X {
+                    '0ns' X;
+                    '40ns' X;
+                }
+            }
+            "all_outputs" {
+                H {
+                    '0ns' X;
+                    '40ns' H;
+                }
+            }
+            "all_outputs" {
+                T {
+                    '0ns' X;
+                    '40ns' T;
+                }
+            }
+            "all_outputs" {
+                L {
+                    '0ns' X;
+                    '40ns' L;
+                }
+            }
+        }
+    }
+    WaveformTable "_allclock_launch_WFT_" {
+        Period '100ns';
+        Waveforms {
+            "all_inputs" {
+                0 {
+                    '0ns' D;
+                }
+            }
+            "all_inputs" {
+                1 {
+                    '0ns' U;
+                }
+            }
+            "all_inputs" {
+                Z {
+                    '0ns' Z;
+                }
+            }
+            "all_inputs" {
+                N {
+                    '0ns' N;
+                }
+            }
+            "all_outputs" {
+                X {
+                    '0ns' X;
+                    '40ns' X;
+                }
+            }
+            "all_outputs" {
+                H {
+                    '0ns' X;
+                    '40ns' H;
+                }
+            }
+            "all_outputs" {
+                T {
+                    '0ns' X;
+                    '40ns' T;
+                }
+            }
+            "all_outputs" {
+                L {
+                    '0ns' X;
+                    '40ns' L;
+                }
+            }
+        }
+    }
+    WaveformTable "_allclock_launch_capture_WFT_" {
+        Period '100ns';
+        Waveforms {
+            "all_inputs" {
+                0 {
+                    '0ns' D;
+                }
+            }
+            "all_inputs" {
+                1 {
+                    '0ns' U;
+                }
+            }
+            "all_inputs" {
+                Z {
+                    '0ns' Z;
+                }
+            }
+            "all_inputs" {
+                N {
+                    '0ns' N;
+                }
+            }
+            "all_outputs" {
+                X {
+                    '0ns' X;
+                    '40ns' X;
+                }
+            }
+            "all_outputs" {
+                H {
+                    '0ns' X;
+                    '40ns' H;
+                }
+            }
+            "all_outputs" {
+                T {
+                    '0ns' X;
+                    '40ns' T;
+                }
+            }
+            "all_outputs" {
+                L {
+                    '0ns' X;
+                    '40ns' L;
+                }
+            }
+        }
+    }
+}
+Procedures {
+    "multiclock_capture" {
+        W "_multiclock_capture_WFT_";
+        C {
+            "Cout" = X;
+            "S" = X;
+        }
+        V {
+            "_po" = ##;
+            "_pi" = ###;
+        }
+    }
+    "allclock_capture" {
+        W "_allclock_capture_WFT_";
+        C {
+            "Cout" = X;
+            "S" = X;
+        }
+        V {
+            "_po" = ##;
+            "_pi" = ###;
+        }
+    }
+    "allclock_launch" {
+        W "_allclock_launch_WFT_";
+        C {
+            "Cout" = X;
+            "S" = X;
+        }
+        V {
+            "_po" = ##;
+            "_pi" = ###;
+        }
+    }
+    "allclock_launch_capture" {
+        W "_allclock_launch_capture_WFT_";
+        C {
+            "Cout" = X;
+            "S" = X;
+        }
+        V {
+            "_po" = ##;
+            "_pi" = ###;
+        }
+    }
+}
+MacroDefs {
+    "test_setup" {
+        W "_default_WFT_";
+        V {
+        }
+        V {
+        }
+    }
+}
+

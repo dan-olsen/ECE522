@@ -1,0 +1,34 @@
+In mode: all_dft...
+  Pre-DFT DRC enabled
+
+Information: Starting test design rule checking. (TEST-222)
+  Loading test protocol
+  ...basic checks...
+  ...basic sequential cell checks...
+  	...checking for scan equivalents...
+  ...checking vector rules...
+  ...checking pre-dft rules...
+
+-----------------------------------------------------------------
+  DRC Report
+
+  Total violations: 0
+
+-----------------------------------------------------------------
+
+
+Test Design rule checking did not find violations
+
+-----------------------------------------------------------------
+  Sequential Cell Report
+
+  There are no sequential cells in this design
+
+-----------------------------------------------------------------
+
+
+....Inferring feed-through connections....
+Information: Test design rule checking completed. (TEST-123)
+  Warning: Test coverage estimation is not supported for pre-scan designs.
+  Information: '-coverage_estimation' option is ignored for this drc run.
+1
