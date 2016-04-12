@@ -5,7 +5,7 @@ set myFiles [list ./../s27.v];
 set basename s27;
 set virtual 0;
 
-set myPeriod_ns 2.5;
+set myPeriod_ns 3;
 set myClkLatency_ns 0.55;
 set myInDelay_ns 0.1;
 set myOutDelay_ns 0.1;
@@ -61,13 +61,50 @@ check_design
 
 set filebase [concat $basename$runname]
 set fileext .v
-write -format verilog -hierarchy -output [concat ../Results/$basename/$runname/$filebase$fileext]
+write -format verilog -hierarchy -output [concat ../Results/$basename/$filebase$fileext]
 set fileext .vio
-redirect [concat ../Results/$basename/$runname/$filebase$fileext] { report_constraint -all_violators }
+redirect [concat ../Results/$basename/$filebase$fileext] { report_constraint -all_violators }
 set fileext .maxtiming
-redirect [concat ../Results/$basename/$runname/$filebase$fileext] { report_timing -path full -delay max -nworst 5 }
+redirect [concat ../Results/$basename/$filebase$fileext] { report_timing -path full -delay max -nworst 5 }
 set fileext .mintiming
-redirect [concat ../Results/$basename/$runname/$filebase$fileext] { report_timing -path full -delay min -nworst 5 }
+redirect [concat ../Results/$basename/$filebase$fileext] { report_timing -path full -delay min -nworst 5 }
 set fileext .qor
-redirect [concat ../Results/$basename/$runname/$filebase$fileext] { report_qor -significant_digits 4 }
+redirect [concat ../Results/$basename/$filebase$fileext] { report_qor -significant_digits 4 }
+
+set test_default_delay 0;
+set test_default_bidir_delay 0;
+set test_default_strobe 40;
+set test_default_period 100;
+
+set test_default_scan_style multiplexed_flip_flop;
+set_scan_configuration -create_dedicated_scan_out_ports true
+
+create_test_protocol -infer_async -infer_clock
+dft_drc -verbose
+
+compile -scan
+
+insert_dft
+
+set_drive 0.5 test_si
+set_drive 0.5 test_se
+
+set_scan_configuration -replace false
+
+insert_dft
+
+set runname _scan
+set filebase [concat $basename$runname]
+set fileext .v
+write -format verilog -hierarchy -output [concat ../Results/$basename/$filebase$fileext]
+set fileext .vio
+redirect [concat ../Results/$basename/$filebase$fileext] { report_constraint -all_violators }
+set fileext .sdc
+write_sdc [concat ../Results/$basename/$filebase$fileext]
+set fileext .spf
+write_test_protocol -output [concat ../Results/$basename/$filebase$fileext]
+set fileext .dftdrc
+redirect [concat ../Results/$basename/$filebase$fileext] {dft_drc -verbose -coverage_estimate}
+set fileext .scanpath
+redirect [concat ../Results/$basename/$filebase$fileext] {report_scan_path -view existing -chain all}
 
