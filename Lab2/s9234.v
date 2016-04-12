@@ -4,7 +4,16 @@
 //# 3570 inverters
 //# 2027 gates (955 ANDs + 528 NANDs + 431 ORs + 113 NORs)
 
+module dff (CK,Q,D);
+input CK,D;
+output Q;
 
+ reg Q;
+always @(posedge CK)
+  Q <= D;
+
+
+endmodule
 
 module s9234(CK,g102,g107,g1290,g1293,g22,g23,g2584,g301,g306,g310,
   g314,g319,g32,
