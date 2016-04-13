@@ -1,5 +1,5 @@
 -- VHDL pattern output written by  TetraMAX (TM)  E-2010.12-SP5-i110710_172605 
--- Date: Tue Apr 12 11:53:22 2016
+-- Date: Tue Apr 12 19:06:02 2016
 -- Module tested: FullAdder
 
 --     Uncollapsed Stuck Fault Summary Report
