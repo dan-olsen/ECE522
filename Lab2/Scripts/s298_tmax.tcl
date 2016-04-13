@@ -29,4 +29,5 @@ set fileext .faults
 write_faults [concat ../Results/$basename/$filebase$fileext] -all -replace
 set fileext .vio
 redirect [concat ../Results/$basename/$filebase$fileext] { report_violations -all }
-
+set fileext .coverage
+redirect [concat ../Results/$basename/$filebase$fileext] { report_faults -summary }
