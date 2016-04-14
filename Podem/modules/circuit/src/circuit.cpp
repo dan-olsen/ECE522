@@ -66,6 +66,11 @@ void circuit::topological_sort()
         q.push(*iter);
     }
 
+    for(auto iter = _dffs.begin(); iter != _dffs.end(); ++iter)
+    {
+        q.push(iter->name() + "_IN");
+    }
+
     while(!q.empty())
     {
         std::string curr = q.front();

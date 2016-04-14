@@ -2,7 +2,10 @@
 
 #include <chrono>
 
-const std::string usage = "Usage: %s [ options ] CIRCUIT\n";
+const std::string usage = "Usage: %s [ options ] BENCHMARK_FILE\n\n" \
+                                "Options:\n" \
+                                "\t-a All Faults\n" \
+                                "\t-f FAULT_FILE\n";
 
 int main(int argc, char* const argv[])
 {
@@ -18,7 +21,7 @@ int main(int argc, char* const argv[])
     start = std::chrono::system_clock::now();
     circuit c(argv[1]);
 
-    c.print_header();
+    //c.print_header();
 
     //c.print_circuit();
 

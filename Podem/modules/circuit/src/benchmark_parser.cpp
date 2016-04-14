@@ -135,6 +135,22 @@ void benchmark_parser::read_gates(circuit &c)
     {
         if (tmp.empty())
         {
+            my_replace(tmp, "(", " ");
+            tmp.erase (std::remove(tmp.begin(), tmp.end(), ')'), tmp.end());
+
+            std::stringstream s(tmp);
+
+            s >> tmp;
+
+            if (string_to_gate_type(tmp) == OUTPUT)
+            {
+                s >> tmp;
+
+                c._primary_outputs.push_back(tmp);
+            }
+        }
+        else
+        {
             break;
         }
     }
@@ -177,7 +193,7 @@ void benchmark_parser::read_gates(circuit &c)
                 c._dffs.push_back(*gate);
                 _dff_set.insert(gate->name());
 
-                c._primary_inputs.push_back(gate->name() + "_IN");
+                //c._primary_inputs.push_back(gate->name() + "_IN");
 
                 dff d(name + "_OUT");
                 d.add_fan_in(gate->fan_in()[0]);

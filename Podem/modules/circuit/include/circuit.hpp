@@ -35,6 +35,15 @@ public:
     void print_header();
     void print_circuit();
 
+//    std::vector<std::string>::iterator circuit_begin();
+//    std::vector<std::string>::iterator ciruit_end();
+//
+//    std::vector<std::string>::iterator inputs_begin();
+//    std::vector<std::string>::iterator inputs_end();
+//
+//    std::vector<std::string>::iterator outputs_begin();
+//    std::vector<std::string>::iterator outputs_end();
+
 private:
     std::string _name;
 
