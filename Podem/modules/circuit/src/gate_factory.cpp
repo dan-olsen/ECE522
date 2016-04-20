@@ -30,6 +30,6 @@ std::shared_ptr<gate_base> gate_factory::create_gate(const std::string &type, co
         default:
             std::cerr << "ERROR: Invalid gate type of " << type << std::endl;
             exit(-1);
+            //TODO: Throw exception instead of exit
     }
-    //throw "invalid pizza type.";
 }

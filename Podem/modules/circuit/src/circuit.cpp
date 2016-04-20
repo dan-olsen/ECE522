@@ -84,6 +84,7 @@ void circuit::print_circuit()
         std::cout << *(_circuit.at(_sorted_circuit[i])) << std::endl;
 
     }
+
 }
 
 void circuit::topological_sort()
@@ -103,7 +104,7 @@ void circuit::topological_sort()
 
     for(auto iter = _dffs.begin(); iter != _dffs.end(); ++iter)
     {
-        q.push(iter->name() + "_IN");
+        q.push((*iter)->name() + "_IN");
     }
 
     while(!q.empty())

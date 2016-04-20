@@ -40,19 +40,16 @@ std::vector<std::string>::iterator gate_base::fan_in_begin()
 std::vector<std::string>::iterator gate_base::fan_in_end()
 {
     return _fan_in.end();
-
 }
 
 std::vector<std::string>::iterator gate_base::fan_out_begin()
 {
     return _fan_out.begin();
-
 }
 
 std::vector<std::string>::iterator gate_base::fan_out_end()
 {
     return _fan_out.end();
-
 }
 
 void gate_base::add_fan_in(const std::string &id)
@@ -85,17 +82,14 @@ std::vector<std::string> &gate_base::fan_out()
     return _fan_out;
 }
 
-unsigned int gate_base::fan_in_count() {
+unsigned int gate_base::fan_in_count()
+{
     return (unsigned int)_fan_in.size();
 }
 
-unsigned int gate_base::fan_out_count() {
-    return (unsigned int)_fan_out.size();
-}
-
-void gate_base::simulate()
+unsigned int gate_base::fan_out_count()
 {
-    std::cerr << "Attempt to simulate gate base" << std::endl;
+    return (unsigned int)_fan_out.size();
 }
 
 std::ostream &operator<<( std::ostream &output, const gate_base &g )

@@ -39,7 +39,7 @@ public:
     void replace_fan_in(const std::string &old_fan_in, const std::string &new_fan_in);
     void replace_fan_out(const std::string &old_fan_out, const std::string &new_fan_out);
 
-    virtual void simulate();
+    virtual void simulate() = 0;
 
     friend std::ostream &operator<<( std::ostream &output, const gate_base &g );
 

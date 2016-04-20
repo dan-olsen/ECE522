@@ -191,7 +191,7 @@ void benchmark_parser::read_gates(circuit &c)
 
             if (gate->type() == DFF)
             {
-                c._dffs.push_back(*gate);
+                c._dffs.push_back(gate);
                 _dff_set.insert(gate->name());
 
                 //c._primary_inputs.push_back(gate->name() + "_IN");

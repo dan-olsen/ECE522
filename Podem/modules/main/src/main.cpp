@@ -2,10 +2,7 @@
 
 #include <chrono>
 
-const std::string usage = "Usage: %s [ options ] BENCHMARK_FILE\n\n" \
-                                "Options:\n" \
-                                "\t-a All Faults\n" \
-                                "\t-f FAULT_FILE\n";
+const std::string usage = "Usage: %s BENCHMARK_FILE [ FAULT_FILE ]\n\n";
 
 int main(int argc, char* const argv[])
 {
@@ -23,7 +20,7 @@ int main(int argc, char* const argv[])
     circuit c(argv[1]);
 
     c.print_header();
-    //c->print_circuit();
+    //c.print_circuit();
 
     podem p(c);
 
