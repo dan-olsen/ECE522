@@ -13,6 +13,8 @@ public:
     or_gate(const std::string &name);
     ~or_gate();
 
+    void simulate();
+
 };
 
 #endif //PODEM_OR_GATE_HPP

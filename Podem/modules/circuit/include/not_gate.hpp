@@ -13,6 +13,8 @@ public:
     not_gate(const std::string &name);
     ~not_gate();
 
+    void simulate();
+
 };
 
 #endif //PODEM_NOT_GATE_HPP

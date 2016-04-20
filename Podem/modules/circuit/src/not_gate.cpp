@@ -13,3 +13,9 @@ not_gate::~not_gate()
 {
 
 }
+
+void not_gate::simulate()
+{
+    std::cout << "NOT" << std::endl;
+
+}

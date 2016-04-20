@@ -22,7 +22,7 @@
 
 class gate_factory {
 public:
-    static std::unique_ptr<gate_base> create_gate(const std::string &type, const std::string &name);
+    static std::shared_ptr<gate_base> create_gate(const std::string &type, const std::string &name);
 
 };
 

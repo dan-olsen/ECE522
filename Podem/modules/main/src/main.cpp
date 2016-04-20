@@ -19,13 +19,15 @@ int main(int argc, char* const argv[])
     std::chrono::time_point<std::chrono::system_clock> start, end;
 
     start = std::chrono::system_clock::now();
+
     circuit c(argv[1]);
 
-    //c.print_header();
-
-    //c.print_circuit();
+    c.print_header();
+    //c->print_circuit();
 
     podem p(c);
+
+    p.generate_patterns();
 
     end = std::chrono::system_clock::now();
 

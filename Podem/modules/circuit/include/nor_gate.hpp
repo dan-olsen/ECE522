@@ -13,6 +13,8 @@ public:
     nor_gate(const std::string &name);
     ~nor_gate();
 
+    void simulate();
+
 };
 
 #endif //PODEM_NOR_GATE_HPP

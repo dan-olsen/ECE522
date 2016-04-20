@@ -13,3 +13,8 @@ nand_gate::~nand_gate()
 {
 
 }
+
+void nand_gate::simulate()
+{
+    std::cout << "NAND" << std::endl;
+}

@@ -13,3 +13,9 @@ input::~input()
 {
 
 }
+
+void input::simulate()
+{
+    std::cout << "INPUT" << std::endl;
+
+}

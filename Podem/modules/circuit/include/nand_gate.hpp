@@ -13,6 +13,8 @@ public:
     nand_gate(const std::string &name);
     ~nand_gate();
 
+    void simulate();
+
 };
 
 #endif //PODEM_NAND_GATE_HPP

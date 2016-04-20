@@ -13,3 +13,9 @@ nor_gate::~nor_gate()
 {
 
 }
+
+void nor_gate::simulate()
+{
+    std::cout << "NOR" << std::endl;
+
+}

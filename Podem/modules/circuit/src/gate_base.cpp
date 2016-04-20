@@ -27,6 +27,11 @@ GATE_TYPE gate_base::type() const
     return _type;
 }
 
+SIMULATION_VALUE gate_base::value() const
+{
+    return _value;
+}
+
 std::vector<std::string>::iterator gate_base::fan_in_begin()
 {
     return _fan_in.begin();
@@ -81,11 +86,16 @@ std::vector<std::string> &gate_base::fan_out()
 }
 
 unsigned int gate_base::fan_in_count() {
-    return _fan_in.size();
+    return (unsigned int)_fan_in.size();
 }
 
 unsigned int gate_base::fan_out_count() {
-    return _fan_out.size();
+    return (unsigned int)_fan_out.size();
+}
+
+void gate_base::simulate()
+{
+    std::cerr << "Attempt to simulate gate base" << std::endl;
 }
 
 std::ostream &operator<<( std::ostream &output, const gate_base &g )

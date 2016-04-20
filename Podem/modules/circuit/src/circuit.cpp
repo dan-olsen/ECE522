@@ -20,6 +20,41 @@ circuit::~circuit()
 
 }
 
+std::shared_ptr<gate_base> circuit::at(const std::string &key)
+{
+    return _circuit.at(key);
+}
+
+std::vector<std::string>::iterator circuit::circuit_begin()
+{
+    return _sorted_circuit.begin();
+}
+
+std::vector<std::string>::iterator circuit::circuit_end()
+{
+    return _sorted_circuit.end();
+}
+
+std::vector<std::string>::iterator circuit::inputs_begin()
+{
+    return _primary_inputs.begin();
+}
+
+std::vector<std::string>::iterator circuit::inputs_end()
+{
+    return _primary_inputs.end();
+}
+
+std::vector<std::string>::iterator circuit::outputs_begin()
+{
+    return _primary_outputs.begin();
+}
+
+std::vector<std::string>::iterator circuit::outputs_end()
+{
+    return _primary_outputs.end();
+}
+
 void circuit::print_header()
 {
     std::cout << "Benchmark Name: " << _name << std::endl;
@@ -46,7 +81,7 @@ void circuit::print_circuit()
 
     for(unsigned int i = 0; i < _sorted_circuit.size(); ++i)
     {
-        std::cout << _circuit.at(_sorted_circuit[i]) << std::endl;
+        std::cout << *(_circuit.at(_sorted_circuit[i])) << std::endl;
 
     }
 }
@@ -58,7 +93,7 @@ void circuit::topological_sort()
 
     for(auto iter = _circuit.begin(); iter != _circuit.end(); ++iter)
     {
-        in_degree.insert({iter->first, iter->second.fan_in_count()});
+        in_degree.insert({iter->first, iter->second->fan_in_count()});
     }
 
     for(auto iter = _primary_inputs.begin(); iter != _primary_inputs.end(); ++iter)
@@ -77,7 +112,7 @@ void circuit::topological_sort()
         q.pop();
         _sorted_circuit.push_back(curr);
 
-        std::vector<std::string> curr_fan_out = _circuit.at(curr).fan_out();
+        std::vector<std::string> curr_fan_out = _circuit.at(curr)->fan_out();
 
         for (auto iter = curr_fan_out.begin(); iter != curr_fan_out.end(); ++iter)
         {

@@ -13,3 +13,9 @@ buffer::~buffer()
 {
 
 }
+
+void buffer::simulate()
+{
+    std::cout << "BUFFER" << std::endl;
+
+}

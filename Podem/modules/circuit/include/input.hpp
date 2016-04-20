@@ -13,6 +13,8 @@ public:
     input(const std::string &name);
     ~input();
 
+    void simulate();
+
 };
 
 #endif //PODEM_INPUT_HPP

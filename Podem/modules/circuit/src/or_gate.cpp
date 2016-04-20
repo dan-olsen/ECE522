@@ -13,3 +13,9 @@ or_gate::~or_gate()
 {
 
 }
+
+void or_gate::simulate()
+{
+    std::cout << "OR" << std::endl;
+
+}

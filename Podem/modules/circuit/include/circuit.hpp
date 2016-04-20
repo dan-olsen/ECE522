@@ -35,14 +35,16 @@ public:
     void print_header();
     void print_circuit();
 
-//    std::vector<std::string>::iterator circuit_begin();
-//    std::vector<std::string>::iterator ciruit_end();
-//
-//    std::vector<std::string>::iterator inputs_begin();
-//    std::vector<std::string>::iterator inputs_end();
-//
-//    std::vector<std::string>::iterator outputs_begin();
-//    std::vector<std::string>::iterator outputs_end();
+    std::shared_ptr<gate_base> at(const std::string &key);
+
+    std::vector<std::string>::iterator circuit_begin();
+    std::vector<std::string>::iterator circuit_end();
+
+    std::vector<std::string>::iterator inputs_begin();
+    std::vector<std::string>::iterator inputs_end();
+
+    std::vector<std::string>::iterator outputs_begin();
+    std::vector<std::string>::iterator outputs_end();
 
 private:
     std::string _name;
@@ -54,7 +56,7 @@ private:
     std::vector<std::string> _primary_inputs;
     std::vector<std::string> _primary_outputs;
 
-    std::unordered_map<std::string, gate_base> _circuit;
+    std::unordered_map<std::string, std::shared_ptr<gate_base>> _circuit;
     std::vector<std::string> _sorted_circuit;
 
     std::vector<gate_base> _dffs;

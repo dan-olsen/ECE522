@@ -20,6 +20,8 @@ public:
     std::string name() const;
     GATE_TYPE type() const;
 
+    SIMULATION_VALUE value() const;
+
     std::vector<std::string>::iterator fan_in_begin();
     std::vector<std::string>::iterator fan_in_end();
     std::vector<std::string>::iterator fan_out_begin();
@@ -36,6 +38,8 @@ public:
 
     void replace_fan_in(const std::string &old_fan_in, const std::string &new_fan_in);
     void replace_fan_out(const std::string &old_fan_out, const std::string &new_fan_out);
+
+    virtual void simulate();
 
     friend std::ostream &operator<<( std::ostream &output, const gate_base &g );
 

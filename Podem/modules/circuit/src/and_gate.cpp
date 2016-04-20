@@ -13,3 +13,9 @@ and_gate::~and_gate()
 {
 
 }
+
+void and_gate::simulate()
+{
+    std::cout << "AND" << std::endl;
+
+}

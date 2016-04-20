@@ -12,6 +12,9 @@ class from : public gate_base {
 public:
     from(const std::string &name);
     ~from();
+
+    void simulate();
+
 };
 
 

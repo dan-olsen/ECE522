@@ -13,3 +13,9 @@ dff::~dff()
 {
 
 }
+
+void dff::simulate()
+{
+    std::cout << "DFF" << std::endl;
+
+}

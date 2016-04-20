@@ -13,3 +13,9 @@ from::~from()
 {
 
 }
+
+void from::simulate()
+{
+    std::cout << "FROM" << std::endl;
+
+}

@@ -13,6 +13,8 @@ public:
     buffer(const std::string &name);
     ~buffer();
 
+    void simulate();
+
 };
 
 #endif //PODEM_BUFFER_HPP

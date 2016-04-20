@@ -13,6 +13,8 @@ public:
     dff(const std::string &name);
     ~dff();
 
+    void simulate();
+
 };
 
 #endif //PODEM_DFF_HPP
