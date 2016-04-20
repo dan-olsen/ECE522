@@ -133,7 +133,7 @@ void benchmark_parser::read_gates(circuit &c)
     //Read outputs
     while(getline(_benchmark, tmp))
     {
-        if (tmp.empty())
+        if (!tmp.empty())
         {
             my_replace(tmp, "(", " ");
             tmp.erase (std::remove(tmp.begin(), tmp.end(), ')'), tmp.end());

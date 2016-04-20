@@ -53,7 +53,7 @@ GATE_TYPE string_to_gate_type(const std::string &s)
     }
     else
     {
-        std::cerr << "ERROR: Unknown gate_base type" << std::endl;
+        std::cerr << "ERROR: Unknown gate_base type of " << tmp << std::endl;
 
         return UNKNOWN;
     }

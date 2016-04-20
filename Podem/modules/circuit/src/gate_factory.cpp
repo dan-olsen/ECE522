@@ -26,7 +26,7 @@ std::unique_ptr<gate_base> gate_factory::create_gate(const std::string &type, co
         case OUTPUT:
         case UNKNOWN:
         default:
-            std::cerr << "ERROR: Invalid gate type" << std::endl;
+            std::cerr << "ERROR: Invalid gate type of " << type << std::endl;
             exit(-1);
     }
     //throw "invalid pizza type.";
