@@ -55,7 +55,14 @@ bool podem::x_path_check()
 
 gate_value podem::get_objective()
 {
+    if(_c.at(_current_fault.first) != )
+    {
+        return std::make_pair(_current_fault.first, );
+    }
+    else
+    {
 
+    }
 }
 
 gate_value podem::backtrace()
