@@ -35,6 +35,8 @@ public:
     void print_header();
     void print_circuit();
 
+    void initialize_to_x();
+
     std::shared_ptr<gate_base> at(const std::string &key);
 
     std::vector<std::string>::iterator circuit_begin();

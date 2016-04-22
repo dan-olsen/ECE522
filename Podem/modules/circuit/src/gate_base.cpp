@@ -32,6 +32,11 @@ SIMULATION_VALUE gate_base::value() const
     return _value;
 }
 
+void gate_base::set_value(SIMULATION_VALUE v)
+{
+    _value = v;
+}
+
 std::vector<std::string>::iterator gate_base::fan_in_begin()
 {
     return _fan_in.begin();

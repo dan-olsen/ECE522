@@ -58,7 +58,6 @@ void benchmark_parser::read_header(circuit &c)
 {
     std::string tmp;
 
-
     _benchmark >> tmp >> c._name;
     _benchmark >> tmp >> _gate_counts.at(INPUT) >> tmp;
 

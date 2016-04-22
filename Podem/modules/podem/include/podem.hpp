@@ -23,6 +23,8 @@ public:
 private:
     circuit &_c;
 
+    std::string _fault_file_name;
+
     std::vector<fault> _faults;
 
     fault _current_fault;
@@ -30,11 +32,14 @@ private:
     bool podem_recursive();
     bool x_path_check();
     gate_value get_objective();
-    gate_value backtrace();
+    gate_value backtrace(const gate_value& obj);
     void imply(const gate_value& pi);
     bool is_fault_detected();
 
+    void initialize_faults();
     void read_faults();
+
+    std::string my_replace(std::string &s, const std::string &toReplace, const std::string &replaceWith);
 };
 
 

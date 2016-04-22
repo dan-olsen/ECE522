@@ -21,6 +21,7 @@ public:
     GATE_TYPE type() const;
 
     SIMULATION_VALUE value() const;
+    void set_value(SIMULATION_VALUE v);
 
     std::vector<std::string>::iterator fan_in_begin();
     std::vector<std::string>::iterator fan_in_end();

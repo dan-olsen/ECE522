@@ -20,6 +20,14 @@ circuit::~circuit()
 
 }
 
+void circuit::initialize_to_x()
+{
+    for(unsigned int i = 0; i < _sorted_circuit.size(); ++i)
+    {
+        _circuit.at(_sorted_circuit[i])->set_value(X);
+    }
+}
+
 std::shared_ptr<gate_base> circuit::at(const std::string &key)
 {
     return _circuit.at(key);
