@@ -30,7 +30,8 @@ private:
     fault _current_fault;
 
     bool podem_recursive();
-    bool x_path_check();
+    bool x_path_check(const std::string &gate_name);
+    bool x_path_check_recursive(const std::string &gate_name, std::unordered_map<std::string, bool> &visited);
     gate_value get_objective();
     gate_value backtrace(const gate_value& obj);
     void imply(const gate_value& pi);

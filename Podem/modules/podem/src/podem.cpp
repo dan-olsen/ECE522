@@ -6,6 +6,7 @@
 
 podem::podem(circuit& c) : _c(c)
 {
+    _c.initialize_to_x();
 
 }
 
@@ -22,7 +23,9 @@ void podem::generate_patterns()
     {
         _current_fault = f;
 
-        podem_recursive();
+        std::cout << "Current Fault: " << _current_fault.first << " " << fault_value_strings[_current_fault.second] << std::endl;
+
+        //podem_recursive();
 
     }
 }
@@ -42,7 +45,7 @@ bool podem::podem_recursive()
     }
     else
     {
-        if(x_path_check())
+        if(x_path_check("ONLY HERE TO BUILD"))
         {
             gate_value objective = get_objective();
 
@@ -50,15 +53,75 @@ bool podem::podem_recursive()
 
             imply(pi);
 
+            if(podem_recursive())
+            {
+                return true;
+            }
 
+            //TODO: pi.val = -pi.val
+
+            imply(pi);
+
+            if(podem_recursive())
+            {
+                return true;
+            }
+
+            pi.second = X;
+
+            imply(pi);
+
+            return false;
+        }
+        else
+        {
+            return false;
         }
     }
 
 }
 
-bool podem::x_path_check()
+bool podem::x_path_check(const std::string &gate_name)
 {
+    std::unordered_map<std::string, bool> visited;
 
+    for(auto iter = _c.circuit_begin(); iter != _c.circuit_end(); ++iter)
+    {
+        visited.insert(std::make_pair(_c.at(*iter)->name(), false));
+    }
+
+    return x_path_check_recursive(gate_name, visited);
+}
+
+bool podem::x_path_check_recursive(const std::string &gate_name, std::unordered_map<std::string, bool> &visited)
+{
+    visited[gate_name] = true;
+
+    std::cout << gate_name << " " << simulation_value_strings[_c.at(gate_name)->value()] << std::endl;
+
+    if(_c.at(gate_name)->value() == X)
+    {
+        if (_c.at(gate_name)->fan_out_count() != 0)
+        {
+            for(auto iter = _c.at(gate_name)->fan_out_begin(); iter != _c.at(gate_name)->fan_out_end(); ++iter)
+            {
+                if(!visited[*iter])
+                {
+                    if(x_path_check_recursive(*iter, visited))
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        else
+        {
+            return true;
+
+        }
+    }
+
+    return false;
 }
 
 gate_value podem::get_objective()
@@ -125,6 +188,12 @@ void podem::initialize_faults()
     if(_fault_file_name.empty())
     {
         //TODO: Add all faults
+        for(auto iter = _c.circuit_begin(); iter != _c.circuit_end(); ++iter)
+        {
+            _faults.push_back(std::make_pair(*iter, SA0));
+            _faults.push_back(std::make_pair(*iter, SA1));
+
+        }
     }
     else
     {
@@ -147,7 +216,7 @@ void podem::read_faults()
             while (getline(fault_file, tmp))
             {
                 std::string fault_site;
-                std::string fault_value;
+                int fault_value;
 
                 my_replace(tmp, "/", " ");
 
@@ -155,7 +224,7 @@ void podem::read_faults()
 
                 s >> fault_site >> fault_value;
 
-                std:: cout << fault_site << " " << fault_value << std::endl;
+                _faults.push_back(std::make_pair(fault_site, (FAULT_VALUE)fault_value));
             }
 
             fault_file.close();

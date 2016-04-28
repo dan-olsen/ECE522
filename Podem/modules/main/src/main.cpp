@@ -6,7 +6,7 @@ const std::string usage = "Usage: %s BENCHMARK_FILE [ FAULT_FILE ]\n\n";
 
 int main(int argc, char* const argv[])
 {
-    if (argc != 2)
+    if (argc < 2)
     {
         std::cout << usage << std::endl;
 
@@ -24,7 +24,16 @@ int main(int argc, char* const argv[])
 
     podem p(c);
 
-    p.generate_patterns();
+    if(argc == 3)
+    {
+        p.generate_patterns(argv[2]);
+
+    }
+    else
+    {
+        p.generate_patterns();
+
+    }
 
     end = std::chrono::system_clock::now();
 
