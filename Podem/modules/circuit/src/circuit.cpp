@@ -13,6 +13,11 @@ circuit::circuit(const std::string &benchmark_file)
     parser.read_benchmark(*this);
 
     topological_sort();
+
+    for(auto iter = _circuit.begin(); iter != _circuit.end(); ++iter)
+    {
+        iter->second->set_circuit(std::make_shared<std::unordered_map<std::string, std::shared_ptr<gate_base>>>(_circuit));
+    }
 }
 
 circuit::~circuit()

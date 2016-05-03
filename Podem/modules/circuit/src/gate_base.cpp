@@ -97,6 +97,11 @@ unsigned int gate_base::fan_out_count()
     return (unsigned int)_fan_out.size();
 }
 
+void gate_base::set_circuit(std::shared_ptr<std::unordered_map<std::string, std::shared_ptr<gate_base>>> circuit)
+{
+    _circuit = circuit;
+}
+
 std::ostream &operator<<( std::ostream &output, const gate_base &g )
 {
     output << std::setw(20) << std::left << g._name;// << std::endl;

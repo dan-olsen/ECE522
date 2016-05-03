@@ -11,6 +11,8 @@
 #include <vector>
 #include <iostream>
 #include <iomanip>
+#include <unordered_map>
+#include <memory>
 
 class gate_base {
 public:
@@ -40,7 +42,12 @@ public:
     void replace_fan_in(const std::string &old_fan_in, const std::string &new_fan_in);
     void replace_fan_out(const std::string &old_fan_out, const std::string &new_fan_out);
 
+    void set_circuit(std::shared_ptr<std::unordered_map<std::string, std::shared_ptr<gate_base>>> circuit);
+
     virtual void simulate() = 0;
+
+    //virtual SIMULATION_VALUE controlling_value() = 0;
+    //virtual SIMULATION_VALUE noncontrolling_value() = 0;
 
     friend std::ostream &operator<<( std::ostream &output, const gate_base &g );
 
@@ -52,6 +59,8 @@ protected:
 
     std::vector<std::string> _fan_in;
     std::vector<std::string> _fan_out;
+
+    std::shared_ptr<std::unordered_map<std::string, std::shared_ptr<gate_base>>> _circuit;
 };
 
 #endif //PODEM_GATE_HPP

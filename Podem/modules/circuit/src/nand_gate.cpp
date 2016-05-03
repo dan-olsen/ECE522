@@ -16,5 +16,8 @@ nand_gate::~nand_gate()
 
 void nand_gate::simulate()
 {
-    std::cout << "NAND" << std::endl;
+    for(auto iter = _fan_in.begin(); iter != _fan_in.end(); ++iter)
+    {
+        //_circuit->at(*iter)->value()
+    }
 }
