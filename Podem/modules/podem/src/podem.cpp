@@ -19,13 +19,18 @@ void podem::generate_patterns()
 {
     initialize_faults();
 
+    std::cout << std::endl << "Starting ATPG using PODEM ..." << std::endl;
+
     for(const auto& f : _faults)
     {
         _current_fault = f;
 
         std::cout << "Current Fault: " << _current_fault.first << " " << fault_value_strings[_current_fault.second] << std::endl;
 
-        //podem_recursive();
+        if(podem_recursive())
+        {
+            std::cout << "Fault is tested" << std::endl;
+        }
 
     }
 }
@@ -45,11 +50,15 @@ bool podem::podem_recursive()
     }
     else
     {
-        if(x_path_check("ONLY HERE TO BUILD"))
+        if(x_path_check())
         {
             gate_value objective = get_objective();
 
+            std::cout << "Objective: " << objective.first << " " << simulation_value_strings[objective.second] << std::endl;
+
             gate_value pi = backtrace(objective);
+
+            std::cout << "PI: " << pi.first << " " << simulation_value_strings[pi.second] << std::endl;
 
             imply(pi);
 
@@ -58,7 +67,7 @@ bool podem::podem_recursive()
                 return true;
             }
 
-            //TODO: pi.val = -pi.val
+            pi.second = inverse_simulation_value(pi.second);
 
             imply(pi);
 
@@ -81,7 +90,7 @@ bool podem::podem_recursive()
 
 }
 
-bool podem::x_path_check(const std::string &gate_name)
+bool podem::x_path_check()
 {
     std::unordered_map<std::string, bool> visited;
 
@@ -90,14 +99,12 @@ bool podem::x_path_check(const std::string &gate_name)
         visited.insert(std::make_pair(_c.at(*iter)->name(), false));
     }
 
-    return x_path_check_recursive(gate_name, visited);
+    return x_path_check_recursive(_current_fault.first, visited);
 }
 
 bool podem::x_path_check_recursive(const std::string &gate_name, std::unordered_map<std::string, bool> &visited)
 {
     visited[gate_name] = true;
-
-    std::cout << gate_name << " " << simulation_value_strings[_c.at(gate_name)->value()] << std::endl;
 
     if(_c.at(gate_name)->value() == X)
     {
@@ -126,14 +133,58 @@ bool podem::x_path_check_recursive(const std::string &gate_name, std::unordered_
 
 gate_value podem::get_objective()
 {
-    if(_c.at(_current_fault.first)->value() == X)
+    if(_c.at(_current_fault.first)->value() != fault_value_to_simulation_value(_current_fault.second))
     {
-        //TODO: return std::make_pair(_current_fault.first, -_current_fault.second);
+        return std::make_pair(_current_fault.first, fault_value_to_simulation_value(_current_fault.second));
     }
     else
     {
+        gate_value d = get_d_frontier(_current_fault.first, _c.at(_current_fault.first)->value());
 
+        for(auto iter = _c.at(d.first)->fan_in_begin(); iter != _c.at(d.first)->fan_in_end(); ++iter)
+        {
+            if(_c.at(*iter)->value() == X)
+            {
+                //TODO: Change to non controlling value
+                return std::make_pair(*iter, ONE);
+
+            }
+        }
+
+        //TODO: Finish
+        //l = unassigned input of d
+
+        //if(d has controlling values)
+            //c = controlling input value of d
+        //else if (0 value easier to get an input of XOR/EQUIVALENCE gate)
+            //c = ONE;
+        //else
+            //c = ZERO;
+
+        //return std::make_pair(l, inverse_simulation_value(c));
     }
+}
+
+gate_value podem::get_d_frontier(const std::string& gate_name, SIMULATION_VALUE v)
+{
+    for(auto iter = _c.at(gate_name)->fan_out_begin(); iter != _c.at(gate_name)->fan_out_end(); ++iter)
+    {
+        if(_c.at(*iter)->value() == D || _c.at(*iter)->value() == D_BAR)
+        {
+            gate_value gv = get_d_frontier(*iter, _c.at(*iter)->value());
+
+            if(!gv.first.empty())
+            {
+                return gv;
+            }
+        }
+        else if(_c.at(*iter)->value() == X)
+        {
+            return std::make_pair(*iter, X);
+        }
+    }
+
+    return std::make_pair("", X);
 }
 
 gate_value podem::backtrace(const gate_value& obj)
@@ -147,11 +198,26 @@ gate_value podem::backtrace(const gate_value& obj)
 
         if(type == NAND || type == NOR || type == NOT)
         {
-            //TODO: v = -v
+            v = inverse_simulation_value(v);
         }
 
-        //TODO: if gate requires all inputs set
+        for(auto iter = _c.at(gate)->fan_in_begin(); iter != _c.at(gate)->fan_in_end(); ++iter)
+        {
+            if(_c.at(*iter)->value() == X)
+            {
+                gate = *iter;
 
+                break;
+            }
+        }
+
+        //TODO: Add controllability
+        //if (gate requires all inputs set)
+            //select unassigned input a of gate with hardest controllability to value v
+        //else
+            //select unassigned input a of gate with hardest controllability to value v
+
+        //gate = a;
 
     }
 
@@ -160,7 +226,7 @@ gate_value podem::backtrace(const gate_value& obj)
 
 void podem::imply(const gate_value& pi)
 {
-    //TODO: Set pi value
+    _c.at(pi.first)->set_value(pi.second);
 
     for(auto iter = _c.circuit_begin(); iter != _c.circuit_end(); ++iter)
     {
@@ -187,7 +253,6 @@ void podem::initialize_faults()
 {
     if(_fault_file_name.empty())
     {
-        //TODO: Add all faults
         for(auto iter = _c.circuit_begin(); iter != _c.circuit_end(); ++iter)
         {
             _faults.push_back(std::make_pair(*iter, SA0));

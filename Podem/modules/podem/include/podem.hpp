@@ -29,12 +29,20 @@ private:
 
     fault _current_fault;
 
+    std::vector<std::string> _d_frontier;
+
     bool podem_recursive();
-    bool x_path_check(const std::string &gate_name);
+
+    bool x_path_check();
     bool x_path_check_recursive(const std::string &gate_name, std::unordered_map<std::string, bool> &visited);
+
     gate_value get_objective();
+    gate_value get_d_frontier(const std::string& gate_name, SIMULATION_VALUE v);
+
     gate_value backtrace(const gate_value& obj);
+
     void imply(const gate_value& pi);
+
     bool is_fault_detected();
 
     void initialize_faults();

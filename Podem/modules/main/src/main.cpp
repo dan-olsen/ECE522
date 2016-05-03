@@ -20,7 +20,7 @@ int main(int argc, char* const argv[])
     circuit c(argv[1]);
 
     c.print_header();
-    //c.print_circuit();
+    c.print_circuit();
 
     podem p(c);
 
