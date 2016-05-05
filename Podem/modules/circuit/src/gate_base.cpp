@@ -37,6 +37,38 @@ void gate_base::set_value(SIMULATION_VALUE v)
     _value = v;
 }
 
+SIMULATION_VALUE gate_base::controlling_value() const
+{
+    //INPUT, OUTPUT, NOT, BUFFER, AND, NAND, OR, NOR, DFF, STEM, UNKNOWN
+    switch (_type)
+    {
+        case OR:
+        case NOR:
+            return ONE;
+        case AND:
+        case NAND:
+            return ZERO;
+        default:
+            return X;
+    }
+}
+
+SIMULATION_VALUE gate_base::noncontrolling_value() const
+{
+    //INPUT, OUTPUT, NOT, BUFFER, AND, NAND, OR, NOR, DFF, STEM, UNKNOWN
+    switch (_type)
+    {
+        case OR:
+        case NOR:
+            return ZERO;
+        case AND:
+        case NAND:
+            return ONE;
+        default:
+            return X;
+    }
+}
+
 std::vector<std::string>::iterator gate_base::fan_in_begin()
 {
     return _fan_in.begin();
@@ -106,6 +138,8 @@ void gate_base::simulate()
 {
 
 }
+
+
 
 std::ostream &operator<<( std::ostream &output, const gate_base &g )
 {

@@ -143,13 +143,19 @@ gate_value podem::get_objective()
 
         for(auto iter = _c.at(d.first)->fan_in_begin(); iter != _c.at(d.first)->fan_in_end(); ++iter)
         {
+            //GATE_TYPE type= _c.at(d)->type();
+
             if(_c.at(*iter)->value() == X)
             {
-                //TODO: Change to non controlling value
-                return std::make_pair(*iter, ONE);
+                //TODO: Check if STEM/DFF/INPUT
+                return std::make_pair(*iter, _c.at(d.first)->noncontrolling_value());
 
             }
         }
+
+        std::cerr << "D frontier is invalid type" << std::endl;
+
+        exit(1);
 
         //TODO: Finish
         //l = unassigned input of d

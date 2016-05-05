@@ -25,6 +25,9 @@ public:
     SIMULATION_VALUE value() const;
     void set_value(SIMULATION_VALUE v);
 
+    SIMULATION_VALUE controlling_value() const;
+    SIMULATION_VALUE noncontrolling_value() const;
+
     std::vector<std::string>::iterator fan_in_begin();
     std::vector<std::string>::iterator fan_in_end();
     std::vector<std::string>::iterator fan_out_begin();
