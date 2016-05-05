@@ -17,7 +17,7 @@
 class gate_base {
 public:
     gate_base(const std::string& name, GATE_TYPE type);
-    virtual ~gate_base();
+    ~gate_base();
 
     std::string name() const;
     GATE_TYPE type() const;
@@ -44,7 +44,7 @@ public:
 
     void set_circuit(std::shared_ptr<std::unordered_map<std::string, std::shared_ptr<gate_base>>> circuit);
 
-    virtual void simulate() = 0;
+    void simulate();
 
     //virtual SIMULATION_VALUE controlling_value() = 0;
     //virtual SIMULATION_VALUE noncontrolling_value() = 0;

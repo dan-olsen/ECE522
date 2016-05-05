@@ -102,6 +102,11 @@ void gate_base::set_circuit(std::shared_ptr<std::unordered_map<std::string, std:
     _circuit = circuit;
 }
 
+void gate_base::simulate()
+{
+
+}
+
 std::ostream &operator<<( std::ostream &output, const gate_base &g )
 {
     output << std::setw(20) << std::left << g._name;// << std::endl;

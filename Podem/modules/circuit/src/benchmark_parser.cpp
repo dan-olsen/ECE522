@@ -118,7 +118,7 @@ void benchmark_parser::read_gates(circuit &c)
             {
                 s >> tmp;
 
-                std::shared_ptr<gate_base> gate = gate_factory::create_gate("INPUT", tmp);
+                std::shared_ptr<gate_base> gate = std::make_shared<gate_base>(tmp, INPUT);
 
                 c._circuit.insert({tmp, gate});
                 c._primary_inputs.push_back(tmp);
@@ -174,7 +174,7 @@ void benchmark_parser::read_gates(circuit &c)
 
             s >> type;
 
-            std::shared_ptr<gate_base> gate = gate_factory::create_gate(type, name);
+            std::shared_ptr<gate_base> gate = std::make_shared<gate_base>(name, string_to_gate_type(type));
 
             while(s >> fin) {
                 auto iter = _dff_set.find(fin);
@@ -195,12 +195,12 @@ void benchmark_parser::read_gates(circuit &c)
 
                 //c._primary_inputs.push_back(gate->name() + "_IN");
 
-                auto d = std::make_shared<dff>(name + "_OUT");
+                auto d = std::make_shared<gate_base>(name + "_OUT", DFF);
                 d->add_fan_in(gate->fan_in()[0]);
 
                 c._circuit.insert({name + "_OUT", d});
 
-                auto d2 = std::make_shared<dff> (name + "_IN");
+                auto d2 = std::make_shared<gate_base> (name + "_IN", DFF);
 
                 c._circuit.insert({name + "_IN", d2});
 
@@ -257,7 +257,7 @@ void benchmark_parser::read_gates(circuit &c)
                 std::stringstream s;
                 s << iter->second->name() << "_" << i;
 
-                auto f = std::make_shared<from> (s.str());
+                auto f = std::make_shared<gate_base> (s.str(), STEM);
 
                 f->add_fan_in(iter->second->name());
                 f->add_fan_out(*iter2);

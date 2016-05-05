@@ -6,7 +6,6 @@
 #define PODEM_BENCHMARK_PARSER_HPP
 
 #include "circuit.hpp"
-#include "gate_factory.hpp"
 
 #include <iostream>
 #include <fstream>

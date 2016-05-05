@@ -8,15 +8,6 @@
 #include "gate_types.hpp"
 #include "benchmark_parser.hpp"
 #include "gate_base.hpp"
-#include "and_gate.hpp"
-#include "nand_gate.hpp"
-#include "or_gate.hpp"
-#include "nor_gate.hpp"
-#include "not_gate.hpp"
-#include "buffer.hpp"
-#include "input.hpp"
-#include "dff.hpp"
-#include "from.hpp"
 
 #include <vector>
 #include <map>
