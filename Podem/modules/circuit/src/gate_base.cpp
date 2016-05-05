@@ -9,7 +9,7 @@ gate_base::gate_base(const std::string& name, GATE_TYPE type)
     _name = name;
     _type = type;
 
-    _value = X;
+    _value = simulation_value::X;
 }
 
 gate_base::~gate_base()
@@ -27,45 +27,45 @@ GATE_TYPE gate_base::type() const
     return _type;
 }
 
-SIMULATION_VALUE gate_base::value() const
+simulation_value::VALUE gate_base::value() const
 {
     return _value;
 }
 
-void gate_base::set_value(SIMULATION_VALUE v)
+void gate_base::set_value(simulation_value::VALUE v)
 {
     _value = v;
 }
 
-SIMULATION_VALUE gate_base::controlling_value() const
+simulation_value::VALUE gate_base::controlling_value() const
 {
     //INPUT, OUTPUT, NOT, BUFFER, AND, NAND, OR, NOR, DFF, STEM, UNKNOWN
     switch (_type)
     {
         case OR:
         case NOR:
-            return ONE;
+            return simulation_value::ONE;
         case AND:
         case NAND:
-            return ZERO;
+            return simulation_value::ZERO;
         default:
-            return X;
+            return simulation_value::X;
     }
 }
 
-SIMULATION_VALUE gate_base::noncontrolling_value() const
+simulation_value::VALUE gate_base::noncontrolling_value() const
 {
     //INPUT, OUTPUT, NOT, BUFFER, AND, NAND, OR, NOR, DFF, STEM, UNKNOWN
     switch (_type)
     {
         case OR:
         case NOR:
-            return ZERO;
+            return simulation_value::ZERO;
         case AND:
         case NAND:
-            return ONE;
+            return simulation_value::ONE;
         default:
-            return X;
+            return simulation_value::X;
     }
 }
 
@@ -141,7 +141,11 @@ void gate_base::set_gate_lookup(std::shared_ptr<std::unordered_map<std::string, 
 
 void gate_base::simulate()
 {
-
+    switch(_type)
+    {
+        case STEM:
+            _value = _sorted_circuit[_gate_lookup->at(_fan_in[0])]->value();
+    }
 }
 
 std::ostream &operator<<( std::ostream &output, const gate_base &g )
@@ -151,7 +155,7 @@ std::ostream &operator<<( std::ostream &output, const gate_base &g )
     output << std::setw(10) << std::left <<  g._fan_in.size();
     output << std::setw(10) << std::left <<  g._fan_out.size();
 
-    output << std::setw(10) << std::left << simulation_value_strings[g._value];
+    output << std::setw(10) << std::left << simulation_value::strings[g._value];
 
     output << "{";
     for (auto iter = g._fan_in.begin(); iter != g._fan_in.end(); iter++)

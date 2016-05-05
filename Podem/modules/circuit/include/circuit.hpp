@@ -30,6 +30,8 @@ public:
 
     gate_base& at(const std::string &key);
 
+    bool does_gate_exist(const std::string &key);
+
     std::vector<gate_base>::iterator circuit_begin();
     std::vector<gate_base>::iterator circuit_end();
 

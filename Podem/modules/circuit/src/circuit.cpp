@@ -16,10 +16,10 @@ circuit::circuit(const std::string &benchmark_file)
 
     topological_sort(c);
 
-    for(auto &c : _sorted_circuit)
+    for(auto iter = _sorted_circuit.begin(); iter != _sorted_circuit.end(); ++iter)
     {
-        c.set_circuit(std::make_shared<std::vector<gate_base>>(_sorted_circuit));
-        c.set_gate_lookup(std::make_shared<std::unordered_map<std::string, unsigned int>>(_gate_lookup));
+        iter->set_circuit(std::make_shared<std::vector<gate_base>>(_sorted_circuit));
+        iter->set_gate_lookup(std::make_shared<std::unordered_map<std::string, unsigned int>>(_gate_lookup));
 
     }
 }
@@ -31,15 +31,20 @@ circuit::~circuit()
 
 void circuit::initialize_to_x()
 {
-    for(unsigned int i = 0; i < _sorted_circuit.size(); ++i)
+    for(auto iter = _sorted_circuit.begin(); iter != _sorted_circuit.end(); ++iter)
     {
-        _sorted_circuit[i].set_value(X);
+        iter->set_value(simulation_value::X);
     }
 }
 
 gate_base& circuit::at(const std::string &key)
 {
     return _sorted_circuit[_gate_lookup.at(key)];
+}
+
+bool circuit::does_gate_exist(const std::string &key)
+{
+    return _gate_lookup.count(key) > 0 ? true : false;
 }
 
 std::vector<gate_base>::iterator circuit::circuit_begin()
@@ -96,9 +101,9 @@ void circuit::print_circuit()
 
     std::cout << "FANIN\tFANOUT" << std::endl;
 
-    for(const auto &c : _sorted_circuit)
+    for(auto iter = _sorted_circuit.begin(); iter != _sorted_circuit.end(); ++iter)
     {
-        std::cout << c << std::endl;
+        std::cout << *iter << std::endl;
 
     }
 

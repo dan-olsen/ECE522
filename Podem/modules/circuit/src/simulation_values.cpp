@@ -4,30 +4,34 @@
 
 #include "simulation_values.hpp"
 
-SIMULATION_VALUE fault_value_to_simulation_value(FAULT_VALUE value)
+const std::string five_value::strings [] = {"ZERO", "ONE", "X", "D", "D_BAR"};
+
+const std::string simulation_value::strings [] = {"ZERO", "ONE", "X"};
+
+const std::string fault_value::strings [] = {"SA0", "SA1"};
+
+simulation_value::VALUE fault_value::fault_value_to_simulation_value(fault_value::VALUE value)
 {
     switch(value) {
         case SA0:
-            return ONE;
+            return simulation_value::ONE;
         case SA1:
-            return ZERO;
+            return simulation_value::ZERO;
         default:
             std::cerr << "ERROR: Invalid fault value" << std::endl;
             exit(1);
     }
 }
 
-SIMULATION_VALUE inverse_simulation_value(SIMULATION_VALUE value)
+simulation_value::VALUE simulation_value::inverse_simulation_value(simulation_value::VALUE value)
 {
     switch(value) {
         case ZERO:
             return ONE;
         case ONE:
             return ZERO;
-        case D:
-            return D_BAR;
-        case D_BAR:
-            return D;
+        case X:
+            return X;
         default:
             std::cerr << "ERROR: Invalid simulation value" << std::endl;
             exit(1);

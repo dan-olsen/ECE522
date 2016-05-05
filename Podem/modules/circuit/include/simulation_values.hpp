@@ -8,15 +8,29 @@
 #include <string>
 #include <iostream>
 
-enum SIMULATION_VALUE {ZERO, ONE, X, D, D_BAR};
-static const std::string simulation_value_strings [] = {"ZERO", "ONE", "X", "D", "D_BAR"};
+class five_value {
+public:
+    enum VALUE {ZERO, ONE, X, D, D_BAR};
+    static const std::string strings [5];
 
-enum FAULT_VALUE {SA0, SA1};
-static const std::string fault_value_strings [] = {"SA0", "SA1"};
+};
 
-FAULT_VALUE simulation_value_to_fault_value(SIMULATION_VALUE value);
-SIMULATION_VALUE fault_value_to_simulation_value(FAULT_VALUE value);
+class simulation_value {
+public:
+    enum VALUE {ZERO, ONE, X};
+    static const std::string strings [3];
 
-SIMULATION_VALUE inverse_simulation_value(SIMULATION_VALUE value);
+    static VALUE inverse_simulation_value(VALUE value);
+
+};
+
+class fault_value {
+public:
+    enum VALUE {SA0, SA1};
+    static const std::string strings [2];
+
+    static simulation_value::VALUE fault_value_to_simulation_value(VALUE value);
+
+};
 
 #endif //PODEM_SIMULATION_VALUES_HPP

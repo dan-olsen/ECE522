@@ -22,11 +22,11 @@ public:
     std::string name() const;
     GATE_TYPE type() const;
 
-    SIMULATION_VALUE value() const;
-    void set_value(SIMULATION_VALUE v);
+    simulation_value::VALUE value() const;
+    void set_value(simulation_value::VALUE v);
 
-    SIMULATION_VALUE controlling_value() const;
-    SIMULATION_VALUE noncontrolling_value() const;
+    simulation_value::VALUE controlling_value() const;
+    simulation_value::VALUE noncontrolling_value() const;
 
     std::vector<std::string>::iterator fan_in_begin();
     std::vector<std::string>::iterator fan_in_end();
@@ -59,7 +59,7 @@ protected:
     std::string _name;
     GATE_TYPE _type;
 
-    SIMULATION_VALUE _value;
+    simulation_value::VALUE _value;
 
     std::vector<std::string> _fan_in;
     std::vector<std::string> _fan_out;

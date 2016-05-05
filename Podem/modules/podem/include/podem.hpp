@@ -9,8 +9,8 @@
 
 #include <iostream>
 
-typedef std::pair<std::string, SIMULATION_VALUE> gate_value;
-typedef std::pair<std::string, FAULT_VALUE> fault;
+typedef std::pair<std::string, simulation_value::VALUE> gate_value;
+typedef std::pair<std::string, fault_value::VALUE> fault;
 
 class podem {
 public:
@@ -37,7 +37,7 @@ private:
     bool x_path_check_recursive(const std::string &gate_name, std::unordered_map<std::string, bool> &visited);
 
     gate_value get_objective();
-    gate_value get_d_frontier(const std::string& gate_name, SIMULATION_VALUE v);
+    gate_value get_d_frontier(const std::string& gate_name, simulation_value::VALUE v);
 
     gate_value backtrace(const gate_value& obj);
 
