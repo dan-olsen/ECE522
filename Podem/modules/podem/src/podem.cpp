@@ -96,7 +96,7 @@ bool podem::x_path_check()
 
     for(auto iter = _c.circuit_begin(); iter != _c.circuit_end(); ++iter)
     {
-        visited.insert(std::make_pair(_c.at(*iter)->name(), false));
+        visited.insert(std::make_pair(iter->name(), false));
     }
 
     return x_path_check_recursive(_current_fault.first, visited);
@@ -106,11 +106,11 @@ bool podem::x_path_check_recursive(const std::string &gate_name, std::unordered_
 {
     visited[gate_name] = true;
 
-    if(_c.at(gate_name)->value() == X)
+    if(_c.at(gate_name).value() == X)
     {
-        if (_c.at(gate_name)->fan_out_count() != 0)
+        if (_c.at(gate_name).fan_out_count() != 0)
         {
-            for(auto iter = _c.at(gate_name)->fan_out_begin(); iter != _c.at(gate_name)->fan_out_end(); ++iter)
+            for(auto iter = _c.at(gate_name).fan_out_begin(); iter != _c.at(gate_name).fan_out_end(); ++iter)
             {
                 if(!visited[*iter])
                 {
@@ -133,22 +133,22 @@ bool podem::x_path_check_recursive(const std::string &gate_name, std::unordered_
 
 gate_value podem::get_objective()
 {
-    if(_c.at(_current_fault.first)->value() != fault_value_to_simulation_value(_current_fault.second))
+    if(_c.at(_current_fault.first).value() != fault_value_to_simulation_value(_current_fault.second))
     {
         return std::make_pair(_current_fault.first, fault_value_to_simulation_value(_current_fault.second));
     }
     else
     {
-        gate_value d = get_d_frontier(_current_fault.first, _c.at(_current_fault.first)->value());
+        gate_value d = get_d_frontier(_current_fault.first, _c.at(_current_fault.first).value());
 
-        for(auto iter = _c.at(d.first)->fan_in_begin(); iter != _c.at(d.first)->fan_in_end(); ++iter)
+        for(auto iter = _c.at(d.first).fan_in_begin(); iter != _c.at(d.first).fan_in_end(); ++iter)
         {
             //GATE_TYPE type= _c.at(d)->type();
 
-            if(_c.at(*iter)->value() == X)
+            if(_c.at(*iter).value() == X)
             {
                 //TODO: Check if STEM/DFF/INPUT
-                return std::make_pair(*iter, _c.at(d.first)->noncontrolling_value());
+                return std::make_pair(*iter, _c.at(d.first).noncontrolling_value());
 
             }
         }
@@ -173,18 +173,18 @@ gate_value podem::get_objective()
 
 gate_value podem::get_d_frontier(const std::string& gate_name, SIMULATION_VALUE v)
 {
-    for(auto iter = _c.at(gate_name)->fan_out_begin(); iter != _c.at(gate_name)->fan_out_end(); ++iter)
+    for(auto iter = _c.at(gate_name).fan_out_begin(); iter != _c.at(gate_name).fan_out_end(); ++iter)
     {
-        if(_c.at(*iter)->value() == D || _c.at(*iter)->value() == D_BAR)
+        if(_c.at(*iter).value() == D || _c.at(*iter).value() == D_BAR)
         {
-            gate_value gv = get_d_frontier(*iter, _c.at(*iter)->value());
+            gate_value gv = get_d_frontier(*iter, _c.at(*iter).value());
 
             if(!gv.first.empty())
             {
                 return gv;
             }
         }
-        else if(_c.at(*iter)->value() == X)
+        else if(_c.at(*iter).value() == X)
         {
             return std::make_pair(*iter, X);
         }
@@ -198,18 +198,18 @@ gate_value podem::backtrace(const gate_value& obj)
     SIMULATION_VALUE v = obj.second;
     std::string gate = obj.first;
 
-    while(_c.at(gate)->type() != INPUT)
+    while(_c.at(gate).type() != INPUT)
     {
-        GATE_TYPE type = _c.at(gate)->type();
+        GATE_TYPE type = _c.at(gate).type();
 
         if(type == NAND || type == NOR || type == NOT)
         {
             v = inverse_simulation_value(v);
         }
 
-        for(auto iter = _c.at(gate)->fan_in_begin(); iter != _c.at(gate)->fan_in_end(); ++iter)
+        for(auto iter = _c.at(gate).fan_in_begin(); iter != _c.at(gate).fan_in_end(); ++iter)
         {
-            if(_c.at(*iter)->value() == X)
+            if(_c.at(*iter).value() == X)
             {
                 gate = *iter;
 
@@ -232,11 +232,11 @@ gate_value podem::backtrace(const gate_value& obj)
 
 void podem::imply(const gate_value& pi)
 {
-    _c.at(pi.first)->set_value(pi.second);
+    _c.at(pi.first).set_value(pi.second);
 
     for(auto iter = _c.circuit_begin(); iter != _c.circuit_end(); ++iter)
     {
-        _c.at(*iter)->simulate();
+        iter->simulate();
     }
 }
 
@@ -244,7 +244,7 @@ bool podem::is_fault_detected()
 {
     for(auto iter = _c.outputs_begin(); iter != _c.outputs_end(); ++iter)
     {
-        SIMULATION_VALUE v = _c.at(*iter)->value();
+        SIMULATION_VALUE v = _c.at(*iter).value();
 
         if(v == D || v == D_BAR)
         {
@@ -261,8 +261,8 @@ void podem::initialize_faults()
     {
         for(auto iter = _c.circuit_begin(); iter != _c.circuit_end(); ++iter)
         {
-            _faults.push_back(std::make_pair(*iter, SA0));
-            _faults.push_back(std::make_pair(*iter, SA1));
+            _faults.push_back(std::make_pair(iter->name(), SA0));
+            _faults.push_back(std::make_pair(iter->name(), SA1));
 
         }
     }

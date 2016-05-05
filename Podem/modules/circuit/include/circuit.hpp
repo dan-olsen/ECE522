@@ -6,8 +6,8 @@
 #define PODEM_CIRCUIT_HPP
 
 #include "gate_types.hpp"
-#include "benchmark_parser.hpp"
 #include "gate_base.hpp"
+#include "benchmark_parser.hpp"
 
 #include <vector>
 #include <map>
@@ -28,10 +28,10 @@ public:
 
     void initialize_to_x();
 
-    std::shared_ptr<gate_base> at(const std::string &key);
+    gate_base& at(const std::string &key);
 
-    std::vector<std::string>::iterator circuit_begin();
-    std::vector<std::string>::iterator circuit_end();
+    std::vector<gate_base>::iterator circuit_begin();
+    std::vector<gate_base>::iterator circuit_end();
 
     std::vector<std::string>::iterator inputs_begin();
     std::vector<std::string>::iterator inputs_end();
@@ -49,12 +49,12 @@ private:
     std::vector<std::string> _primary_inputs;
     std::vector<std::string> _primary_outputs;
 
-    std::unordered_map<std::string, std::shared_ptr<gate_base>> _circuit;
-    std::vector<std::string> _sorted_circuit;
+    std::vector<gate_base> _sorted_circuit;
+    std::unordered_map<std::string, unsigned int> _gate_lookup;
 
-    std::vector<std::shared_ptr<gate_base>> _dffs;
+    std::vector<gate_base> _dffs;
 
-    void topological_sort();
+    void topological_sort(std::unordered_map<std::string, gate_base> &c);
 };
 
 #endif //PODEM_CIRCUIT_HPP

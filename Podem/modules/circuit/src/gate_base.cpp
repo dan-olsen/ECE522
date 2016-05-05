@@ -129,17 +129,20 @@ unsigned int gate_base::fan_out_count()
     return (unsigned int)_fan_out.size();
 }
 
-void gate_base::set_circuit(std::shared_ptr<std::unordered_map<std::string, std::shared_ptr<gate_base>>> circuit)
+void gate_base::set_circuit(std::shared_ptr<std::vector<gate_base>> c)
 {
-    _circuit = circuit;
+    _sorted_circuit = c;
+}
+
+void gate_base::set_gate_lookup(std::shared_ptr<std::unordered_map<std::string, unsigned int>> l)
+{
+    _gate_lookup = l;
 }
 
 void gate_base::simulate()
 {
 
 }
-
-
 
 std::ostream &operator<<( std::ostream &output, const gate_base &g )
 {

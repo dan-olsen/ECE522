@@ -45,7 +45,8 @@ public:
     void replace_fan_in(const std::string &old_fan_in, const std::string &new_fan_in);
     void replace_fan_out(const std::string &old_fan_out, const std::string &new_fan_out);
 
-    void set_circuit(std::shared_ptr<std::unordered_map<std::string, std::shared_ptr<gate_base>>> circuit);
+    void set_circuit(std::shared_ptr<std::vector<gate_base>> c);
+    void set_gate_lookup(std::shared_ptr<std::unordered_map<std::string, unsigned int>> l);
 
     void simulate();
 
@@ -63,7 +64,8 @@ protected:
     std::vector<std::string> _fan_in;
     std::vector<std::string> _fan_out;
 
-    std::shared_ptr<std::unordered_map<std::string, std::shared_ptr<gate_base>>> _circuit;
+    std::shared_ptr<std::vector<gate_base>> _sorted_circuit;
+    std::shared_ptr<std::unordered_map<std::string, unsigned int>> _gate_lookup;
 };
 
 #endif //PODEM_GATE_HPP

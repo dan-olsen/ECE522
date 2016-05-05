@@ -23,7 +23,7 @@ benchmark_parser::~benchmark_parser()
     }
 }
 
-void benchmark_parser::read_benchmark(circuit &c)
+std::unordered_map<std::string, gate_base> &benchmark_parser::read_benchmark(circuit &c)
 {
     try {
         _benchmark.open(_benchmark_file);
@@ -47,6 +47,8 @@ void benchmark_parser::read_benchmark(circuit &c)
         std::cerr << "ERROR: " << e.what() << std::endl;
 
     }
+
+    return _circuit;
 }
 
 std::string benchmark_parser::my_replace(std::string &s, const std::string &toReplace, const std::string &replaceWith)
@@ -118,9 +120,9 @@ void benchmark_parser::read_gates(circuit &c)
             {
                 s >> tmp;
 
-                std::shared_ptr<gate_base> gate = std::make_shared<gate_base>(tmp, INPUT);
+                gate_base gate(tmp, INPUT);
 
-                c._circuit.insert({tmp, gate});
+                _circuit.insert({tmp, gate});
                 c._primary_inputs.push_back(tmp);
             }
         }
@@ -174,7 +176,7 @@ void benchmark_parser::read_gates(circuit &c)
 
             s >> type;
 
-            std::shared_ptr<gate_base> gate = std::make_shared<gate_base>(name, string_to_gate_type(type));
+            gate_base gate (name, string_to_gate_type(type));
 
             while(s >> fin) {
                 auto iter = _dff_set.find(fin);
@@ -185,36 +187,36 @@ void benchmark_parser::read_gates(circuit &c)
 
                 }
 
-                gate->add_fan_in(fin);
+                gate.add_fan_in(fin);
             }
 
-            if (gate->type() == DFF)
+            if (gate.type() == DFF)
             {
                 c._dffs.push_back(gate);
-                _dff_set.insert(gate->name());
+                _dff_set.insert(gate.name());
 
                 //c._primary_inputs.push_back(gate->name() + "_IN");
 
-                auto d = std::make_shared<gate_base>(name + "_OUT", DFF);
-                d->add_fan_in(gate->fan_in()[0]);
+                gate_base d (name + "_OUT", DFF);
+                d.add_fan_in(gate.fan_in()[0]);
 
-                c._circuit.insert({name + "_OUT", d});
+                _circuit.insert({name + "_OUT", d});
 
-                auto d2 = std::make_shared<gate_base> (name + "_IN", DFF);
+                gate_base d2 (name + "_IN", DFF);
 
-                c._circuit.insert({name + "_IN", d2});
+                _circuit.insert({name + "_IN", d2});
 
             }
             else
             {
-                c._circuit.insert({name, gate});
+                _circuit.insert({name, gate});
             }
         }
     }
 
-    for(auto iter = c._circuit.begin(); iter != c._circuit.end(); ++iter)
+    for(auto iter = _circuit.begin(); iter != _circuit.end(); ++iter)
     {
-        std::vector<std::string> fin = iter->second->fan_in();
+        std::vector<std::string> fin = iter->second.fan_in();
 
         for(auto iter2 = fin.begin(); iter2 != fin.end(); ++iter2)
         {
@@ -222,61 +224,61 @@ void benchmark_parser::read_gates(circuit &c)
 
             if(iter3 != _dff_set.end())
             {
-                iter->second->replace_fan_in(*iter2, *iter2 + "_IN");
+                iter->second.replace_fan_in(*iter2, *iter2 + "_IN");
 
             }
         }
     }
 
-    for(auto iter = c._circuit.begin(); iter != c._circuit.end(); ++iter)
+    for(auto iter = _circuit.begin(); iter != _circuit.end(); ++iter)
     {
-        for(auto iter2 = iter->second->fan_in_begin(); iter2 != iter->second->fan_in_end(); ++iter2)
+        for(auto iter2 = iter->second.fan_in_begin(); iter2 != iter->second.fan_in_end(); ++iter2)
         {
             try{
-                c._circuit.at(*iter2)->add_fan_out(iter->second->name());
+                _circuit.at(*iter2).add_fan_out(iter->second.name());
 
             } catch (std::exception e) {
                 std::cerr << "ERROR: " << e.what() << std::endl;
-                std::cerr << *iter2 << " fan-in of " << iter->second->name() << " was not found in circuit" << std::endl;
+                std::cerr << *iter2 << " fan-in of " << iter->second.name() << " was not found in circuit" << std::endl;
             }
 
         }
     }
 
-    std::unordered_map<std::string, std::shared_ptr<gate_base>> map2;
+    std::unordered_map<std::string, gate_base> map2;
 
-    for(auto iter = c._circuit.begin(); iter != c._circuit.end(); ++iter)
+    for(auto iter = _circuit.begin(); iter != _circuit.end(); ++iter)
     {
-        if(iter->second->fan_out_count() > 1 && iter->second->type() != STEM)
+        if(iter->second.fan_out_count() > 1 && iter->second.type() != STEM)
         {
             int i = 0;
-            std::vector<std::string> old = iter->second->fan_out();
+            std::vector<std::string> old = iter->second.fan_out();
 
             for(auto iter2 = old.begin(); iter2 != old.end(); ++iter2, ++i)
             {
                 std::stringstream s;
-                s << iter->second->name() << "_" << i;
+                s << iter->second.name() << "_" << i;
 
-                auto f = std::make_shared<gate_base> (s.str(), STEM);
+                gate_base f (s.str(), STEM);
 
-                f->add_fan_in(iter->second->name());
-                f->add_fan_out(*iter2);
+                f.add_fan_in(iter->second.name());
+                f.add_fan_out(*iter2);
 
-                iter->second->replace_fan_out(*iter2, f->name());
-                c._circuit.at(*iter2)->replace_fan_in(iter->second->name(), f->name());
+                iter->second.replace_fan_out(*iter2, f.name());
+                _circuit.at(*iter2).replace_fan_in(iter->second.name(), f.name());
 
                 map2.insert({s.str(), f});
             }
         }
     }
 
-    c._circuit.insert(map2.begin(), map2.end());
+    _circuit.insert(map2.begin(), map2.end());
     //c._circuit = std::move(map2);
 
     //Calculate actual gate counts
-    for(auto iter = c._circuit.begin(); iter != c._circuit.end(); ++iter)
+    for(auto iter = _circuit.begin(); iter != _circuit.end(); ++iter)
     {
-        GATE_TYPE type = c._circuit.at(iter->first)->type();
+        GATE_TYPE type = _circuit.at(iter->first).type();
         std::map<GATE_TYPE, int>::iterator lb = c._gate_counts.lower_bound(type);
 
         if(lb != c._gate_counts.end() && !(c._gate_counts.key_comp()(type, lb->first)))
