@@ -136,6 +136,7 @@ unsigned int gate_base::fan_out_count()
 
 void gate_base::imply()
 {
+    bool dont_care = false;
     switch(_type)
     {
         case INPUT:
@@ -164,10 +165,16 @@ void gate_base::imply()
                 else if (_sorted_circuit[_gate_lookup[*iter]].value() == simulation_value::X)
                 {
                     _value = simulation_value::X;
+                    dont_care = true;
                 }
-                else if(_sorted_circuit[_gate_lookup[*iter]].value() == noncontrolling_value())
+                else if(!dont_care)
                 {
                     propagate();
+
+                    if(_value != simulation_value::D && _value != simulation_value::D_BAR)
+                    {
+                        _value = noncontrolling_value();
+                    }
                 }
             }
 

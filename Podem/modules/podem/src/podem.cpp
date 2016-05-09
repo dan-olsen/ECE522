@@ -23,6 +23,8 @@ void podem::generate_patterns()
 
     for(auto& f : _faults)
     {
+        _c.initialize_to_x();
+
         _current_fault = f;
 
         std::cout << "Current Fault: " << _current_fault.first << " " << simulation_value::strings[_current_fault.second] << std::endl;
@@ -208,8 +210,13 @@ gate_value podem::backtrace(const gate_value& obj)
     simulation_value::VALUE v = obj.second;
     std::string gate = obj.first;
 
+    if(gate == "23")
+    {
+    }
+
     while(_c.at(gate).type() != INPUT)
     {
+        //std::cout << "Backtrace: " << gate << std::endl;
         GATE_TYPE type = _c.at(gate).type();
 
         if(type == NAND || type == NOR || type == NOT)
@@ -248,13 +255,20 @@ void podem::imply(const gate_value& pi)
     {
         iter->imply();
     }
+    std::cout << simulation_value::strings[_c.at(_current_fault.first).value()] << std::endl;
+
 
     _c.at(_current_fault.first).imply();
+    std::cout << simulation_value::strings[_c.at(_current_fault.first).value()] << std::endl;
 
     if(fault_value::fault_value_to_objective_value(_current_fault.second) == _c.at(_current_fault.first).value())
     {
+
         _c.at(_current_fault.first).set_value(fault_value::fault_value_to_simulation_value(_current_fault.second));
+
+
     }
+    std::cout << simulation_value::strings[_c.at(_current_fault.first).value()] << std::endl;
 
     for(auto iter = _c.circuit_begin() + _c.position_of(_current_fault.first) + 1; iter != _c.circuit_end(); ++iter)
     {
