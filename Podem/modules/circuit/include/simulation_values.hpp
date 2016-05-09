@@ -8,17 +8,10 @@
 #include <string>
 #include <iostream>
 
-class five_value {
+class simulation_value {
 public:
     enum VALUE {ZERO, ONE, X, D, D_BAR};
     static const std::string strings [5];
-
-};
-
-class simulation_value {
-public:
-    enum VALUE {ZERO, ONE, X};
-    static const std::string strings [3];
 
     static VALUE inverse_simulation_value(VALUE value);
 
@@ -29,6 +22,7 @@ public:
     enum VALUE {SA0, SA1};
     static const std::string strings [2];
 
+    static simulation_value::VALUE fault_value_to_objective_value(VALUE value);
     static simulation_value::VALUE fault_value_to_simulation_value(VALUE value);
 
 };

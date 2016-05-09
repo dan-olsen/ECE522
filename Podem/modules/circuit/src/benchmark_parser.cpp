@@ -120,7 +120,7 @@ void benchmark_parser::read_gates(circuit &c)
             {
                 s >> tmp;
 
-                gate_base gate(tmp, INPUT);
+                gate_base gate(tmp, INPUT, c._sorted_circuit, c._gate_lookup);
 
                 _circuit.insert({tmp, gate});
                 c._primary_inputs.push_back(tmp);
@@ -176,7 +176,7 @@ void benchmark_parser::read_gates(circuit &c)
 
             s >> type;
 
-            gate_base gate (name, string_to_gate_type(type));
+            gate_base gate (name, string_to_gate_type(type), c._sorted_circuit, c._gate_lookup);
 
             while(s >> fin) {
                 auto iter = _dff_set.find(fin);
@@ -197,12 +197,12 @@ void benchmark_parser::read_gates(circuit &c)
 
                 //c._primary_inputs.push_back(gate->name() + "_IN");
 
-                gate_base d (name + "_OUT", DFF);
+                gate_base d (name + "_OUT", DFF, c._sorted_circuit, c._gate_lookup);
                 d.add_fan_in(gate.fan_in()[0]);
 
                 _circuit.insert({name + "_OUT", d});
 
-                gate_base d2 (name + "_IN", DFF);
+                gate_base d2 (name + "_IN", DFF, c._sorted_circuit, c._gate_lookup);
 
                 _circuit.insert({name + "_IN", d2});
 
@@ -259,7 +259,7 @@ void benchmark_parser::read_gates(circuit &c)
                 std::stringstream s;
                 s << iter->second.name() << "_" << i;
 
-                gate_base f (s.str(), STEM);
+                gate_base f (s.str(), STEM, c._sorted_circuit, c._gate_lookup);
 
                 f.add_fan_in(iter->second.name());
                 f.add_fan_out(*iter2);

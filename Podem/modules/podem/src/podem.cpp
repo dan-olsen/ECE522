@@ -21,7 +21,7 @@ void podem::generate_patterns()
 
     std::cout << std::endl << "Starting ATPG using PODEM ..." << std::endl;
 
-    for(const auto& f : _faults)
+    for(auto& f : _faults)
     {
         _current_fault = f;
 
@@ -30,6 +30,8 @@ void podem::generate_patterns()
         if(podem_recursive())
         {
             std::cout << "Fault is tested" << std::endl;
+        } else {
+            std::cout << "Fault is not tested" << std::endl;
         }
 
     }
@@ -84,6 +86,7 @@ bool podem::podem_recursive()
         }
         else
         {
+            std::cout << "X path check is false" << std::endl;
             return false;
         }
     }
@@ -99,7 +102,10 @@ bool podem::x_path_check()
         visited.insert(std::make_pair(iter->name(), false));
     }
 
-    return x_path_check_recursive(_current_fault.first, visited);
+    gate_value d = get_d_frontier(_current_fault.first, _c.at(_current_fault.first).value());
+    std::cout << "D frontier is " << d.first << std::endl;
+
+    return x_path_check_recursive(d.first, visited);
 }
 
 bool podem::x_path_check_recursive(const std::string &gate_name, std::unordered_map<std::string, bool> &visited)
@@ -129,17 +135,21 @@ bool podem::x_path_check_recursive(const std::string &gate_name, std::unordered_
     }
 
     return false;
+
 }
 
 gate_value podem::get_objective()
 {
+    std::cout << simulation_value::strings[_c.at(_current_fault.first).value()] << " " << simulation_value::strings[fault_value::fault_value_to_simulation_value(_current_fault.second)] << std::endl;
     if(_c.at(_current_fault.first).value() != fault_value::fault_value_to_simulation_value(_current_fault.second))
     {
-        return std::make_pair(_current_fault.first, fault_value::fault_value_to_simulation_value(_current_fault.second));
+        return std::make_pair(_current_fault.first, fault_value::fault_value_to_objective_value(_current_fault.second));
     }
     else
     {
         gate_value d = get_d_frontier(_current_fault.first, _c.at(_current_fault.first).value());
+
+        std::cout << "D frontier is " << d.first << std::endl;
 
         for(auto iter = _c.at(d.first).fan_in_begin(); iter != _c.at(d.first).fan_in_end(); ++iter)
         {
@@ -154,7 +164,7 @@ gate_value podem::get_objective()
         }
 
         std::cerr << "D frontier is invalid type" << std::endl;
-
+        std::cerr.flush();
         exit(1);
 
         //TODO: Finish
@@ -175,7 +185,7 @@ gate_value podem::get_d_frontier(const std::string& gate_name, simulation_value:
 {
     for(auto iter = _c.at(gate_name).fan_out_begin(); iter != _c.at(gate_name).fan_out_end(); ++iter)
     {
-        if(_c.at(*iter).value() == five_value::D || _c.at(*iter).value() == five_value::D_BAR)
+        if(_c.at(*iter).value() == simulation_value::D || _c.at(*iter).value() == simulation_value::D_BAR)
         {
             gate_value gv = get_d_frontier(*iter, _c.at(*iter).value());
 
@@ -234,19 +244,33 @@ void podem::imply(const gate_value& pi)
 {
     _c.at(pi.first).set_value(pi.second);
 
-    for(auto iter = _c.circuit_begin(); iter != _c.circuit_end(); ++iter)
+    for(auto iter = _c.circuit_begin(); iter != _c.circuit_begin() + _c.position_of(_current_fault.first); ++iter)
     {
-        iter->simulate();
+        iter->imply();
     }
+
+    _c.at(_current_fault.first).imply();
+
+    if(fault_value::fault_value_to_objective_value(_current_fault.second) == _c.at(_current_fault.first).value())
+    {
+        _c.at(_current_fault.first).set_value(fault_value::fault_value_to_simulation_value(_current_fault.second));
+    }
+
+    for(auto iter = _c.circuit_begin() + _c.position_of(_current_fault.first) + 1; iter != _c.circuit_end(); ++iter)
+    {
+        iter->imply();
+    }
+
+    _c.print_circuit();
 }
 
 bool podem::is_fault_detected()
 {
     for(auto iter = _c.outputs_begin(); iter != _c.outputs_end(); ++iter)
     {
-        five_value::VALUE v = _c.at(*iter).value();
+        simulation_value::VALUE v = _c.at(*iter).value();
 
-        if(v == five_value::D || v == five_value::D_BAR)
+        if(v == simulation_value::D || v == simulation_value::D_BAR)
         {
             return true;
         }

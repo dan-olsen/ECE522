@@ -29,6 +29,7 @@ public:
     void initialize_to_x();
 
     gate_base& at(const std::string &key);
+    unsigned int position_of(const std::string &key);
 
     bool does_gate_exist(const std::string &key);
 

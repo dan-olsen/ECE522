@@ -16,12 +16,12 @@ circuit::circuit(const std::string &benchmark_file)
 
     topological_sort(c);
 
-    for(auto iter = _sorted_circuit.begin(); iter != _sorted_circuit.end(); ++iter)
-    {
-        iter->set_circuit(std::make_shared<std::vector<gate_base>>(_sorted_circuit));
-        iter->set_gate_lookup(std::make_shared<std::unordered_map<std::string, unsigned int>>(_gate_lookup));
-
-    }
+//    for(auto iter = _sorted_circuit.begin(); iter != _sorted_circuit.end(); ++iter)
+//    {
+//        iter->set_circuit(std::make_shared<std::vector<gate_base>>(_sorted_circuit));
+//        iter->set_gate_lookup(std::make_shared<std::unordered_map<std::string, unsigned int>>(_gate_lookup));
+//
+//    }
 }
 
 circuit::~circuit()
@@ -42,9 +42,15 @@ gate_base& circuit::at(const std::string &key)
     return _sorted_circuit[_gate_lookup.at(key)];
 }
 
+unsigned int circuit::position_of(const std::string &key)
+{
+    return _gate_lookup[key];
+}
+
+
 bool circuit::does_gate_exist(const std::string &key)
 {
-    return _gate_lookup.count(key) > 0 ? true : false;
+    return _gate_lookup.count(key) > 0;
 }
 
 std::vector<gate_base>::iterator circuit::circuit_begin()

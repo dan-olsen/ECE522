@@ -4,7 +4,8 @@
 
 #include "gate_base.hpp"
 
-gate_base::gate_base(const std::string& name, GATE_TYPE type)
+gate_base::gate_base(const std::string& name, GATE_TYPE type, std::vector<gate_base> &c, std::unordered_map<std::string, unsigned int> &l) :
+    _sorted_circuit(c), _gate_lookup(l)
 {
     _name = name;
     _type = type;
@@ -49,7 +50,9 @@ simulation_value::VALUE gate_base::controlling_value() const
         case NAND:
             return simulation_value::ZERO;
         default:
-            return simulation_value::X;
+            std::cerr << "Controlling value of invalid gate type" << std::endl;
+            std::cerr.flush();
+            exit(1);
     }
 }
 
@@ -65,7 +68,9 @@ simulation_value::VALUE gate_base::noncontrolling_value() const
         case NAND:
             return simulation_value::ONE;
         default:
-            return simulation_value::X;
+            std::cerr << "Noncontrolling value of invalid gate type" << std::endl;
+            std::cerr.flush();
+            exit(1);
     }
 }
 
@@ -129,22 +134,74 @@ unsigned int gate_base::fan_out_count()
     return (unsigned int)_fan_out.size();
 }
 
-void gate_base::set_circuit(std::shared_ptr<std::vector<gate_base>> c)
-{
-    _sorted_circuit = c;
-}
-
-void gate_base::set_gate_lookup(std::shared_ptr<std::unordered_map<std::string, unsigned int>> l)
-{
-    _gate_lookup = l;
-}
-
-void gate_base::simulate()
+void gate_base::imply()
 {
     switch(_type)
     {
+        case INPUT:
+            break;
+        case BUFFER:
         case STEM:
-            _value = _sorted_circuit[_gate_lookup->at(_fan_in[0])]->value();
+            _value = _sorted_circuit[_gate_lookup[_fan_in[0]]].value();
+
+            break;
+        case NOT:
+            _value = simulation_value::inverse_simulation_value(_sorted_circuit[_gate_lookup[_fan_in[0]]].value());
+
+            break;
+
+        case AND:
+        case NAND:
+        case OR:
+        case NOR:
+            for(auto iter = _fan_in.begin(); iter != _fan_in.end(); ++iter)
+            {
+                if(_sorted_circuit[_gate_lookup[*iter]].value() == controlling_value())
+                {
+                    _value = controlling_value();
+                    break;
+                }
+                else if (_sorted_circuit[_gate_lookup[*iter]].value() == simulation_value::X)
+                {
+                    _value = simulation_value::X;
+                }
+                else if(_sorted_circuit[_gate_lookup[*iter]].value() == noncontrolling_value())
+                {
+                    propagate();
+                }
+            }
+
+            break;
+        case OUTPUT:
+        case DFF:
+        case UNKNOWN:
+        default:
+            std::cerr << "Simulate with invalid gate type" << std::endl;
+            exit(1);
+    }
+
+    if(_type == NAND || _type == NOR)
+    {
+        _value = simulation_value::inverse_simulation_value(_value);
+    }
+}
+
+void gate_base::propagate()
+{
+    std::cout << "Propagate " << _name << std::endl;
+    for(auto iter = _fan_in.begin(); iter != _fan_in.end(); ++iter)
+    {
+        if(_sorted_circuit[_gate_lookup[*iter]].value() == simulation_value::D)
+        {
+            _value = simulation_value::D;
+            break;
+        }
+        else if (_sorted_circuit[_gate_lookup[*iter]].value() == simulation_value::D_BAR)
+        {
+            _value = simulation_value::D_BAR;
+            break;
+
+        }
     }
 }
 
