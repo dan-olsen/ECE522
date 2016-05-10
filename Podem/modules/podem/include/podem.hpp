@@ -48,6 +48,8 @@ private:
     void initialize_faults();
     void read_faults();
 
+    void print_pattern();
+
     std::string my_replace(std::string &s, const std::string &toReplace, const std::string &replaceWith);
 };
 

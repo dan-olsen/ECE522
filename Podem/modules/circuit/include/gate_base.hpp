@@ -47,9 +47,6 @@ public:
 
     void imply();
 
-    //virtual SIMULATION_VALUE controlling_value() = 0;
-    //virtual SIMULATION_VALUE noncontrolling_value() = 0;
-
     friend std::ostream &operator<<( std::ostream &output, const gate_base &g );
 
 protected:
@@ -65,7 +62,7 @@ protected:
     std::unordered_map<std::string, unsigned int> &_gate_lookup;
 
 private:
-    void propagate();
+    bool propagate();
 
 };
 

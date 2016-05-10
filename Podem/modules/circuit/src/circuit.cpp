@@ -93,7 +93,7 @@ void circuit::print_header()
     }
 
     std::cout << "Total Gates: " << _size << std::endl;
-
+    std::cout << std::endl;
 }
 
 void circuit::print_circuit()
@@ -112,7 +112,6 @@ void circuit::print_circuit()
         std::cout << *iter << std::endl;
 
     }
-
 }
 
 void circuit::topological_sort(std::unordered_map<std::string, gate_base> &c)

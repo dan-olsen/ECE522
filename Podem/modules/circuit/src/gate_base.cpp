@@ -137,6 +137,8 @@ unsigned int gate_base::fan_out_count()
 void gate_base::imply()
 {
     bool dont_care = false;
+    bool prop = false;
+
     switch(_type)
     {
         case INPUT:
@@ -169,9 +171,9 @@ void gate_base::imply()
                 }
                 else if(!dont_care)
                 {
-                    propagate();
+                    prop = propagate();
 
-                    if(_value != simulation_value::D && _value != simulation_value::D_BAR)
+                    if(!prop)
                     {
                         _value = noncontrolling_value();
                     }
@@ -193,23 +195,23 @@ void gate_base::imply()
     }
 }
 
-void gate_base::propagate()
+bool gate_base::propagate()
 {
-    std::cout << "Propagate " << _name << std::endl;
     for(auto iter = _fan_in.begin(); iter != _fan_in.end(); ++iter)
     {
         if(_sorted_circuit[_gate_lookup[*iter]].value() == simulation_value::D)
         {
             _value = simulation_value::D;
-            break;
+            return true;
         }
         else if (_sorted_circuit[_gate_lookup[*iter]].value() == simulation_value::D_BAR)
         {
             _value = simulation_value::D_BAR;
-            break;
+            return true;
 
         }
     }
+    return false;
 }
 
 std::ostream &operator<<( std::ostream &output, const gate_base &g )
