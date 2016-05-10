@@ -145,7 +145,10 @@ void gate_base::imply()
             break;
         case BUFFER:
         case STEM:
-            _value = _sorted_circuit[_gate_lookup[_fan_in[0]]].value();
+        case OUTPUT:
+        case DFF:
+            if(!_fan_in.empty())
+                _value = _sorted_circuit[_gate_lookup[_fan_in[0]]].value();
 
             break;
         case NOT:
@@ -181,8 +184,6 @@ void gate_base::imply()
             }
 
             break;
-        case OUTPUT:
-        case DFF:
         case UNKNOWN:
         default:
             std::cerr << "Simulate with invalid gate type" << std::endl;
@@ -216,7 +217,7 @@ bool gate_base::propagate()
 
 std::ostream &operator<<( std::ostream &output, const gate_base &g )
 {
-    output << std::setw(20) << std::left << g._name;// << std::endl;
+    output << std::setw(32) << std::left << g._name;// << std::endl;
     output << std::setw(10) << std::left << gate_type_strings[g._type];// << std::endl;
     output << std::setw(10) << std::left <<  g._fan_in.size();
     output << std::setw(10) << std::left <<  g._fan_out.size();

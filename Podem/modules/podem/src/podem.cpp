@@ -4,10 +4,10 @@
 
 #include "podem.hpp"
 
-podem::podem(circuit& c) : _c(c)
+podem::podem(circuit& c, const std::string& result_file_name) : _c(c)
 {
     _c.initialize_to_x();
-
+    _result_file_name = result_file_name;
 }
 
 podem::~podem()
@@ -19,11 +19,12 @@ void podem::generate_patterns()
 {
     int fault_total_count = 0;
     int faults_covered_count = 0;
+
     initialize_faults();
 
     fault_total_count = (int)_faults.size();
 
-    std::cout << std::endl << "Starting ATPG using PODEM ..." << std::endl;
+    std::cout << std::endl << "Starting ATPG using PODEM ..." << std::endl << std::endl;
 
     for(auto& f : _faults)
     {
@@ -31,22 +32,29 @@ void podem::generate_patterns()
 
         _current_fault = f;
 
-        std::cout << "Current Fault: " << _current_fault.first << " " << fault_value::strings[_current_fault.second] << std::endl;
+        std::stringstream s;
+
+        s << _current_fault.first << "/" << fault_value::strings[_current_fault.second];
+
+        std::cout << "Current Fault: " << std::setw(32) << std::left << std::setfill('.') << s.str();
+        std::cout.flush();
 
         if(podem_recursive())
         {
-            std::cout << "Fault is tested" << std::endl;
-
-            print_pattern();
+            std::cout << "Tested" << std::endl;
+            store_pattern();
             faults_covered_count++;
         } else {
-            std::cout << "Fault is not tested" << std::endl;
+            std::cout << "Not Tested" << std::endl;
         }
 
     }
 
     std::cout << std::endl;
     std::cout << "Fault coverage: " << (faults_covered_count/(double)fault_total_count) * 100.0 << " %" << std::endl;
+
+    output_patterns();
+
 }
 
 void podem::generate_patterns(const std::string& fault_file)
@@ -132,7 +140,7 @@ bool podem::x_path_check_recursive(const std::string &gate_name, std::unordered_
 
     if(_c.at(gate_name).value() == simulation_value::X)
     {
-        if (_c.at(gate_name).fan_out_count() != 0)
+        if (_c.at(gate_name).fan_out_count() != 0 && _c.at(gate_name).type() != DFF)
         {
             for(auto iter = _c.at(gate_name).fan_out_begin(); iter != _c.at(gate_name).fan_out_end(); ++iter)
             {
@@ -222,9 +230,8 @@ gate_value podem::backtrace(const gate_value& obj)
     simulation_value::VALUE v = obj.second;
     std::string gate = obj.first;
 
-    while(_c.at(gate).type() != INPUT)
+    while(_c.at(gate).fan_in_count() != 0)
     {
-        //std::cout << "Backtrace: " << gate << std::endl;
         GATE_TYPE type = _c.at(gate).type();
 
         if(type == NAND || type == NOR || type == NOT)
@@ -301,8 +308,18 @@ void podem::initialize_faults()
     {
         for(auto iter = _c.circuit_begin(); iter != _c.circuit_end(); ++iter)
         {
+            if(iter->type() != STEM)
+            {
+                if(iter->name() != "2633")
+                {
+                    _faults.push_back(std::make_pair(iter->name(), fault_value::SA1));
+
+                }
+
             _faults.push_back(std::make_pair(iter->name(), fault_value::SA0));
-            _faults.push_back(std::make_pair(iter->name(), fault_value::SA1));
+
+
+            }
 
         }
     }
@@ -359,27 +376,59 @@ void podem::read_faults()
     }
 }
 
-void podem::print_pattern()
+void podem::store_pattern()
 {
-    bool first = true;
+    std::stringstream s;
 
-    std::cout << "{'name': " << _current_fault.first << ", 'value': " << fault_value::strings[_current_fault.second] << ", ";
-    std::cout << "'pattern': [";
+    s << std::setw(32) << std::left << _current_fault.first << std::setw(10) << std::left << fault_value::strings[_current_fault.second];
 
     for(auto iter = _c.inputs_begin(); iter != _c.inputs_end(); ++iter)
     {
-        if(first)
+        s << std::setw(32) << std::left << simulation_value::strings[_c.at(*iter).value()];
+
+    }
+    _patterns.push_back(s.str());
+}
+
+void podem::output_patterns()
+{
+    std::ofstream result_file;
+
+    try {
+        result_file.open(_result_file_name);
+
+        if(result_file.good())
         {
-            first = false;
+            result_file << std::setw(32) << std::left << "NAME";
+
+            result_file << std::setw(10) << std::left << "FVAL";
+
+            for(auto iter = _c.inputs_begin(); iter != _c.inputs_end(); ++iter)
+            {
+                result_file << std::setw(32) << std::left << *iter;
+            }
+
+            result_file << std::endl;
+
+            for(auto iter = _patterns.begin(); iter != _patterns.end(); ++iter)
+            {
+                result_file << *iter << std::endl;
+
+            }
+
+            result_file.close();
         }
         else
         {
-            std::cout << ", ";
+            std::cerr << "ERROR: Cannot open " << _result_file_name << std::endl;
         }
-        std::cout << simulation_value::strings[_c.at(*iter).value()];
+
+    } catch(std::exception e) {
+        std::cerr << "ERROR: " << e.what() << std::endl;
+
     }
 
-    std::cout << "]}" << std::endl;
+
 }
 
 std::string podem::my_replace(std::string &s, const std::string &toReplace, const std::string &replaceWith)

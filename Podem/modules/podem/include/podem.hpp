@@ -14,7 +14,7 @@ typedef std::pair<std::string, fault_value::VALUE> fault;
 
 class podem {
 public:
-    podem(circuit &c);
+    podem(circuit &c, const std::string &result_file_name);
     ~podem();
 
     void generate_patterns();
@@ -22,14 +22,14 @@ public:
 
 private:
     circuit &_c;
-
+    std::string _result_file_name;
     std::string _fault_file_name;
 
     std::vector<fault> _faults;
 
     fault _current_fault;
 
-    std::vector<std::string> _d_frontier;
+    std::vector<std::string> _patterns;
 
     bool podem_recursive();
 
@@ -48,7 +48,8 @@ private:
     void initialize_faults();
     void read_faults();
 
-    void print_pattern();
+    void store_pattern();
+    void output_patterns();
 
     std::string my_replace(std::string &s, const std::string &toReplace, const std::string &replaceWith);
 };

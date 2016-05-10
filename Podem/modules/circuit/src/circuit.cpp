@@ -14,6 +14,8 @@ circuit::circuit(const std::string &benchmark_file)
 
     c = parser.read_benchmark(*this);
 
+
+
     topological_sort(c);
 
 //    for(auto iter = _sorted_circuit.begin(); iter != _sorted_circuit.end(); ++iter)
@@ -99,7 +101,7 @@ void circuit::print_header()
 void circuit::print_circuit()
 {
     std::cout << std::endl;
-    std::cout << std::setw(20) << std::left << "NAME";
+    std::cout << std::setw(32) << std::left << "NAME";
     std::cout << std::setw(10) << std::left << "TYPE";
     std::cout << std::setw(10) << std::left << "#IN";
     std::cout << std::setw(10) << std::left << "#OUT";
@@ -127,11 +129,6 @@ void circuit::topological_sort(std::unordered_map<std::string, gate_base> &c)
     for(auto iter = _primary_inputs.begin(); iter != _primary_inputs.end(); ++iter)
     {
         q.push(*iter);
-    }
-
-    for(auto iter = _dffs.begin(); iter != _dffs.end(); ++iter)
-    {
-        q.push((*iter).name() + "_IN");
     }
 
     while(!q.empty())

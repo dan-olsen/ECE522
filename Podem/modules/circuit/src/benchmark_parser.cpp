@@ -183,7 +183,7 @@ void benchmark_parser::read_gates(circuit &c)
 
                 if (iter != _dff_set.end())
                 {
-                    fin = fin + "_IN";
+                    fin = fin;
 
                 }
 
@@ -195,16 +195,17 @@ void benchmark_parser::read_gates(circuit &c)
                 c._dffs.push_back(gate);
                 _dff_set.insert(gate.name());
 
-                //c._primary_inputs.push_back(gate->name() + "_IN");
+                c._primary_inputs.push_back(gate.name());
+                c._primary_outputs.push_back(gate.name() + "_OUT");
 
                 gate_base d (name + "_OUT", DFF, c._sorted_circuit, c._gate_lookup);
                 d.add_fan_in(gate.fan_in()[0]);
 
                 _circuit.insert({name + "_OUT", d});
 
-                gate_base d2 (name + "_IN", DFF, c._sorted_circuit, c._gate_lookup);
+                gate_base d2 (name, INPUT, c._sorted_circuit, c._gate_lookup);
 
-                _circuit.insert({name + "_IN", d2});
+                _circuit.insert({name, d2});
 
             }
             else
@@ -224,7 +225,7 @@ void benchmark_parser::read_gates(circuit &c)
 
             if(iter3 != _dff_set.end())
             {
-                iter->second.replace_fan_in(*iter2, *iter2 + "_IN");
+                iter->second.replace_fan_in(*iter2, *iter2);
 
             }
         }

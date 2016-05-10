@@ -2,11 +2,11 @@
 
 #include <chrono>
 
-const std::string usage = "Usage: %s BENCHMARK_FILE [ FAULT_FILE ]\n\n";
+const std::string usage = "Usage: %s BENCHMARK_FILE RESULT_FILE [ FAULT_FILE ]\n\n";
 
 int main(int argc, char* const argv[])
 {
-    if (argc < 2)
+    if (argc < 3)
     {
         std::cout << usage << std::endl;
 
@@ -22,11 +22,11 @@ int main(int argc, char* const argv[])
     c.print_header();
     //c.print_circuit();
 
-    podem p(c);
+    podem p(c, argv[2]);
 
-    if(argc == 3)
+    if(argc == 4)
     {
-        p.generate_patterns(argv[2]);
+        p.generate_patterns(argv[3]);
 
     }
     else
@@ -39,7 +39,7 @@ int main(int argc, char* const argv[])
 
     std::chrono::duration<double> elapsed_seconds = end - start;
 
-    std::cout << std::endl << "Elapsed Time: " << elapsed_seconds.count() << std::endl;
+    std::cout << std::endl << "Elapsed Time: " << elapsed_seconds.count()  << " sec" << std::endl;
 
     return 0;
 }
