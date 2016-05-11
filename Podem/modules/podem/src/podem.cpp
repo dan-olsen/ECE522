@@ -436,13 +436,28 @@ void podem::store_pattern()
 {
     std::stringstream s;
 
-    s << std::setw(32) << std::left << _current_fault.first << std::setw(10) << std::left << fault_value::strings[_current_fault.second];
+    s << _current_fault.first << "," << fault_value::strings[_current_fault.second] << ",";
 
     for(auto iter = _c.inputs_begin(); iter != _c.inputs_end(); ++iter)
     {
-        s << std::setw(32) << std::left << simulation_value::strings[_c.at(*iter).value()];
+        if (iter != _c.inputs_begin())
+        {
+            s << ",";
+        }
+
+        if(_c.at(*iter).value() == simulation_value::X)
+        {
+            s << simulation_value::strings[_c.at(*iter).value()];
+
+        }
+        else
+        {
+            s << _c.at(*iter).value();
+
+        }
 
     }
+
     _patterns.push_back(s.str());
 }
 
@@ -455,13 +470,18 @@ void podem::output_patterns()
 
         if(result_file.good())
         {
-            result_file << std::setw(32) << std::left << "NAME";
+            result_file << "NAME,";
 
-            result_file << std::setw(10) << std::left << "FVAL";
+            result_file << "FVAL,";
 
             for(auto iter = _c.inputs_begin(); iter != _c.inputs_end(); ++iter)
             {
-                result_file << std::setw(32) << std::left << *iter;
+                if (iter != _c.inputs_begin())
+                {
+                    result_file << ",";
+                }
+
+                result_file << *iter;
             }
 
             result_file << std::endl;
@@ -483,8 +503,6 @@ void podem::output_patterns()
         std::cerr << "ERROR: " << e.what() << std::endl;
 
     }
-
-
 }
 
 std::string podem::my_replace(std::string &s, const std::string &toReplace, const std::string &replaceWith)
