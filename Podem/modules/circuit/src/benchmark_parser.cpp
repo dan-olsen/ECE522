@@ -296,11 +296,6 @@ void benchmark_parser::read_gates(circuit &c)
 
     for(const auto& x : c._gate_counts)
     {
-        if(x.first == DFF)
-        {
-            c._gate_counts.at(DFF)/=2;
-        }
-
         c._size+=x.second;
     }
 }

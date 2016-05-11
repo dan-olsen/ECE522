@@ -6,21 +6,27 @@
 #define PODEM_PODEM_HPP
 
 #include "circuit.hpp"
+#include "timeout.hpp"
 
 #include <iostream>
+#include <future>
 
 typedef std::pair<std::string, simulation_value::VALUE> gate_value;
 typedef std::pair<std::string, fault_value::VALUE> fault;
 
+enum PODEM_MODE {FROM_FILE, ALL};
+
 class podem {
 public:
-    podem(circuit &c, const std::string &result_file_name);
+    podem(circuit& c, const std::string& fault_file, const std::string &result_file_name);
+    podem(circuit &c);
     ~podem();
 
     void generate_patterns();
-    void generate_patterns(const std::string& fault_file);
 
 private:
+    PODEM_MODE _mode;
+
     circuit &_c;
     std::string _result_file_name;
     std::string _fault_file_name;
@@ -31,7 +37,7 @@ private:
 
     std::vector<std::string> _patterns;
 
-    bool podem_recursive();
+    bool podem_recursive(timeout &time_limit);
 
     bool x_path_check();
     bool x_path_check_recursive(const std::string &gate_name, std::unordered_map<std::string, bool> &visited);

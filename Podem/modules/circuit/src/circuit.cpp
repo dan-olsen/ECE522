@@ -14,8 +14,6 @@ circuit::circuit(const std::string &benchmark_file)
 
     c = parser.read_benchmark(*this);
 
-
-
     topological_sort(c);
 
 //    for(auto iter = _sorted_circuit.begin(); iter != _sorted_circuit.end(); ++iter)
@@ -135,6 +133,7 @@ void circuit::topological_sort(std::unordered_map<std::string, gate_base> &c)
     {
         std::string curr = q.front();
         q.pop();
+
         _sorted_circuit.push_back(c.at(curr));
 
         std::vector<std::string> curr_fan_out = c.at(curr).fan_out();
@@ -143,7 +142,7 @@ void circuit::topological_sort(std::unordered_map<std::string, gate_base> &c)
         {
             in_degree.at(*iter) -= 1;
 
-            if(in_degree.at(*iter) == 0)
+            if(in_degree.at(*iter) <= 0)
             {
                 q.push(*iter);
             }

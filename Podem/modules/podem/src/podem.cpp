@@ -4,10 +4,21 @@
 
 #include "podem.hpp"
 
-podem::podem(circuit& c, const std::string& result_file_name) : _c(c)
+podem::podem(circuit& c, const std::string& fault_file, const std::string &result_file_name) : _c(c)
 {
     _c.initialize_to_x();
+
+    _fault_file_name = fault_file;
     _result_file_name = result_file_name;
+
+    _mode = FROM_FILE;
+}
+
+podem::podem(circuit& c) : _c(c)
+{
+    _c.initialize_to_x();
+
+    _mode = ALL;
 }
 
 podem::~podem()
@@ -28,6 +39,10 @@ void podem::generate_patterns()
 
     for(auto& f : _faults)
     {
+        std::chrono::time_point<std::chrono::system_clock> start, end;
+
+        start = std::chrono::system_clock::now();
+
         _c.initialize_to_x();
 
         _current_fault = f;
@@ -39,33 +54,67 @@ void podem::generate_patterns()
         std::cout << "Current Fault: " << std::setw(32) << std::left << std::setfill('.') << s.str();
         std::cout.flush();
 
-        if(podem_recursive())
+        std::chrono::system_clock::duration d;
+
+        if(_mode == FROM_FILE)
         {
-            std::cout << "Tested" << std::endl;
-            store_pattern();
-            faults_covered_count++;
-        } else {
-            std::cout << "Not Tested" << std::endl;
+            d = std::chrono::minutes(10);
         }
+        else
+        {
+            d = std::chrono::seconds(10);
+        }
+
+        timeout t (d);
+
+        bool ret = false;
+
+        try
+        {
+            ret = podem_recursive(t);
+        }
+        catch(timeout_exception &e)
+        {
+            std::cout << e.what() << " ";
+        }
+
+        if(ret)
+        {
+            std::cout << "Tested";
+
+            if(_mode == FROM_FILE)
+            {
+                store_pattern();
+            }
+
+            faults_covered_count++;
+
+        } else {
+            std::cout << "Not Tested";
+        }
+
+        end = std::chrono::system_clock::now();
+
+        std::chrono::duration<double> elapsed_seconds = end - start;
+
+        std::cout << " (" << elapsed_seconds.count()  << " s)" << std::endl;
 
     }
 
     std::cout << std::endl;
     std::cout << "Fault coverage: " << (faults_covered_count/(double)fault_total_count) * 100.0 << " %" << std::endl;
 
-    output_patterns();
-
+    if(_mode == FROM_FILE)
+    {
+        output_patterns();
+    }
 }
 
-void podem::generate_patterns(const std::string& fault_file)
+bool podem::podem_recursive(timeout &time_limit)
 {
-    _fault_file_name = fault_file;
+    if (time_limit.is_expired())
+        throw timeout_exception();
 
-    generate_patterns();
-}
-
-bool podem::podem_recursive()
-{
     if(is_fault_detected())
     {
         return true;
@@ -80,11 +129,15 @@ bool podem::podem_recursive()
 
             gate_value pi = backtrace(objective);
 
+            if(pi.first.empty())
+            {
+                return false;
+            }
             //std::cout << "PI: " << pi.first << " " << simulation_value::strings[pi.second] << std::endl;
 
             imply(pi);
 
-            if(podem_recursive())
+            if(podem_recursive(time_limit))
             {
                 return true;
             }
@@ -93,7 +146,7 @@ bool podem::podem_recursive()
 
             imply(pi);
 
-            if(podem_recursive())
+            if(podem_recursive(time_limit))
             {
                 return true;
             }
@@ -140,7 +193,7 @@ bool podem::x_path_check_recursive(const std::string &gate_name, std::unordered_
 
     if(_c.at(gate_name).value() == simulation_value::X)
     {
-        if (_c.at(gate_name).fan_out_count() != 0 && _c.at(gate_name).type() != DFF)
+        if (_c.at(gate_name).fan_out_count() != 0)
         {
             for(auto iter = _c.at(gate_name).fan_out_begin(); iter != _c.at(gate_name).fan_out_end(); ++iter)
             {
@@ -179,9 +232,7 @@ gate_value podem::get_objective()
 
             if(_c.at(*iter).value() == simulation_value::X)
             {
-                //TODO: Check if STEM/DFF/INPUT
                 return std::make_pair(*iter, _c.at(d.first).noncontrolling_value());
-
             }
         }
 
@@ -227,11 +278,14 @@ gate_value podem::get_d_frontier(const std::string& gate_name, simulation_value:
 
 gate_value podem::backtrace(const gate_value& obj)
 {
+    bool found = false;
     simulation_value::VALUE v = obj.second;
     std::string gate = obj.first;
 
     while(_c.at(gate).fan_in_count() != 0)
     {
+        found = false;
+
         GATE_TYPE type = _c.at(gate).type();
 
         if(type == NAND || type == NOR || type == NOT)
@@ -245,8 +299,15 @@ gate_value podem::backtrace(const gate_value& obj)
             {
                 gate = *iter;
 
+                found = true;
+
                 break;
             }
+        }
+
+        if(!found)
+        {
+            return std::make_pair("", simulation_value::X);
         }
 
         //TODO: Add controllability
@@ -304,23 +365,18 @@ bool podem::is_fault_detected()
 
 void podem::initialize_faults()
 {
-    if(_fault_file_name.empty())
+    if(_mode == ALL)
     {
         for(auto iter = _c.circuit_begin(); iter != _c.circuit_end(); ++iter)
         {
             if(iter->type() != STEM)
             {
-                if(iter->name() != "2633")
-                {
-                    _faults.push_back(std::make_pair(iter->name(), fault_value::SA1));
+                _faults.push_back(std::make_pair(iter->name(), fault_value::SA1));
 
-                }
 
-            _faults.push_back(std::make_pair(iter->name(), fault_value::SA0));
-
+                _faults.push_back(std::make_pair(iter->name(), fault_value::SA0));
 
             }
-
         }
     }
     else
