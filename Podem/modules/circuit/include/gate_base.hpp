@@ -16,14 +16,17 @@
 
 class gate_base {
 public:
-    gate_base(const std::string& name, GATE_TYPE type);
-    virtual ~gate_base();
+    gate_base(const std::string& name, GATE_TYPE type, std::vector<gate_base> &c, std::unordered_map<std::string, unsigned int> &l);
+    ~gate_base();
 
     std::string name() const;
     GATE_TYPE type() const;
 
-    SIMULATION_VALUE value() const;
-    void set_value(SIMULATION_VALUE v);
+    simulation_value::VALUE value() const;
+    void set_value(simulation_value::VALUE v);
+
+    simulation_value::VALUE controlling_value() const;
+    simulation_value::VALUE noncontrolling_value() const;
 
     std::vector<std::string>::iterator fan_in_begin();
     std::vector<std::string>::iterator fan_in_end();
@@ -42,12 +45,7 @@ public:
     void replace_fan_in(const std::string &old_fan_in, const std::string &new_fan_in);
     void replace_fan_out(const std::string &old_fan_out, const std::string &new_fan_out);
 
-    void set_circuit(std::shared_ptr<std::unordered_map<std::string, std::shared_ptr<gate_base>>> circuit);
-
-    virtual void simulate() = 0;
-
-    //virtual SIMULATION_VALUE controlling_value() = 0;
-    //virtual SIMULATION_VALUE noncontrolling_value() = 0;
+    void imply();
 
     friend std::ostream &operator<<( std::ostream &output, const gate_base &g );
 
@@ -55,12 +53,17 @@ protected:
     std::string _name;
     GATE_TYPE _type;
 
-    SIMULATION_VALUE _value;
+    simulation_value::VALUE _value;
 
     std::vector<std::string> _fan_in;
     std::vector<std::string> _fan_out;
 
-    std::shared_ptr<std::unordered_map<std::string, std::shared_ptr<gate_base>>> _circuit;
+    std::vector<gate_base> &_sorted_circuit;
+    std::unordered_map<std::string, unsigned int> &_gate_lookup;
+
+private:
+    bool propagate();
+
 };
 
 #endif //PODEM_GATE_HPP

@@ -1,0 +1,20 @@
+Reading benchmark file: ./data/s27.bench
+Benchmark Name: s27
+INPUT: 7
+NOT: 2
+AND: 1
+NAND: 1
+OR: 2
+NOR: 4
+DFF: 3
+STEM: 9
+Total Gates: 29
+
+Reading fault file: ./data/s27.faults
+
+Starting ATPG using PODEM ...
+
+
+Fault coverage: -nan %
+
+Elapsed Time: 0.000351831 s

@@ -8,16 +8,20 @@ circuit::circuit(const std::string &benchmark_file)
 {
     _size = 0;
 
+    std::unordered_map<std::string, gate_base> c;
+
     benchmark_parser parser(benchmark_file);
 
-    parser.read_benchmark(*this);
+    c = parser.read_benchmark(*this);
 
-    topological_sort();
+    topological_sort(c);
 
-    for(auto iter = _circuit.begin(); iter != _circuit.end(); ++iter)
-    {
-        iter->second->set_circuit(std::make_shared<std::unordered_map<std::string, std::shared_ptr<gate_base>>>(_circuit));
-    }
+//    for(auto iter = _sorted_circuit.begin(); iter != _sorted_circuit.end(); ++iter)
+//    {
+//        iter->set_circuit(std::make_shared<std::vector<gate_base>>(_sorted_circuit));
+//        iter->set_gate_lookup(std::make_shared<std::unordered_map<std::string, unsigned int>>(_gate_lookup));
+//
+//    }
 }
 
 circuit::~circuit()
@@ -27,23 +31,34 @@ circuit::~circuit()
 
 void circuit::initialize_to_x()
 {
-    for(unsigned int i = 0; i < _sorted_circuit.size(); ++i)
+    for(auto iter = _sorted_circuit.begin(); iter != _sorted_circuit.end(); ++iter)
     {
-        _circuit.at(_sorted_circuit[i])->set_value(X);
+        iter->set_value(simulation_value::X);
     }
 }
 
-std::shared_ptr<gate_base> circuit::at(const std::string &key)
+gate_base& circuit::at(const std::string &key)
 {
-    return _circuit.at(key);
+    return _sorted_circuit[_gate_lookup.at(key)];
 }
 
-std::vector<std::string>::iterator circuit::circuit_begin()
+unsigned int circuit::position_of(const std::string &key)
+{
+    return _gate_lookup[key];
+}
+
+
+bool circuit::does_gate_exist(const std::string &key)
+{
+    return _gate_lookup.count(key) > 0;
+}
+
+std::vector<gate_base>::iterator circuit::circuit_begin()
 {
     return _sorted_circuit.begin();
 }
 
-std::vector<std::string>::iterator circuit::circuit_end()
+std::vector<gate_base>::iterator circuit::circuit_end()
 {
     return _sorted_circuit.end();
 }
@@ -78,13 +93,13 @@ void circuit::print_header()
     }
 
     std::cout << "Total Gates: " << _size << std::endl;
-
+    std::cout << std::endl;
 }
 
 void circuit::print_circuit()
 {
     std::cout << std::endl;
-    std::cout << std::setw(20) << std::left << "NAME";
+    std::cout << std::setw(32) << std::left << "NAME";
     std::cout << std::setw(10) << std::left << "TYPE";
     std::cout << std::setw(10) << std::left << "#IN";
     std::cout << std::setw(10) << std::left << "#OUT";
@@ -92,22 +107,21 @@ void circuit::print_circuit()
 
     std::cout << "FANIN\tFANOUT" << std::endl;
 
-    for(unsigned int i = 0; i < _sorted_circuit.size(); ++i)
+    for(auto iter = _sorted_circuit.begin(); iter != _sorted_circuit.end(); ++iter)
     {
-        std::cout << *(_circuit.at(_sorted_circuit[i])) << std::endl;
+        std::cout << *iter << std::endl;
 
     }
-
 }
 
-void circuit::topological_sort()
+void circuit::topological_sort(std::unordered_map<std::string, gate_base> &c)
 {
     std::queue<std::string> q;
     std::map<std::string, int> in_degree;
 
-    for(auto iter = _circuit.begin(); iter != _circuit.end(); ++iter)
+    for(auto iter = c.begin(); iter != c.end(); ++iter)
     {
-        in_degree.insert({iter->first, iter->second->fan_in_count()});
+        in_degree.insert({iter->first, iter->second.fan_in_count()});
     }
 
     for(auto iter = _primary_inputs.begin(); iter != _primary_inputs.end(); ++iter)
@@ -115,28 +129,29 @@ void circuit::topological_sort()
         q.push(*iter);
     }
 
-    for(auto iter = _dffs.begin(); iter != _dffs.end(); ++iter)
-    {
-        q.push((*iter)->name() + "_IN");
-    }
-
     while(!q.empty())
     {
         std::string curr = q.front();
         q.pop();
-        _sorted_circuit.push_back(curr);
 
-        std::vector<std::string> curr_fan_out = _circuit.at(curr)->fan_out();
+        _sorted_circuit.push_back(c.at(curr));
+
+        std::vector<std::string> curr_fan_out = c.at(curr).fan_out();
 
         for (auto iter = curr_fan_out.begin(); iter != curr_fan_out.end(); ++iter)
         {
             in_degree.at(*iter) -= 1;
 
-            if(in_degree.at(*iter) == 0)
+            if(in_degree.at(*iter) <= 0)
             {
                 q.push(*iter);
             }
 
         }
+    }
+
+    for(unsigned int i = 0; i < _sorted_circuit.size(); ++i)
+    {
+        _gate_lookup.insert({_sorted_circuit[i].name(), i});
     }
 }

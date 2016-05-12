@@ -6,13 +6,14 @@
 #define PODEM_BENCHMARK_PARSER_HPP
 
 #include "circuit.hpp"
-#include "gate_factory.hpp"
 
 #include <iostream>
 #include <fstream>
 #include <map>
 #include <sstream>
 #include <unordered_set>
+#include <unordered_map>
+#include <memory>
 
 class circuit;
 
@@ -21,7 +22,7 @@ public:
     benchmark_parser(const std::string &benchmark_file);
     ~benchmark_parser();
 
-    void read_benchmark(circuit &c);
+    std::unordered_map<std::string, gate_base> &read_benchmark(circuit &c);
 
 private:
     std::string _benchmark_file;
@@ -29,6 +30,8 @@ private:
 
     std::map<GATE_TYPE, int> _gate_counts;
     int _total_gate_count;
+
+    std::unordered_map<std::string, gate_base> _circuit;
 
     std::unordered_set<std::string> _dff_set;
 

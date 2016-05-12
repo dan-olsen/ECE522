@@ -1,0 +1,28 @@
+Reading benchmark file: ./data/c880.bench
+Benchmark Name: c880
+INPUT: 60
+NOT: 63
+BUFFER: 26
+AND: 117
+NAND: 87
+OR: 29
+NOR: 61
+STEM: 437
+Total Gates: 880
+
+Reading fault file: ./data/c880.faults
+
+Starting ATPG using PODEM ...
+
+Current Fault: 329/SA1.........................Tested (0.00257878 s)
+Current Fault: 317/SA0.........................Tested (0.0030749 s)
+Current Fault: 363/SA1.........................Tested (0.00254338 s)
+Current Fault: 363/SA0.........................Tested (0.00258184 s)
+Current Fault: 541/SA1.........................Tested (0.00396284 s)
+Current Fault: 809/SA1.........................Tested (0.00212278 s)
+Current Fault: 388/SA0.........................Tested (0.000882232 s)
+Current Fault: 388/SA1.........................Tested (0.00029665 s)
+
+Fault coverage: 100 %
+
+Elapsed Time: 0.0221425 s
