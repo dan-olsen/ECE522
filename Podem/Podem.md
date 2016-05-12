@@ -43,7 +43,7 @@ There are a few cases where the tool was getting stuck in an infinite loop in th
 | b19*      |                |                |
 | b18*      |                |                |
 | s38584*   |                |                |
-| s38417*   |                |                |
+| s38417    | 99.2739 %      | 14061 s        |
 | s35932    | 79.4897 %      | 13694.7 s      |
 | s820      | 100 %          | 0.89588 s      |
 | s27       | 100 %          | 0.00103831 s   |
