@@ -42,7 +42,7 @@ There are a few cases where the tool was getting stuck in an infinite loop in th
 | --------- | -------------- | -------------- |
 | b19*      |                |                |
 | b18*      |                |                |
-| s38584*   |                |                |
+| s38584    | 95.8 %         | 12445.7 s      |
 | s38417    | 99.2739 %      | 14061 s        |
 | s35932    | 79.4897 %      | 13694.7 s      |
 | s820      | 100 %          | 0.89588 s      |
@@ -56,4 +56,4 @@ There are a few cases where the tool was getting stuck in an infinite loop in th
 | c880      | 100 %          | 1.5263 s       |
 | c17       | 100 %          | 0.000522218 s  |
 
-*Still running. I will update and submit results when they finish.
+*b18 was ran for 19 hours and only 11,000 faults had been evaulated. b19 for 12 hours and only 6,000 faults had been evaulated. Both runs were ended since final results  could not be obtained in any reasonable time.
