@@ -1,0 +1,29 @@
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : s298
+Version: F-2011.09-SP4
+Date   : Tue Apr 12 11:14:25 2016
+****************************************
+
+
+   min_capacitance
+
+                             Required        Actual
+   Net                      Capacitance    Capacitance       Slack
+   -----------------------------------------------------------------
+   test_so                      0.10           0.00          -0.10  (VIOLATED)
+
+   -----------------------------------------------------------------
+   Total                      1                  -0.10  
+
+   max_area
+
+                             Required        Actual
+   Design                      Area           Area           Slack
+   -----------------------------------------------------------------
+   s298                         0.00        1335.83       -1335.83  (VIOLATED)
+
+
+1

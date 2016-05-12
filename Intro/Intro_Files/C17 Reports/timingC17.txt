@@ -1,0 +1,36 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : c17
+Version: F-2011.09-SP4
+Date   : Thu Jan 28 10:52:30 2016
+****************************************
+
+Operating Conditions: WORST   Library: saed90nm_max
+Wire Load Model Mode: enclosed
+
+  Startpoint: N3 (input port)
+  Endpoint: N22 (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  c17                ForQA                 saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  input external delay                     0.00       0.00 r
+  N3 (in)                                  0.00       0.00 r
+  U6/QN (NAND2X0)                          0.24       0.24 f
+  U5/Q (AO22X1)                            0.40       0.65 f
+  N22 (out)                                0.00       0.65 f
+  data arrival time                                   0.65
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+1

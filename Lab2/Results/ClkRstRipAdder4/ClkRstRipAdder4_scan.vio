@@ -1,0 +1,29 @@
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : ClkRstRipAdder4
+Version: F-2011.09-SP4
+Date   : Mon Apr 11 22:14:20 2016
+****************************************
+
+
+   min_capacitance
+
+                             Required        Actual
+   Net                      Capacitance    Capacitance       Slack
+   -----------------------------------------------------------------
+   test_so                      0.10           0.00          -0.10  (VIOLATED)
+
+   -----------------------------------------------------------------
+   Total                      1                  -0.10  
+
+   max_area
+
+                             Required        Actual
+   Design                      Area           Area           Slack
+   -----------------------------------------------------------------
+   ClkRstRipAdder4              0.00         502.02        -502.02  (VIOLATED)
+
+
+1

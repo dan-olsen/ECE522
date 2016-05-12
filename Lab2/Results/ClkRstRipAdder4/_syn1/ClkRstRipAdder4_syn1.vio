@@ -1,0 +1,49 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : ClkRstRipAdder4
+Version: F-2011.09-SP4
+Date   : Mon Apr 11 20:15:34 2016
+****************************************
+
+
+   max_delay/setup ('CK' group)
+
+                             Required        Actual
+   Endpoint                 Path Delay     Path Delay        Slack
+   -----------------------------------------------------------------
+   i2_reg/D                    -0.20           1.99 r        -2.18  (VIOLATED)
+   i1_reg/D                    -0.20           1.99 r        -2.18  (VIOLATED)
+   i3_reg/D                    -0.20           1.95 r        -2.15  (VIOLATED)
+   SUM[0]                       0.08           2.11 r        -2.03  (VIOLATED)
+   SUM[1]                       0.08           2.08 r        -2.00  (VIOLATED)
+   SUM[2]                       0.08           2.05 r        -1.97  (VIOLATED)
+   COUT                         0.08           1.82 r        -1.74  (VIOLATED)
+   SUM[3]                       0.08           1.77 f        -1.69  (VIOLATED)
+
+
+   min_capacitance
+
+                             Required        Actual
+   Net                      Capacitance    Capacitance       Slack
+   -----------------------------------------------------------------
+   COUT                         0.10           0.00          -0.10  (VIOLATED)
+   SUM[0]                       0.10           0.00          -0.10  (VIOLATED)
+   SUM[1]                       0.10           0.00          -0.10  (VIOLATED)
+   SUM[2]                       0.10           0.00          -0.10  (VIOLATED)
+   SUM[3]                       0.10           0.00          -0.10  (VIOLATED)
+
+   -----------------------------------------------------------------
+   Total                      5                  -0.48  
+
+   max_area
+
+                             Required        Actual
+   Design                      Area           Area           Slack
+   -----------------------------------------------------------------
+   ClkRstRipAdder4              0.00         589.09        -589.09  (VIOLATED)
+
+
+1

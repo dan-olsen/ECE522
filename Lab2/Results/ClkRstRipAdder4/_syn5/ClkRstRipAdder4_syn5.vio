@@ -1,0 +1,20 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : ClkRstRipAdder4
+Version: F-2011.09-SP4
+Date   : Mon Apr 11 20:22:26 2016
+****************************************
+
+
+   max_area
+
+                             Required        Actual
+   Design                      Area           Area           Slack
+   -----------------------------------------------------------------
+   ClkRstRipAdder4              0.00         398.97        -398.97  (VIOLATED)
+
+
+1

@@ -1,0 +1,3360 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay min
+        -nworst 100
+        -max_paths 100
+Design : s9234
+Version: F-2011.09-SP4
+Date   : Mon Apr 11 21:25:55 2016
+****************************************
+
+Operating Conditions: WORST   Library: saed90nm_max
+Wire Load Model Mode: enclosed
+
+  Startpoint: g705 (input port clocked by CK)
+  Endpoint: g3222 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g705 (in)                                0.01       0.56 r
+  U1560/Z (NBUFFX2)                        0.17       0.72 r
+  g3222 (out)                              0.00       0.73 r
+  data arrival time                                   0.73
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -0.73
+  -----------------------------------------------------------
+  slack (VIOLATED)                                   -0.02
+
+
+  Startpoint: g23 (input port clocked by CK)
+  Endpoint: g4098 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g23 (in)                                 0.01       0.56 r
+  U1550/Z (NBUFFX2)                        0.17       0.72 r
+  g4098 (out)                              0.00       0.73 r
+  data arrival time                                   0.73
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -0.73
+  -----------------------------------------------------------
+  slack (VIOLATED)                                   -0.02
+
+
+  Startpoint: g44 (input port clocked by CK)
+  Endpoint: g4107 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g44 (in)                                 0.01       0.56 r
+  U1553/Z (NBUFFX2)                        0.17       0.72 r
+  g4107 (out)                              0.00       0.73 r
+  data arrival time                                   0.73
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -0.73
+  -----------------------------------------------------------
+  slack (VIOLATED)                                   -0.02
+
+
+  Startpoint: g705 (input port clocked by CK)
+  Endpoint: g3222 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g705 (in)                                0.01       0.56 f
+  U1560/Z (NBUFFX2)                        0.18       0.73 f
+  g3222 (out)                              0.00       0.73 f
+  data arrival time                                   0.73
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -0.73
+  -----------------------------------------------------------
+  slack (VIOLATED)                                   -0.02
+
+
+  Startpoint: g23 (input port clocked by CK)
+  Endpoint: g4098 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g23 (in)                                 0.01       0.56 f
+  U1550/Z (NBUFFX2)                        0.18       0.73 f
+  g4098 (out)                              0.00       0.73 f
+  data arrival time                                   0.73
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -0.73
+  -----------------------------------------------------------
+  slack (VIOLATED)                                   -0.02
+
+
+  Startpoint: g44 (input port clocked by CK)
+  Endpoint: g4107 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g44 (in)                                 0.01       0.56 f
+  U1553/Z (NBUFFX2)                        0.18       0.73 f
+  g4107 (out)                              0.00       0.73 f
+  data arrival time                                   0.73
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -0.73
+  -----------------------------------------------------------
+  slack (VIOLATED)                                   -0.02
+
+
+  Startpoint: g45 (input port clocked by CK)
+  Endpoint: DFF_132/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g45 (in)                                 0.01       0.56 f
+  DFF_132/D (dff_78)                       0.00       0.56 f
+  DFF_132/Q_reg/D (DFFX1)                  0.20       0.76 f
+  data arrival time                                   0.76
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_132/Q_reg/CLK (DFFX1)                0.00       0.75 r
+  library hold time                       -0.03       0.72
+  data required time                                  0.72
+  -----------------------------------------------------------
+  data required time                                  0.72
+  data arrival time                                  -0.76
+  -----------------------------------------------------------
+  slack (MET)                                         0.04
+
+
+  Startpoint: g46 (input port clocked by CK)
+  Endpoint: DFF_180/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g46 (in)                                 0.01       0.56 f
+  DFF_180/D (dff_30)                       0.00       0.56 f
+  DFF_180/Q_reg/D (DFFX1)                  0.20       0.76 f
+  data arrival time                                   0.76
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_180/Q_reg/CLK (DFFX1)                0.00       0.75 r
+  library hold time                       -0.03       0.72
+  data required time                                  0.72
+  -----------------------------------------------------------
+  data required time                                  0.72
+  data arrival time                                  -0.76
+  -----------------------------------------------------------
+  slack (MET)                                         0.04
+
+
+  Startpoint: g564 (input port clocked by CK)
+  Endpoint: g4422 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g564 (in)                                0.01       0.56 f
+  U1559/ZN (INVX0)                         0.22       0.78 r
+  U1558/ZN (INVX0)                         0.09       0.87 f
+  g4422 (out)                              0.00       0.87 f
+  data arrival time                                   0.87
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -0.87
+  -----------------------------------------------------------
+  slack (MET)                                         0.12
+
+
+  Startpoint: g564 (input port clocked by CK)
+  Endpoint: g4422 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g564 (in)                                0.01       0.56 r
+  U1559/ZN (INVX0)                         0.22       0.79 f
+  U1558/ZN (INVX0)                         0.08       0.87 r
+  g4422 (out)                              0.00       0.87 r
+  data arrival time                                   0.87
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -0.87
+  -----------------------------------------------------------
+  slack (MET)                                         0.12
+
+
+  Startpoint: g45 (input port clocked by CK)
+  Endpoint: DFF_132/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g45 (in)                                 0.02       0.57 r
+  DFF_132/D (dff_78)                       0.00       0.57 r
+  DFF_132/Q_reg/D (DFFX1)                  0.20       0.77 r
+  data arrival time                                   0.77
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_132/Q_reg/CLK (DFFX1)                0.00       0.75 r
+  library hold time                       -0.13       0.62
+  data required time                                  0.62
+  -----------------------------------------------------------
+  data required time                                  0.62
+  data arrival time                                  -0.77
+  -----------------------------------------------------------
+  slack (MET)                                         0.15
+
+
+  Startpoint: g46 (input port clocked by CK)
+  Endpoint: DFF_180/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g46 (in)                                 0.02       0.57 r
+  DFF_180/D (dff_30)                       0.00       0.57 r
+  DFF_180/Q_reg/D (DFFX1)                  0.20       0.77 r
+  data arrival time                                   0.77
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_180/Q_reg/CLK (DFFX1)                0.00       0.75 r
+  library hold time                       -0.13       0.62
+  data required time                                  0.62
+  -----------------------------------------------------------
+  data required time                                  0.62
+  data arrival time                                  -0.77
+  -----------------------------------------------------------
+  slack (MET)                                         0.15
+
+
+  Startpoint: g47 (input port clocked by CK)
+  Endpoint: DFF_191/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g47 (in)                                 0.01       0.56 r
+  U1548/ZN (INVX0)                         0.11       0.66 f
+  DFF_191/D (dff_19)                       0.00       0.66 f
+  DFF_191/Q_reg/D (DFFX1)                  0.20       0.86 f
+  data arrival time                                   0.86
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_191/Q_reg/CLK (DFFX1)                0.00       0.75 r
+  library hold time                       -0.04       0.71
+  data required time                                  0.71
+  -----------------------------------------------------------
+  data required time                                  0.71
+  data arrival time                                  -0.86
+  -----------------------------------------------------------
+  slack (MET)                                         0.15
+
+
+  Startpoint: g46 (input port clocked by CK)
+  Endpoint: g4109 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g46 (in)                                 0.01       0.56 f
+  U1556/ZN (INVX0)                         0.25       0.82 r
+  U1555/ZN (INVX0)                         0.09       0.91 f
+  g4109 (out)                              0.00       0.91 f
+  data arrival time                                   0.91
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -0.91
+  -----------------------------------------------------------
+  slack (MET)                                         0.16
+
+
+  Startpoint: g46 (input port clocked by CK)
+  Endpoint: g4109 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g46 (in)                                 0.02       0.57 r
+  U1556/ZN (INVX0)                         0.26       0.83 f
+  U1555/ZN (INVX0)                         0.08       0.91 r
+  g4109 (out)                              0.00       0.91 r
+  data arrival time                                   0.91
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -0.91
+  -----------------------------------------------------------
+  slack (MET)                                         0.16
+
+
+  Startpoint: g47 (input port clocked by CK)
+  Endpoint: g4112 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g47 (in)                                 0.01       0.56 r
+  U1548/ZN (INVX0)                         0.11       0.66 f
+  U1557/ZN (INVX0)                         0.25       0.91 r
+  g4112 (out)                              0.00       0.91 r
+  data arrival time                                   0.91
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -0.91
+  -----------------------------------------------------------
+  slack (MET)                                         0.16
+
+
+  Startpoint: g47 (input port clocked by CK)
+  Endpoint: g4112 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g47 (in)                                 0.01       0.56 f
+  U1548/ZN (INVX0)                         0.11       0.66 r
+  U1557/ZN (INVX0)                         0.26       0.92 f
+  g4112 (out)                              0.00       0.92 f
+  data arrival time                                   0.92
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -0.92
+  -----------------------------------------------------------
+  slack (MET)                                         0.17
+
+
+  Startpoint: g47 (input port clocked by CK)
+  Endpoint: DFF_191/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g47 (in)                                 0.01       0.56 f
+  U1548/ZN (INVX0)                         0.11       0.66 r
+  DFF_191/D (dff_19)                       0.00       0.66 r
+  DFF_191/Q_reg/D (DFFX1)                  0.20       0.86 r
+  data arrival time                                   0.86
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_191/Q_reg/CLK (DFFX1)                0.00       0.75 r
+  library hold time                       -0.16       0.59
+  data required time                                  0.59
+  -----------------------------------------------------------
+  data required time                                  0.59
+  data arrival time                                  -0.86
+  -----------------------------------------------------------
+  slack (MET)                                         0.27
+
+
+  Startpoint: g42 (input port clocked by CK)
+  Endpoint: DFF_103/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g42 (in)                                 0.02       0.57 f
+  DFF_103/D (dff_107)                      0.00       0.57 f
+  DFF_103/Q_reg/D (DFFX1)                  0.50       1.07 f
+  data arrival time                                   1.07
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_103/Q_reg/CLK (DFFX1)                0.00       0.75 r
+  library hold time                       -0.03       0.72
+  data required time                                  0.72
+  -----------------------------------------------------------
+  data required time                                  0.72
+  data arrival time                                  -1.07
+  -----------------------------------------------------------
+  slack (MET)                                         0.36
+
+
+  Startpoint: g42 (input port clocked by CK)
+  Endpoint: DFF_143/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g42 (in)                                 0.02       0.57 f
+  DFF_143/D (dff_67)                       0.00       0.57 f
+  DFF_143/Q_reg/D (DFFX1)                  0.50       1.07 f
+  data arrival time                                   1.07
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_143/Q_reg/CLK (DFFX1)                0.00       0.75 r
+  library hold time                       -0.03       0.72
+  data required time                                  0.72
+  -----------------------------------------------------------
+  data required time                                  0.72
+  data arrival time                                  -1.07
+  -----------------------------------------------------------
+  slack (MET)                                         0.36
+
+
+  Startpoint: DFF_180/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: g1290 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_180/Q_reg/CLK (DFFX1)                0.00       0.55 r
+  DFF_180/Q_reg/Q (DFFX1)                  0.57       1.12 r
+  DFF_180/Q (dff_30)                       0.00       1.12 r
+  g1290 (out)                              0.00       1.12 r
+  data arrival time                                   1.12
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.12
+  -----------------------------------------------------------
+  slack (MET)                                         0.37
+
+
+  Startpoint: DFF_180/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: g1290 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_180/Q_reg/CLK (DFFX1)                0.00       0.55 r
+  DFF_180/Q_reg/Q (DFFX1)                  0.63       1.18 f
+  DFF_180/Q (dff_30)                       0.00       1.18 f
+  g1290 (out)                              0.00       1.18 f
+  data arrival time                                   1.18
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.18
+  -----------------------------------------------------------
+  slack (MET)                                         0.43
+
+
+  Startpoint: g38 (input port clocked by CK)
+  Endpoint: g4102 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g38 (in)                                 0.01       0.56 f
+  U1103/ZN (INVX0)                         0.09       0.64 r
+  U1104/ZN (INVX0)                         0.13       0.77 f
+  g4102 (out)                              0.43       1.21 f
+  data arrival time                                   1.21
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.21
+  -----------------------------------------------------------
+  slack (MET)                                         0.46
+
+
+  Startpoint: g38 (input port clocked by CK)
+  Endpoint: g4102 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g38 (in)                                 0.01       0.56 r
+  U1103/ZN (INVX0)                         0.09       0.65 f
+  U1104/ZN (INVX0)                         0.13       0.78 r
+  g4102 (out)                              0.43       1.21 r
+  data arrival time                                   1.21
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.21
+  -----------------------------------------------------------
+  slack (MET)                                         0.46
+
+
+  Startpoint: g36 (input port clocked by CK)
+  Endpoint: g4100 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g36 (in)                                 0.01       0.56 f
+  U1107/ZN (INVX0)                         0.09       0.64 r
+  U1108/ZN (INVX0)                         0.13       0.77 f
+  g4100 (out)                              0.44       1.21 f
+  data arrival time                                   1.21
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.21
+  -----------------------------------------------------------
+  slack (MET)                                         0.46
+
+
+  Startpoint: g40 (input port clocked by CK)
+  Endpoint: g4105 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g40 (in)                                 0.01       0.56 f
+  U1099/ZN (INVX0)                         0.09       0.64 r
+  U1100/ZN (INVX0)                         0.13       0.77 f
+  g4105 (out)                              0.44       1.21 f
+  data arrival time                                   1.21
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.21
+  -----------------------------------------------------------
+  slack (MET)                                         0.46
+
+
+  Startpoint: g36 (input port clocked by CK)
+  Endpoint: g4100 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g36 (in)                                 0.01       0.56 r
+  U1107/ZN (INVX0)                         0.09       0.65 f
+  U1108/ZN (INVX0)                         0.13       0.78 r
+  g4100 (out)                              0.44       1.21 r
+  data arrival time                                   1.21
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.21
+  -----------------------------------------------------------
+  slack (MET)                                         0.46
+
+
+  Startpoint: g40 (input port clocked by CK)
+  Endpoint: g4105 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g40 (in)                                 0.01       0.56 r
+  U1099/ZN (INVX0)                         0.09       0.65 f
+  U1100/ZN (INVX0)                         0.13       0.78 r
+  g4105 (out)                              0.44       1.21 r
+  data arrival time                                   1.21
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.21
+  -----------------------------------------------------------
+  slack (MET)                                         0.46
+
+
+  Startpoint: g42 (input port clocked by CK)
+  Endpoint: DFF_103/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g42 (in)                                 0.03       0.58 r
+  DFF_103/D (dff_107)                      0.00       0.58 r
+  DFF_103/Q_reg/D (DFFX1)                  0.50       1.08 r
+  data arrival time                                   1.08
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_103/Q_reg/CLK (DFFX1)                0.00       0.75 r
+  library hold time                       -0.14       0.61
+  data required time                                  0.61
+  -----------------------------------------------------------
+  data required time                                  0.61
+  data arrival time                                  -1.08
+  -----------------------------------------------------------
+  slack (MET)                                         0.47
+
+
+  Startpoint: g42 (input port clocked by CK)
+  Endpoint: DFF_143/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g42 (in)                                 0.03       0.58 r
+  DFF_143/D (dff_67)                       0.00       0.58 r
+  DFF_143/Q_reg/D (DFFX1)                  0.50       1.08 r
+  data arrival time                                   1.08
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_143/Q_reg/CLK (DFFX1)                0.00       0.75 r
+  library hold time                       -0.14       0.61
+  data required time                                  0.61
+  -----------------------------------------------------------
+  data required time                                  0.61
+  data arrival time                                  -1.08
+  -----------------------------------------------------------
+  slack (MET)                                         0.47
+
+
+  Startpoint: g42 (input port clocked by CK)
+  Endpoint: g4106 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g42 (in)                                 0.02       0.57 f
+  U1552/ZN (INVX0)                         0.56       1.13 r
+  U1551/ZN (INVX0)                         0.09       1.22 f
+  g4106 (out)                              0.00       1.22 f
+  data arrival time                                   1.22
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.22
+  -----------------------------------------------------------
+  slack (MET)                                         0.47
+
+
+  Startpoint: DFF_48/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: g3600 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_48/Q_reg/CLK (DFFX1)                 0.00       0.55 r
+  DFF_48/Q_reg/Q (DFFX1)                   0.58       1.13 r
+  DFF_48/Q (dff_162)                       0.00       1.13 r
+  g3600 (out)                              0.10       1.22 r
+  data arrival time                                   1.22
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.22
+  -----------------------------------------------------------
+  slack (MET)                                         0.47
+
+
+  Startpoint: DFF_190/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: g4307 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_190/Q_reg/CLK (DFFX1)                0.00       0.55 r
+  DFF_190/Q_reg/Q (DFFX1)                  0.58       1.13 r
+  DFF_190/Q (dff_20)                       0.00       1.13 r
+  g4307 (out)                              0.10       1.22 r
+  data arrival time                                   1.22
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.22
+  -----------------------------------------------------------
+  slack (MET)                                         0.47
+
+
+  Startpoint: DFF_161/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: g4321 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_161/Q_reg/CLK (DFFX1)                0.00       0.55 r
+  DFF_161/Q_reg/Q (DFFX1)                  0.58       1.13 r
+  DFF_161/Q (dff_49)                       0.00       1.13 r
+  g4321 (out)                              0.10       1.22 r
+  data arrival time                                   1.22
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.22
+  -----------------------------------------------------------
+  slack (MET)                                         0.47
+
+
+  Startpoint: g42 (input port clocked by CK)
+  Endpoint: g4106 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g42 (in)                                 0.03       0.58 r
+  U1552/ZN (INVX0)                         0.57       1.15 f
+  U1551/ZN (INVX0)                         0.08       1.23 r
+  g4106 (out)                              0.00       1.23 r
+  data arrival time                                   1.23
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.23
+  -----------------------------------------------------------
+  slack (MET)                                         0.48
+
+
+  Startpoint: g39 (input port clocked by CK)
+  Endpoint: g4103 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g39 (in)                                 0.01       0.56 f
+  U1101/ZN (INVX0)                         0.09       0.64 r
+  U1102/ZN (INVX0)                         0.13       0.77 f
+  g4103 (out)                              0.46       1.23 f
+  data arrival time                                   1.23
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.23
+  -----------------------------------------------------------
+  slack (MET)                                         0.48
+
+
+  Startpoint: g39 (input port clocked by CK)
+  Endpoint: g4103 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g39 (in)                                 0.01       0.56 r
+  U1101/ZN (INVX0)                         0.09       0.65 f
+  U1102/ZN (INVX0)                         0.13       0.78 r
+  g4103 (out)                              0.46       1.23 r
+  data arrival time                                   1.23
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.23
+  -----------------------------------------------------------
+  slack (MET)                                         0.48
+
+
+  Startpoint: g37 (input port clocked by CK)
+  Endpoint: g4101 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g37 (in)                                 0.01       0.56 f
+  U1105/ZN (INVX0)                         0.09       0.64 r
+  U1106/ZN (INVX0)                         0.13       0.77 f
+  g4101 (out)                              0.46       1.23 f
+  data arrival time                                   1.23
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.23
+  -----------------------------------------------------------
+  slack (MET)                                         0.48
+
+
+  Startpoint: g37 (input port clocked by CK)
+  Endpoint: g4101 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g37 (in)                                 0.01       0.56 r
+  U1105/ZN (INVX0)                         0.09       0.65 f
+  U1106/ZN (INVX0)                         0.13       0.78 r
+  g4101 (out)                              0.46       1.24 r
+  data arrival time                                   1.24
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.24
+  -----------------------------------------------------------
+  slack (MET)                                         0.49
+
+
+  Startpoint: g558 (input port clocked by CK)
+  Endpoint: DFF_90/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g558 (in)                                0.00       0.55 f
+  U430/QN (AOI22X1)                        0.39       0.94 r
+  U427/QN (NAND4X0)                        0.18       1.13 f
+  DFF_90/D (dff_120)                       0.00       1.13 f
+  DFF_90/Q_reg/D (DFFX1)                   0.05       1.18 f
+  data arrival time                                   1.18
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_90/Q_reg/CLK (DFFX1)                 0.00       0.75 r
+  library hold time                       -0.06       0.69
+  data required time                                  0.69
+  -----------------------------------------------------------
+  data required time                                  0.69
+  data arrival time                                  -1.18
+  -----------------------------------------------------------
+  slack (MET)                                         0.49
+
+
+  Startpoint: g32 (input port clocked by CK)
+  Endpoint: g4099 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g32 (in)                                 0.01       0.56 f
+  U1109/ZN (INVX0)                         0.09       0.64 r
+  U1110/ZN (INVX0)                         0.13       0.78 f
+  g4099 (out)                              0.47       1.24 f
+  data arrival time                                   1.24
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.24
+  -----------------------------------------------------------
+  slack (MET)                                         0.49
+
+
+  Startpoint: g32 (input port clocked by CK)
+  Endpoint: g4099 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g32 (in)                                 0.01       0.56 r
+  U1109/ZN (INVX0)                         0.09       0.65 f
+  U1110/ZN (INVX0)                         0.13       0.78 r
+  g4099 (out)                              0.47       1.25 r
+  data arrival time                                   1.25
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.25
+  -----------------------------------------------------------
+  slack (MET)                                         0.50
+
+
+  Startpoint: g563 (input port clocked by CK)
+  Endpoint: DFF_186/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g563 (in)                                0.00       0.55 f
+  U492/QN (AOI221X1)                       0.46       1.01 r
+  U965/QN (NAND2X1)                        0.14       1.15 f
+  DFF_186/D (dff_24)                       0.00       1.15 f
+  DFF_186/Q_reg/D (DFFX1)                  0.05       1.20 f
+  data arrival time                                   1.20
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_186/Q_reg/CLK (DFFX1)                0.00       0.75 r
+  library hold time                       -0.04       0.71
+  data required time                                  0.71
+  -----------------------------------------------------------
+  data required time                                  0.71
+  data arrival time                                  -1.20
+  -----------------------------------------------------------
+  slack (MET)                                         0.50
+
+
+  Startpoint: g22 (input port clocked by CK)
+  Endpoint: DFF_131/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g22 (in)                                 0.02       0.57 r
+  U1522/QN (NOR3X0)                        0.33       0.90 f
+  U1521/Q (OR2X1)                          0.26       1.16 f
+  DFF_131/D (dff_79)                       0.00       1.16 f
+  DFF_131/Q_reg/D (DFFX1)                  0.05       1.21 f
+  data arrival time                                   1.21
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_131/Q_reg/CLK (DFFX1)                0.00       0.75 r
+  library hold time                       -0.04       0.71
+  data required time                                  0.71
+  -----------------------------------------------------------
+  data required time                                  0.71
+  data arrival time                                  -1.21
+  -----------------------------------------------------------
+  slack (MET)                                         0.50
+
+
+  Startpoint: g38 (input port clocked by CK)
+  Endpoint: DFF_124/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g38 (in)                                 0.01       0.56 f
+  U1103/ZN (INVX0)                         0.09       0.64 r
+  U1104/ZN (INVX0)                         0.13       0.77 f
+  DFF_124/D (dff_86)                       0.00       0.77 f
+  DFF_124/Q_reg/D (DFFX1)                  0.43       1.21 f
+  data arrival time                                   1.21
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_124/Q_reg/CLK (DFFX1)                0.00       0.75 r
+  library hold time                       -0.05       0.70
+  data required time                                  0.70
+  -----------------------------------------------------------
+  data required time                                  0.70
+  data arrival time                                  -1.21
+  -----------------------------------------------------------
+  slack (MET)                                         0.50
+
+
+  Startpoint: g560 (input port clocked by CK)
+  Endpoint: DFF_187/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g560 (in)                                0.00       0.55 f
+  U1088/QN (AOI22X1)                       0.39       0.94 r
+  U477/QN (NAND4X0)                        0.20       1.14 f
+  DFF_187/D (dff_23)                       0.00       1.14 f
+  DFF_187/Q_reg/D (DFFX1)                  0.05       1.19 f
+  data arrival time                                   1.19
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_187/Q_reg/CLK (DFFX1)                0.00       0.75 r
+  library hold time                       -0.06       0.69
+  data required time                                  0.69
+  -----------------------------------------------------------
+  data required time                                  0.69
+  data arrival time                                  -1.19
+  -----------------------------------------------------------
+  slack (MET)                                         0.51
+
+
+  Startpoint: g557 (input port clocked by CK)
+  Endpoint: DFF_79/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g557 (in)                                0.00       0.55 f
+  U898/QN (AOI22X1)                        0.39       0.94 r
+  U423/QN (NAND4X0)                        0.20       1.14 f
+  DFF_79/D (dff_131)                       0.00       1.14 f
+  DFF_79/Q_reg/D (DFFX1)                   0.05       1.19 f
+  data arrival time                                   1.19
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_79/Q_reg/CLK (DFFX1)                 0.00       0.75 r
+  library hold time                       -0.06       0.69
+  data required time                                  0.69
+  -----------------------------------------------------------
+  data required time                                  0.69
+  data arrival time                                  -1.19
+  -----------------------------------------------------------
+  slack (MET)                                         0.51
+
+
+  Startpoint: g559 (input port clocked by CK)
+  Endpoint: DFF_167/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g559 (in)                                0.00       0.55 f
+  U476/QN (AOI22X1)                        0.39       0.94 r
+  U473/QN (NAND4X0)                        0.20       1.14 f
+  DFF_167/D (dff_43)                       0.00       1.14 f
+  DFF_167/Q_reg/D (DFFX1)                  0.05       1.19 f
+  data arrival time                                   1.19
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_167/Q_reg/CLK (DFFX1)                0.00       0.75 r
+  library hold time                       -0.06       0.69
+  data required time                                  0.69
+  -----------------------------------------------------------
+  data required time                                  0.69
+  data arrival time                                  -1.19
+  -----------------------------------------------------------
+  slack (MET)                                         0.51
+
+
+  Startpoint: g40 (input port clocked by CK)
+  Endpoint: DFF_92/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g40 (in)                                 0.01       0.56 f
+  U1099/ZN (INVX0)                         0.09       0.64 r
+  U1100/ZN (INVX0)                         0.13       0.77 f
+  DFF_92/D (dff_118)                       0.00       0.77 f
+  DFF_92/Q_reg/D (DFFX1)                   0.44       1.21 f
+  data arrival time                                   1.21
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_92/Q_reg/CLK (DFFX1)                 0.00       0.75 r
+  library hold time                       -0.05       0.70
+  data required time                                  0.70
+  -----------------------------------------------------------
+  data required time                                  0.70
+  data arrival time                                  -1.21
+  -----------------------------------------------------------
+  slack (MET)                                         0.51
+
+
+  Startpoint: g36 (input port clocked by CK)
+  Endpoint: DFF_137/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g36 (in)                                 0.01       0.56 f
+  U1107/ZN (INVX0)                         0.09       0.64 r
+  U1108/ZN (INVX0)                         0.13       0.77 f
+  DFF_137/D (dff_73)                       0.00       0.77 f
+  DFF_137/Q_reg/D (DFFX1)                  0.44       1.21 f
+  data arrival time                                   1.21
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_137/Q_reg/CLK (DFFX1)                0.00       0.75 r
+  library hold time                       -0.05       0.70
+  data required time                                  0.70
+  -----------------------------------------------------------
+  data required time                                  0.70
+  data arrival time                                  -1.21
+  -----------------------------------------------------------
+  slack (MET)                                         0.51
+
+
+  Startpoint: g563 (input port clocked by CK)
+  Endpoint: DFF_186/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g563 (in)                                0.01       0.56 r
+  U492/QN (AOI221X1)                       0.39       0.95 f
+  U965/QN (NAND2X1)                        0.12       1.07 r
+  DFF_186/D (dff_24)                       0.00       1.07 r
+  DFF_186/Q_reg/D (DFFX1)                  0.05       1.12 r
+  data arrival time                                   1.12
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_186/Q_reg/CLK (DFFX1)                0.00       0.75 r
+  library hold time                       -0.15       0.60
+  data required time                                  0.60
+  -----------------------------------------------------------
+  data required time                                  0.60
+  data arrival time                                  -1.12
+  -----------------------------------------------------------
+  slack (MET)                                         0.52
+
+
+  Startpoint: g39 (input port clocked by CK)
+  Endpoint: DFF_9/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g39 (in)                                 0.01       0.56 f
+  U1101/ZN (INVX0)                         0.09       0.64 r
+  U1102/ZN (INVX0)                         0.13       0.77 f
+  DFF_9/D (dff_201)                        0.00       0.77 f
+  DFF_9/Q_reg/D (DFFX1)                    0.46       1.23 f
+  data arrival time                                   1.23
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_9/Q_reg/CLK (DFFX1)                  0.00       0.75 r
+  library hold time                       -0.05       0.70
+  data required time                                  0.70
+  -----------------------------------------------------------
+  data required time                                  0.70
+  data arrival time                                  -1.23
+  -----------------------------------------------------------
+  slack (MET)                                         0.53
+
+
+  Startpoint: g37 (input port clocked by CK)
+  Endpoint: DFF_99/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g37 (in)                                 0.01       0.56 f
+  U1105/ZN (INVX0)                         0.09       0.64 r
+  U1106/ZN (INVX0)                         0.13       0.77 f
+  DFF_99/D (dff_111)                       0.00       0.77 f
+  DFF_99/Q_reg/D (DFFX1)                   0.46       1.23 f
+  data arrival time                                   1.23
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_99/Q_reg/CLK (DFFX1)                 0.00       0.75 r
+  library hold time                       -0.05       0.70
+  data required time                                  0.70
+  -----------------------------------------------------------
+  data required time                                  0.70
+  data arrival time                                  -1.23
+  -----------------------------------------------------------
+  slack (MET)                                         0.53
+
+
+  Startpoint: DFF_85/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: DFF_70/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_85/Q_reg/CLK (DFFX1)                 0.00       0.55 r
+  DFF_85/Q_reg/Q (DFFX1)                   0.64       1.19 f
+  DFF_85/Q (dff_125)                       0.00       1.19 f
+  DFF_70/D (dff_140)                       0.00       1.19 f
+  DFF_70/Q_reg/D (DFFX1)                   0.05       1.24 f
+  data arrival time                                   1.24
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_70/Q_reg/CLK (DFFX1)                 0.00       0.75 r
+  library hold time                       -0.04       0.71
+  data required time                                  0.71
+  -----------------------------------------------------------
+  data required time                                  0.71
+  data arrival time                                  -1.24
+  -----------------------------------------------------------
+  slack (MET)                                         0.53
+
+
+  Startpoint: DFF_143/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: DFF_85/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_143/Q_reg/CLK (DFFX1)                0.00       0.55 r
+  DFF_143/Q_reg/Q (DFFX1)                  0.64       1.19 f
+  DFF_143/Q (dff_67)                       0.00       1.19 f
+  DFF_85/D (dff_125)                       0.00       1.19 f
+  DFF_85/Q_reg/D (DFFX1)                   0.05       1.24 f
+  data arrival time                                   1.24
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_85/Q_reg/CLK (DFFX1)                 0.00       0.75 r
+  library hold time                       -0.04       0.71
+  data required time                                  0.71
+  -----------------------------------------------------------
+  data required time                                  0.71
+  data arrival time                                  -1.24
+  -----------------------------------------------------------
+  slack (MET)                                         0.53
+
+
+  Startpoint: DFF_132/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: DFF_139/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_132/Q_reg/CLK (DFFX1)                0.00       0.55 r
+  DFF_132/Q_reg/Q (DFFX1)                  0.64       1.19 f
+  DFF_132/Q (dff_78)                       0.00       1.19 f
+  DFF_139/D (dff_71)                       0.00       1.19 f
+  DFF_139/Q_reg/D (DFFX1)                  0.05       1.24 f
+  data arrival time                                   1.24
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_139/Q_reg/CLK (DFFX1)                0.00       0.75 r
+  library hold time                       -0.04       0.71
+  data required time                                  0.71
+  -----------------------------------------------------------
+  data required time                                  0.71
+  data arrival time                                  -1.24
+  -----------------------------------------------------------
+  slack (MET)                                         0.53
+
+
+  Startpoint: DFF_103/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: DFF_148/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_103/Q_reg/CLK (DFFX1)                0.00       0.55 r
+  DFF_103/Q_reg/Q (DFFX1)                  0.64       1.19 f
+  DFF_103/Q (dff_107)                      0.00       1.19 f
+  DFF_148/D (dff_62)                       0.00       1.19 f
+  DFF_148/Q_reg/D (DFFX1)                  0.05       1.24 f
+  data arrival time                                   1.24
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_148/Q_reg/CLK (DFFX1)                0.00       0.75 r
+  library hold time                       -0.04       0.71
+  data required time                                  0.71
+  -----------------------------------------------------------
+  data required time                                  0.71
+  data arrival time                                  -1.24
+  -----------------------------------------------------------
+  slack (MET)                                         0.53
+
+
+  Startpoint: DFF_48/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: g3600 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_48/Q_reg/CLK (DFFX1)                 0.00       0.55 r
+  DFF_48/Q_reg/Q (DFFX1)                   0.64       1.19 f
+  DFF_48/Q (dff_162)                       0.00       1.19 f
+  g3600 (out)                              0.10       1.29 f
+  data arrival time                                   1.29
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.29
+  -----------------------------------------------------------
+  slack (MET)                                         0.54
+
+
+  Startpoint: DFF_190/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: g4307 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_190/Q_reg/CLK (DFFX1)                0.00       0.55 r
+  DFF_190/Q_reg/Q (DFFX1)                  0.64       1.19 f
+  DFF_190/Q (dff_20)                       0.00       1.19 f
+  g4307 (out)                              0.10       1.29 f
+  data arrival time                                   1.29
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.29
+  -----------------------------------------------------------
+  slack (MET)                                         0.54
+
+
+  Startpoint: DFF_161/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: g4321 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_161/Q_reg/CLK (DFFX1)                0.00       0.55 r
+  DFF_161/Q_reg/Q (DFFX1)                  0.64       1.19 f
+  DFF_161/Q (dff_49)                       0.00       1.19 f
+  g4321 (out)                              0.10       1.29 f
+  data arrival time                                   1.29
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.29
+  -----------------------------------------------------------
+  slack (MET)                                         0.54
+
+
+  Startpoint: g32 (input port clocked by CK)
+  Endpoint: DFF_47/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g32 (in)                                 0.01       0.56 f
+  U1109/ZN (INVX0)                         0.09       0.64 r
+  U1110/ZN (INVX0)                         0.13       0.78 f
+  DFF_47/D (dff_163)                       0.00       0.78 f
+  DFF_47/Q_reg/D (DFFX1)                   0.47       1.24 f
+  data arrival time                                   1.24
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_47/Q_reg/CLK (DFFX1)                 0.00       0.75 r
+  library hold time                       -0.05       0.70
+  data required time                                  0.70
+  -----------------------------------------------------------
+  data required time                                  0.70
+  data arrival time                                  -1.24
+  -----------------------------------------------------------
+  slack (MET)                                         0.54
+
+
+  Startpoint: g561 (input port clocked by CK)
+  Endpoint: DFF_63/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g561 (in)                                0.00       0.55 f
+  U482/QN (AOI221X1)                       0.51       1.07 r
+  U1185/QN (NAND2X1)                       0.14       1.21 f
+  DFF_63/D (dff_147)                       0.00       1.21 f
+  DFF_63/Q_reg/D (DFFX1)                   0.05       1.26 f
+  data arrival time                                   1.26
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_63/Q_reg/CLK (DFFX1)                 0.00       0.75 r
+  library hold time                       -0.04       0.71
+  data required time                                  0.71
+  -----------------------------------------------------------
+  data required time                                  0.71
+  data arrival time                                  -1.26
+  -----------------------------------------------------------
+  slack (MET)                                         0.55
+
+
+  Startpoint: g562 (input port clocked by CK)
+  Endpoint: DFF_27/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g562 (in)                                0.00       0.55 f
+  U1186/QN (AOI221X1)                      0.51       1.07 r
+  U1091/QN (NAND2X1)                       0.14       1.21 f
+  DFF_27/D (dff_183)                       0.00       1.21 f
+  DFF_27/Q_reg/D (DFFX1)                   0.05       1.26 f
+  data arrival time                                   1.26
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_27/Q_reg/CLK (DFFX1)                 0.00       0.75 r
+  library hold time                       -0.04       0.71
+  data required time                                  0.71
+  -----------------------------------------------------------
+  data required time                                  0.71
+  data arrival time                                  -1.26
+  -----------------------------------------------------------
+  slack (MET)                                         0.55
+
+
+  Startpoint: g558 (input port clocked by CK)
+  Endpoint: DFF_90/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g558 (in)                                0.01       0.56 r
+  U430/QN (AOI22X1)                        0.37       0.92 f
+  U427/QN (NAND4X0)                        0.16       1.09 r
+  DFF_90/D (dff_120)                       0.00       1.09 r
+  DFF_90/Q_reg/D (DFFX1)                   0.05       1.13 r
+  data arrival time                                   1.13
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_90/Q_reg/CLK (DFFX1)                 0.00       0.75 r
+  library hold time                       -0.17       0.58
+  data required time                                  0.58
+  -----------------------------------------------------------
+  data required time                                  0.58
+  data arrival time                                  -1.13
+  -----------------------------------------------------------
+  slack (MET)                                         0.55
+
+
+  Startpoint: g562 (input port clocked by CK)
+  Endpoint: DFF_27/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g562 (in)                                0.01       0.56 r
+  U1186/QN (AOI221X1)                      0.44       0.99 f
+  U1091/QN (NAND2X1)                       0.12       1.12 r
+  DFF_27/D (dff_183)                       0.00       1.12 r
+  DFF_27/Q_reg/D (DFFX1)                   0.05       1.17 r
+  data arrival time                                   1.17
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_27/Q_reg/CLK (DFFX1)                 0.00       0.75 r
+  library hold time                       -0.15       0.60
+  data required time                                  0.60
+  -----------------------------------------------------------
+  data required time                                  0.60
+  data arrival time                                  -1.17
+  -----------------------------------------------------------
+  slack (MET)                                         0.56
+
+
+  Startpoint: g561 (input port clocked by CK)
+  Endpoint: DFF_63/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g561 (in)                                0.01       0.56 r
+  U482/QN (AOI221X1)                       0.44       0.99 f
+  U1185/QN (NAND2X1)                       0.12       1.12 r
+  DFF_63/D (dff_147)                       0.00       1.12 r
+  DFF_63/Q_reg/D (DFFX1)                   0.05       1.17 r
+  data arrival time                                   1.17
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_63/Q_reg/CLK (DFFX1)                 0.00       0.75 r
+  library hold time                       -0.15       0.60
+  data required time                                  0.60
+  -----------------------------------------------------------
+  data required time                                  0.60
+  data arrival time                                  -1.17
+  -----------------------------------------------------------
+  slack (MET)                                         0.56
+
+
+  Startpoint: g560 (input port clocked by CK)
+  Endpoint: DFF_187/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g560 (in)                                0.01       0.56 r
+  U1088/QN (AOI22X1)                       0.37       0.92 f
+  U477/QN (NAND4X0)                        0.18       1.10 r
+  DFF_187/D (dff_23)                       0.00       1.10 r
+  DFF_187/Q_reg/D (DFFX1)                  0.05       1.15 r
+  data arrival time                                   1.15
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_187/Q_reg/CLK (DFFX1)                0.00       0.75 r
+  library hold time                       -0.17       0.58
+  data required time                                  0.58
+  -----------------------------------------------------------
+  data required time                                  0.58
+  data arrival time                                  -1.15
+  -----------------------------------------------------------
+  slack (MET)                                         0.57
+
+
+  Startpoint: g557 (input port clocked by CK)
+  Endpoint: DFF_79/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g557 (in)                                0.01       0.56 r
+  U898/QN (AOI22X1)                        0.37       0.92 f
+  U423/QN (NAND4X0)                        0.18       1.10 r
+  DFF_79/D (dff_131)                       0.00       1.10 r
+  DFF_79/Q_reg/D (DFFX1)                   0.05       1.15 r
+  data arrival time                                   1.15
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_79/Q_reg/CLK (DFFX1)                 0.00       0.75 r
+  library hold time                       -0.17       0.58
+  data required time                                  0.58
+  -----------------------------------------------------------
+  data required time                                  0.58
+  data arrival time                                  -1.15
+  -----------------------------------------------------------
+  slack (MET)                                         0.57
+
+
+  Startpoint: g559 (input port clocked by CK)
+  Endpoint: DFF_167/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g559 (in)                                0.01       0.56 r
+  U476/QN (AOI22X1)                        0.37       0.92 f
+  U473/QN (NAND4X0)                        0.18       1.10 r
+  DFF_167/D (dff_43)                       0.00       1.10 r
+  DFF_167/Q_reg/D (DFFX1)                  0.05       1.15 r
+  data arrival time                                   1.15
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_167/Q_reg/CLK (DFFX1)                0.00       0.75 r
+  library hold time                       -0.17       0.58
+  data required time                                  0.58
+  -----------------------------------------------------------
+  data required time                                  0.58
+  data arrival time                                  -1.15
+  -----------------------------------------------------------
+  slack (MET)                                         0.57
+
+
+  Startpoint: DFF_85/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: DFF_70/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_85/Q_reg/CLK (DFFX1)                 0.00       0.55 r
+  DFF_85/Q_reg/Q (DFFX1)                   0.58       1.13 r
+  DFF_85/Q (dff_125)                       0.00       1.13 r
+  DFF_70/D (dff_140)                       0.00       1.13 r
+  DFF_70/Q_reg/D (DFFX1)                   0.05       1.18 r
+  data arrival time                                   1.18
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_70/Q_reg/CLK (DFFX1)                 0.00       0.75 r
+  library hold time                       -0.15       0.60
+  data required time                                  0.60
+  -----------------------------------------------------------
+  data required time                                  0.60
+  data arrival time                                  -1.18
+  -----------------------------------------------------------
+  slack (MET)                                         0.58
+
+
+  Startpoint: DFF_143/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: DFF_85/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_143/Q_reg/CLK (DFFX1)                0.00       0.55 r
+  DFF_143/Q_reg/Q (DFFX1)                  0.58       1.13 r
+  DFF_143/Q (dff_67)                       0.00       1.13 r
+  DFF_85/D (dff_125)                       0.00       1.13 r
+  DFF_85/Q_reg/D (DFFX1)                   0.05       1.18 r
+  data arrival time                                   1.18
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_85/Q_reg/CLK (DFFX1)                 0.00       0.75 r
+  library hold time                       -0.15       0.60
+  data required time                                  0.60
+  -----------------------------------------------------------
+  data required time                                  0.60
+  data arrival time                                  -1.18
+  -----------------------------------------------------------
+  slack (MET)                                         0.58
+
+
+  Startpoint: DFF_132/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: DFF_139/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_132/Q_reg/CLK (DFFX1)                0.00       0.55 r
+  DFF_132/Q_reg/Q (DFFX1)                  0.58       1.13 r
+  DFF_132/Q (dff_78)                       0.00       1.13 r
+  DFF_139/D (dff_71)                       0.00       1.13 r
+  DFF_139/Q_reg/D (DFFX1)                  0.05       1.18 r
+  data arrival time                                   1.18
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_139/Q_reg/CLK (DFFX1)                0.00       0.75 r
+  library hold time                       -0.15       0.60
+  data required time                                  0.60
+  -----------------------------------------------------------
+  data required time                                  0.60
+  data arrival time                                  -1.18
+  -----------------------------------------------------------
+  slack (MET)                                         0.58
+
+
+  Startpoint: DFF_103/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: DFF_148/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_103/Q_reg/CLK (DFFX1)                0.00       0.55 r
+  DFF_103/Q_reg/Q (DFFX1)                  0.58       1.13 r
+  DFF_103/Q (dff_107)                      0.00       1.13 r
+  DFF_148/D (dff_62)                       0.00       1.13 r
+  DFF_148/Q_reg/D (DFFX1)                  0.05       1.18 r
+  data arrival time                                   1.18
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_148/Q_reg/CLK (DFFX1)                0.00       0.75 r
+  library hold time                       -0.15       0.60
+  data required time                                  0.60
+  -----------------------------------------------------------
+  data required time                                  0.60
+  data arrival time                                  -1.18
+  -----------------------------------------------------------
+  slack (MET)                                         0.58
+
+
+  Startpoint: DFF_48/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: g5137 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_48/Q_reg/CLK (DFFX1)                 0.00       0.55 r
+  DFF_48/Q_reg/Q (DFFX1)                   0.58       1.13 r
+  DFF_48/Q (dff_162)                       0.00       1.13 r
+  U1561/Z (NBUFFX2)                        0.25       1.37 r
+  g5137 (out)                              0.00       1.37 r
+  data arrival time                                   1.37
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.37
+  -----------------------------------------------------------
+  slack (MET)                                         0.62
+
+
+  Startpoint: DFF_190/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: g5468 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_190/Q_reg/CLK (DFFX1)                0.00       0.55 r
+  DFF_190/Q_reg/Q (DFFX1)                  0.58       1.13 r
+  DFF_190/Q (dff_20)                       0.00       1.13 r
+  U1563/Z (NBUFFX2)                        0.25       1.37 r
+  g5468 (out)                              0.00       1.37 r
+  data arrival time                                   1.37
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.37
+  -----------------------------------------------------------
+  slack (MET)                                         0.62
+
+
+  Startpoint: DFF_161/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: g5469 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_161/Q_reg/CLK (DFFX1)                0.00       0.55 r
+  DFF_161/Q_reg/Q (DFFX1)                  0.58       1.13 r
+  DFF_161/Q (dff_49)                       0.00       1.13 r
+  U1562/Z (NBUFFX2)                        0.25       1.37 r
+  g5469 (out)                              0.00       1.37 r
+  data arrival time                                   1.37
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.37
+  -----------------------------------------------------------
+  slack (MET)                                         0.62
+
+
+  Startpoint: g38 (input port clocked by CK)
+  Endpoint: DFF_124/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g38 (in)                                 0.01       0.56 r
+  U1103/ZN (INVX0)                         0.09       0.65 f
+  U1104/ZN (INVX0)                         0.13       0.78 r
+  DFF_124/D (dff_86)                       0.00       0.78 r
+  DFF_124/Q_reg/D (DFFX1)                  0.43       1.21 r
+  data arrival time                                   1.21
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_124/Q_reg/CLK (DFFX1)                0.00       0.75 r
+  library hold time                       -0.17       0.58
+  data required time                                  0.58
+  -----------------------------------------------------------
+  data required time                                  0.58
+  data arrival time                                  -1.21
+  -----------------------------------------------------------
+  slack (MET)                                         0.63
+
+
+  Startpoint: g40 (input port clocked by CK)
+  Endpoint: DFF_92/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g40 (in)                                 0.01       0.56 r
+  U1099/ZN (INVX0)                         0.09       0.65 f
+  U1100/ZN (INVX0)                         0.13       0.78 r
+  DFF_92/D (dff_118)                       0.00       0.78 r
+  DFF_92/Q_reg/D (DFFX1)                   0.44       1.21 r
+  data arrival time                                   1.21
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_92/Q_reg/CLK (DFFX1)                 0.00       0.75 r
+  library hold time                       -0.17       0.58
+  data required time                                  0.58
+  -----------------------------------------------------------
+  data required time                                  0.58
+  data arrival time                                  -1.21
+  -----------------------------------------------------------
+  slack (MET)                                         0.63
+
+
+  Startpoint: g36 (input port clocked by CK)
+  Endpoint: DFF_137/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g36 (in)                                 0.01       0.56 r
+  U1107/ZN (INVX0)                         0.09       0.65 f
+  U1108/ZN (INVX0)                         0.13       0.78 r
+  DFF_137/D (dff_73)                       0.00       0.78 r
+  DFF_137/Q_reg/D (DFFX1)                  0.44       1.21 r
+  data arrival time                                   1.21
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_137/Q_reg/CLK (DFFX1)                0.00       0.75 r
+  library hold time                       -0.17       0.58
+  data required time                                  0.58
+  -----------------------------------------------------------
+  data required time                                  0.58
+  data arrival time                                  -1.21
+  -----------------------------------------------------------
+  slack (MET)                                         0.63
+
+
+  Startpoint: g22 (input port clocked by CK)
+  Endpoint: DFF_131/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g22 (in)                                 0.01       0.56 f
+  U1522/QN (NOR3X0)                        0.35       0.91 r
+  U1521/Q (OR2X1)                          0.29       1.21 r
+  DFF_131/D (dff_79)                       0.00       1.21 r
+  DFF_131/Q_reg/D (DFFX1)                  0.05       1.25 r
+  data arrival time                                   1.25
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_131/Q_reg/CLK (DFFX1)                0.00       0.75 r
+  library hold time                       -0.14       0.61
+  data required time                                  0.61
+  -----------------------------------------------------------
+  data required time                                  0.61
+  data arrival time                                  -1.25
+  -----------------------------------------------------------
+  slack (MET)                                         0.64
+
+
+  Startpoint: g89 (input port clocked by CK)
+  Endpoint: g2584 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g89 (in)                                 0.02       0.57 f
+  U1596/QN (NAND2X0)                       0.56       1.13 r
+  U1381/ZN (INVX0)                         0.27       1.40 f
+  g2584 (out)                              0.00       1.40 f
+  data arrival time                                   1.40
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.40
+  -----------------------------------------------------------
+  slack (MET)                                         0.65
+
+
+  Startpoint: g39 (input port clocked by CK)
+  Endpoint: DFF_9/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g39 (in)                                 0.01       0.56 r
+  U1101/ZN (INVX0)                         0.09       0.65 f
+  U1102/ZN (INVX0)                         0.13       0.78 r
+  DFF_9/D (dff_201)                        0.00       0.78 r
+  DFF_9/Q_reg/D (DFFX1)                    0.46       1.23 r
+  data arrival time                                   1.23
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_9/Q_reg/CLK (DFFX1)                  0.00       0.75 r
+  library hold time                       -0.17       0.58
+  data required time                                  0.58
+  -----------------------------------------------------------
+  data required time                                  0.58
+  data arrival time                                  -1.23
+  -----------------------------------------------------------
+  slack (MET)                                         0.65
+
+
+  Startpoint: g564 (input port clocked by CK)
+  Endpoint: DFF_44/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g564 (in)                                0.01       0.56 f
+  U970/Q (AND2X1)                          0.33       0.89 f
+  U971/QN (NOR3X0)                         0.22       1.11 r
+  U993/QN (NAND2X0)                        0.19       1.30 f
+  DFF_44/D (dff_166)                       0.00       1.30 f
+  DFF_44/Q_reg/D (DFFX1)                   0.05       1.35 f
+  data arrival time                                   1.35
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_44/Q_reg/CLK (DFFX1)                 0.00       0.75 r
+  library hold time                       -0.06       0.69
+  data required time                                  0.69
+  -----------------------------------------------------------
+  data required time                                  0.69
+  data arrival time                                  -1.35
+  -----------------------------------------------------------
+  slack (MET)                                         0.66
+
+
+  Startpoint: g37 (input port clocked by CK)
+  Endpoint: DFF_99/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g37 (in)                                 0.01       0.56 r
+  U1105/ZN (INVX0)                         0.09       0.65 f
+  U1106/ZN (INVX0)                         0.13       0.78 r
+  DFF_99/D (dff_111)                       0.00       0.78 r
+  DFF_99/Q_reg/D (DFFX1)                   0.46       1.24 r
+  data arrival time                                   1.24
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_99/Q_reg/CLK (DFFX1)                 0.00       0.75 r
+  library hold time                       -0.17       0.58
+  data required time                                  0.58
+  -----------------------------------------------------------
+  data required time                                  0.58
+  data arrival time                                  -1.24
+  -----------------------------------------------------------
+  slack (MET)                                         0.66
+
+
+  Startpoint: g32 (input port clocked by CK)
+  Endpoint: DFF_47/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g32 (in)                                 0.01       0.56 r
+  U1109/ZN (INVX0)                         0.09       0.65 f
+  U1110/ZN (INVX0)                         0.13       0.78 r
+  DFF_47/D (dff_163)                       0.00       0.78 r
+  DFF_47/Q_reg/D (DFFX1)                   0.47       1.25 r
+  data arrival time                                   1.25
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_47/Q_reg/CLK (DFFX1)                 0.00       0.75 r
+  library hold time                       -0.17       0.58
+  data required time                                  0.58
+  -----------------------------------------------------------
+  data required time                                  0.58
+  data arrival time                                  -1.25
+  -----------------------------------------------------------
+  slack (MET)                                         0.67
+
+
+  Startpoint: g89 (input port clocked by CK)
+  Endpoint: g2584 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g89 (in)                                 0.02       0.57 r
+  U1596/QN (NAND2X0)                       0.59       1.16 f
+  U1381/ZN (INVX0)                         0.26       1.42 r
+  g2584 (out)                              0.00       1.42 r
+  data arrival time                                   1.42
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.42
+  -----------------------------------------------------------
+  slack (MET)                                         0.67
+
+
+  Startpoint: g22 (input port clocked by CK)
+  Endpoint: g4104 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g22 (in)                                 0.02       0.57 r
+  U1527/ZN (INVX0)                         0.32       0.88 f
+  U1549/ZN (INVX0)                         0.53       1.42 r
+  g4104 (out)                              0.00       1.42 r
+  data arrival time                                   1.42
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.42
+  -----------------------------------------------------------
+  slack (MET)                                         0.67
+
+
+  Startpoint: DFF_147/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: g6282 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_147/Q_reg/CLK (DFFX1)                0.00       0.55 r
+  DFF_147/Q_reg/Q (DFFX1)                  0.58       1.13 r
+  DFF_147/Q (dff_63)                       0.00       1.13 r
+  U887/QN (NAND3X0)                        0.18       1.31 f
+  g6282 (out)                              0.12       1.43 f
+  data arrival time                                   1.43
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.43
+  -----------------------------------------------------------
+  slack (MET)                                         0.68
+
+
+  Startpoint: g22 (input port clocked by CK)
+  Endpoint: g4104 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g22 (in)                                 0.01       0.56 f
+  U1527/ZN (INVX0)                         0.31       0.88 r
+  U1549/ZN (INVX0)                         0.55       1.43 f
+  g4104 (out)                              0.00       1.43 f
+  data arrival time                                   1.43
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.43
+  -----------------------------------------------------------
+  slack (MET)                                         0.68
+
+
+  Startpoint: g301 (input port clocked by CK)
+  Endpoint: DFF_67/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g301 (in)                                0.02       0.57 f
+  U1611/QN (NAND2X0)                       0.53       1.10 r
+  U1376/ZN (INVX0)                         0.24       1.34 f
+  DFF_67/D (dff_143)                       0.00       1.34 f
+  DFF_67/Q_reg/D (DFFX1)                   0.05       1.39 f
+  data arrival time                                   1.39
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_67/Q_reg/CLK (DFFX1)                 0.00       0.75 r
+  library hold time                       -0.04       0.71
+  data required time                                  0.71
+  -----------------------------------------------------------
+  data required time                                  0.71
+  data arrival time                                  -1.39
+  -----------------------------------------------------------
+  slack (MET)                                         0.68
+
+
+  Startpoint: g45 (input port clocked by CK)
+  Endpoint: g4108 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g45 (in)                                 0.02       0.57 r
+  U1531/ZN (INVX0)                         0.29       0.86 f
+  U1554/ZN (INVX0)                         0.57       1.43 r
+  g4108 (out)                              0.00       1.43 r
+  data arrival time                                   1.43
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.43
+  -----------------------------------------------------------
+  slack (MET)                                         0.68
+
+
+  Startpoint: DFF_48/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: g5137 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_48/Q_reg/CLK (DFFX1)                 0.00       0.55 r
+  DFF_48/Q_reg/Q (DFFX1)                   0.64       1.19 f
+  DFF_48/Q (dff_162)                       0.00       1.19 f
+  U1561/Z (NBUFFX2)                        0.25       1.44 f
+  g5137 (out)                              0.00       1.44 f
+  data arrival time                                   1.44
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.44
+  -----------------------------------------------------------
+  slack (MET)                                         0.69
+
+
+  Startpoint: DFF_190/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: g5468 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_190/Q_reg/CLK (DFFX1)                0.00       0.55 r
+  DFF_190/Q_reg/Q (DFFX1)                  0.64       1.19 f
+  DFF_190/Q (dff_20)                       0.00       1.19 f
+  U1563/Z (NBUFFX2)                        0.25       1.44 f
+  g5468 (out)                              0.00       1.44 f
+  data arrival time                                   1.44
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.44
+  -----------------------------------------------------------
+  slack (MET)                                         0.69
+
+
+  Startpoint: DFF_161/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: g5469 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_161/Q_reg/CLK (DFFX1)                0.00       0.55 r
+  DFF_161/Q_reg/Q (DFFX1)                  0.64       1.19 f
+  DFF_161/Q (dff_49)                       0.00       1.19 f
+  U1562/Z (NBUFFX2)                        0.25       1.44 f
+  g5469 (out)                              0.00       1.44 f
+  data arrival time                                   1.44
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.44
+  -----------------------------------------------------------
+  slack (MET)                                         0.69
+
+
+  Startpoint: DFF_79/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: DFF_123/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_79/Q_reg/CLK (DFFX1)                 0.00       0.55 r
+  DFF_79/Q_reg/Q (DFFX1)                   0.65       1.20 f
+  DFF_79/Q (dff_131)                       0.00       1.20 f
+  DFF_123/D (dff_87)                       0.00       1.20 f
+  DFF_123/Q_reg/D (DFFX1)                  0.20       1.40 f
+  data arrival time                                   1.40
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_123/Q_reg/CLK (DFFX1)                0.00       0.75 r
+  library hold time                       -0.05       0.70
+  data required time                                  0.70
+  -----------------------------------------------------------
+  data required time                                  0.70
+  data arrival time                                  -1.40
+  -----------------------------------------------------------
+  slack (MET)                                         0.70
+
+
+  Startpoint: g45 (input port clocked by CK)
+  Endpoint: g4108 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 f
+  g45 (in)                                 0.01       0.56 f
+  U1531/ZN (INVX0)                         0.29       0.86 r
+  U1554/ZN (INVX0)                         0.59       1.45 f
+  g4108 (out)                              0.00       1.45 f
+  data arrival time                                   1.45
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.45
+  -----------------------------------------------------------
+  slack (MET)                                         0.70
+
+
+  Startpoint: g564 (input port clocked by CK)
+  Endpoint: DFF_44/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  input external delay                     0.00       0.55 r
+  g564 (in)                                0.01       0.56 r
+  U970/Q (AND2X1)                          0.34       0.91 r
+  U971/QN (NOR3X0)                         0.19       1.10 f
+  U993/QN (NAND2X0)                        0.14       1.23 r
+  DFF_44/D (dff_166)                       0.00       1.23 r
+  DFF_44/Q_reg/D (DFFX1)                   0.05       1.28 r
+  data arrival time                                   1.28
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_44/Q_reg/CLK (DFFX1)                 0.00       0.75 r
+  library hold time                       -0.17       0.58
+  data required time                                  0.58
+  -----------------------------------------------------------
+  data required time                                  0.58
+  data arrival time                                  -1.28
+  -----------------------------------------------------------
+  slack (MET)                                         0.70
+
+
+  Startpoint: DFF_147/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: g6282 (output port clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_147/Q_reg/CLK (DFFX1)                0.00       0.55 r
+  DFF_147/Q_reg/Q (DFFX1)                  0.64       1.19 f
+  DFF_147/Q (dff_63)                       0.00       1.19 f
+  U887/QN (NAND3X0)                        0.17       1.36 r
+  g6282 (out)                              0.12       1.48 r
+  data arrival time                                   1.48
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  output external delay                    0.00       0.75
+  data required time                                  0.75
+  -----------------------------------------------------------
+  data required time                                  0.75
+  data arrival time                                  -1.48
+  -----------------------------------------------------------
+  slack (MET)                                         0.73
+
+
+  Startpoint: DFF_91/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: DFF_31/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_91/Q_reg/CLK (DFFX1)                 0.00       0.55 r
+  DFF_91/Q_reg/Q (DFFX1)                   0.64       1.19 f
+  DFF_91/Q (dff_119)                       0.00       1.19 f
+  U798/Q (AND2X1)                          0.21       1.40 f
+  DFF_31/D (dff_179)                       0.00       1.40 f
+  DFF_31/Q_reg/D (DFFX1)                   0.05       1.45 f
+  data arrival time                                   1.45
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_31/Q_reg/CLK (DFFX1)                 0.00       0.75 r
+  library hold time                       -0.04       0.71
+  data required time                                  0.71
+  -----------------------------------------------------------
+  data required time                                  0.71
+  data arrival time                                  -1.45
+  -----------------------------------------------------------
+  slack (MET)                                         0.74
+
+
+  Startpoint: DFF_8/Q_reg
+              (rising edge-triggered flip-flop clocked by CK)
+  Endpoint: DFF_45/Q_reg
+            (rising edge-triggered flip-flop clocked by CK)
+  Path Group: CK
+  Path Type: min
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  s9234              8000                  saed90nm_max
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  DFF_8/Q_reg/CLK (DFFX1)                  0.00       0.55 r
+  DFF_8/Q_reg/Q (DFFX1)                    0.64       1.19 f
+  DFF_8/Q (dff_202)                        0.00       1.19 f
+  U795/Q (AND2X1)                          0.21       1.40 f
+  DFF_45/D (dff_165)                       0.00       1.40 f
+  DFF_45/Q_reg/D (DFFX1)                   0.05       1.45 f
+  data arrival time                                   1.45
+
+  clock CK (rise edge)                     0.00       0.00
+  clock network delay (ideal)              0.55       0.55
+  clock uncertainty                        0.20       0.75
+  DFF_45/Q_reg/CLK (DFFX1)                 0.00       0.75 r
+  library hold time                       -0.04       0.71
+  data required time                                  0.71
+  -----------------------------------------------------------
+  data required time                                  0.71
+  data arrival time                                  -1.45
+  -----------------------------------------------------------
+  slack (MET)                                         0.74
+
+
+1

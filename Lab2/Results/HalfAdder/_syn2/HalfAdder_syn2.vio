@@ -1,0 +1,31 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : HalfAdder
+Version: F-2011.09-SP4
+Date   : Mon Apr 11 20:30:04 2016
+****************************************
+
+
+   min_capacitance
+
+                             Required        Actual
+   Net                      Capacitance    Capacitance       Slack
+   -----------------------------------------------------------------
+   Cout                         0.10           0.00          -0.10  (VIOLATED)
+   Sum                          0.10           0.00          -0.10  (VIOLATED)
+
+   -----------------------------------------------------------------
+   Total                      2                  -0.19  
+
+   max_area
+
+                             Required        Actual
+   Design                      Area           Area           Slack
+   -----------------------------------------------------------------
+   HalfAdder                    0.00          33.45         -33.45  (VIOLATED)
+
+
+1

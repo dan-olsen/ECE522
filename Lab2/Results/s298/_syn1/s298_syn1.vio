@@ -1,0 +1,47 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : s298
+Version: F-2011.09-SP4
+Date   : Mon Apr 11 20:48:50 2016
+****************************************
+
+
+   max_delay/setup ('CK' group)
+
+                             Required        Actual
+   Endpoint                 Path Delay     Path Delay        Slack
+   -----------------------------------------------------------------
+   DFF_9/Q_reg/D               -0.04           3.46 r        -3.49  (VIOLATED)
+   DFF_10/Q_reg/D              -0.03           3.47 r        -3.49  (VIOLATED)
+   DFF_4/Q_reg/D               -0.04           3.45 r        -3.49  (VIOLATED)
+   DFF_5/Q_reg/D               -0.04           3.45 r        -3.48  (VIOLATED)
+   DFF_3/Q_reg/D               -0.04           3.44 r        -3.48  (VIOLATED)
+   DFF_8/Q_reg/D               -0.04           3.44 r        -3.48  (VIOLATED)
+   DFF_6/Q_reg/D               -0.03           3.41 r        -3.43  (VIOLATED)
+   DFF_7/Q_reg/D               -0.05           3.36 r        -3.41  (VIOLATED)
+   DFF_11/Q_reg/D              -0.03           3.37 r        -3.40  (VIOLATED)
+   DFF_2/Q_reg/D               -0.08           3.26 r        -3.34  (VIOLATED)
+   DFF_1/Q_reg/D               -0.09           3.17 r        -3.26  (VIOLATED)
+   DFF_12/Q_reg/D              -0.05           2.68 r        -2.73  (VIOLATED)
+   DFF_13/Q_reg/D              -0.05           2.46 r        -2.51  (VIOLATED)
+   DFF_0/Q_reg/D               -0.02           2.44 r        -2.46  (VIOLATED)
+   G67                          0.25           1.50 f        -1.25  (VIOLATED)
+   G118                         0.25           1.47 f        -1.22  (VIOLATED)
+   G66                          0.25           1.28 f        -1.03  (VIOLATED)
+   G117                         0.25           1.28 f        -1.03  (VIOLATED)
+   G132                         0.25           1.28 f        -1.03  (VIOLATED)
+   G133                         0.25           1.28 f        -1.03  (VIOLATED)
+
+
+   max_area
+
+                             Required        Actual
+   Design                      Area           Area           Slack
+   -----------------------------------------------------------------
+   s298                         0.00        1397.33       -1397.33  (VIOLATED)
+
+
+1

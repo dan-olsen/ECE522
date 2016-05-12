@@ -1,0 +1,10 @@
+ 
+****************************************
+Report : DFT DRC Violations
+Design : c17
+Version: F-2011.09-SP4
+Date   : Thu Jan 28 10:52:36 2016
+****************************************
+
+Error: Violations cannot be reported. Please, run dft_drc command first. (TEST-1733)
+0

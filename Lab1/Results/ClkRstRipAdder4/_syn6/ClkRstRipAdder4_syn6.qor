@@ -1,0 +1,67 @@
+ 
+****************************************
+Report : qor
+Design : ClkRstRipAdder4
+Version: F-2011.09-SP4
+Date   : Tue Mar  8 12:35:37 2016
+****************************************
+
+
+  Timing Path Group 'CK'
+  -----------------------------------
+  Levels of Logic:             4.0000
+  Critical Path Length:        1.4955
+  Critical Path Slack:         0.0045
+  Critical Path Clk Period:    2.0000
+  Total Negative Slack:        0.0000
+  No. of Violating Paths:      0.0000
+  Worst Hold Violation:        0.0000
+  Total Hold Violation:        0.0000
+  No. of Hold Violations:      0.0000
+  -----------------------------------
+
+
+  Cell Count
+  -----------------------------------
+  Hierarchical Cell Count:         12
+  Hierarchical Port Count:         52
+  Leaf Cell Count:                 37
+  Buf/Inv Cell Count:              11
+  CT Buf/Inv Cell Count:            0
+  Combinational Cell Count:        34
+  Sequential Cell Count:            3
+  Macro Count:                      0
+  -----------------------------------
+
+
+  Area
+  -----------------------------------
+  Combinational Area:        282.0096
+  Noncombinational Area:      74.6496
+  Net Area:                    8.6516
+  -----------------------------------
+  Cell Area:                 356.6592
+  Design Area:               365.3108
+
+
+  Design Rules
+  -----------------------------------
+  Total Number of Nets:            48
+  Nets With Violations:             0
+  Max Trans Violations:             0
+  Max Cap Violations:               0
+  -----------------------------------
+
+
+  Hostname: engr-e132-d21
+
+  Compile CPU Statistics
+  -----------------------------------------
+  Resource Sharing:                  0.0000
+  Logic Optimization:                0.1040
+  Mapping Optimization:              0.1200
+  -----------------------------------------
+  Overall Compile Time:              2.0160
+  Overall Compile Wall Clock Time:   2.2357
+
+1

@@ -1,0 +1,34 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : ClkRstRipAdder4
+Version: F-2011.09-SP4
+Date   : Mon Apr 11 20:17:06 2016
+****************************************
+
+
+   min_capacitance
+
+                             Required        Actual
+   Net                      Capacitance    Capacitance       Slack
+   -----------------------------------------------------------------
+   COUT                         0.10           0.00          -0.10  (VIOLATED)
+   SUM[0]                       0.10           0.00          -0.10  (VIOLATED)
+   SUM[1]                       0.10           0.00          -0.10  (VIOLATED)
+   SUM[2]                       0.10           0.00          -0.10  (VIOLATED)
+   SUM[3]                       0.10           0.00          -0.10  (VIOLATED)
+
+   -----------------------------------------------------------------
+   Total                      5                  -0.48  
+
+   max_area
+
+                             Required        Actual
+   Design                      Area           Area           Slack
+   -----------------------------------------------------------------
+   ClkRstRipAdder4              0.00         487.60        -487.60  (VIOLATED)
+
+
+1
