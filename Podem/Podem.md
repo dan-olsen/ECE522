@@ -56,4 +56,4 @@ There are a few cases where the tool was getting stuck in an infinite loop in th
 | c880      | 100 %          | 1.5263 s       |
 | c17       | 100 %          | 0.000522218 s  |
 
-*b18 was ran for 19 hours and only 11,000 faults had been evaulated. b19 for 12 hours and only 6,000 faults had been evaulated. Both runs were ended since final results  could not be obtained in any reasonable time.
+*b18 was ran for 19 hours and only 11,000 faults had been evaluated. b19 for 12 hours and only 6,000 faults had been evaluated. Both runs were ended since final results  could not be obtained in any reasonable time.
