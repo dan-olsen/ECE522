@@ -1,0 +1,34 @@
+Reading benchmark file: ./data/c1908.bench
+Benchmark Name: c1908
+INPUT: 33
+NOT: 277
+BUFFER: 162
+AND: 63
+NAND: 377
+NOR: 1
+STEM: 995
+Total Gates: 1908
+
+Reading fault file: ./data/c1908.faults
+
+Starting ATPG using PODEM ...
+
+Current Fault: 550/SA0.........................Tested (0.00925815 s)
+Current Fault: 592/SA1.........................Tested (0.00726582 s)
+Current Fault: 910/SA1.........................Tested (0.0185811 s)
+Current Fault: 910/SA0.........................Tested (0.0181373 s)
+Current Fault: 922/SA0.........................Tested (0.0182657 s)
+Current Fault: 1315/SA1........................Tested (0.0189438 s)
+Current Fault: 1481/SA0........................Tested (0.00504919 s)
+Current Fault: 2241/SA0........................Tested (0.019507 s)
+Current Fault: 2627/SA1........................Tested (0.0198226 s)
+Current Fault: 2669/SA0........................Tested (0.00175588 s)
+Current Fault: 2750/SA1........................Tested (0.0201361 s)
+Current Fault: 2871/SA0........................Tested (0.00759548 s)
+Current Fault: 2745/SA0........................Tested (0.0205216 s)
+Current Fault: 2756/SA1........................Tested (0.0019853 s)
+Current Fault: 2890/SA0........................Tested (0.00727573 s)
+
+Fault coverage: 100 %
+
+Elapsed Time: 0.204444 s

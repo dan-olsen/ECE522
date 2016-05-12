@@ -1,0 +1,34 @@
+Reading benchmark file: ./data/c5315.bench
+Benchmark Name: c5315
+INPUT: 178
+NOT: 581
+BUFFER: 313
+AND: 718
+NAND: 454
+OR: 214
+NOR: 27
+STEM: 2830
+Total Gates: 5315
+
+Reading fault file: ./data/c5315.faults
+
+Starting ATPG using PODEM ...
+
+Current Fault: 1156/SA1........................Tested (0.0548702 s)
+Current Fault: 2608/SA0........................Tested (0.00463239 s)
+Current Fault: 2622/SA1........................Tested (0.0772059 s)
+Current Fault: 2831/SA1........................Tested (0.0368928 s)
+Current Fault: 2909/SA0........................Tested (0.0075265 s)
+Current Fault: 3769/SA1........................Tested (0.0421979 s)
+Current Fault: 4197/SA0........................Tested (0.00730336 s)
+Current Fault: 6073/SA1........................Tested (0.0114644 s)
+Current Fault: 6966/SA0........................Tested (0.0142488 s)
+Current Fault: 7503/SA1........................Tested (0.00723168 s)
+Current Fault: 7504/SA0........................Tested (0.0284068 s)
+Current Fault: 7741/SA1........................Tested (0.0347449 s)
+Current Fault: 4272/SA1........................Tested (0.00608413 s)
+Current Fault: 7472/SA0........................Tested (0.0139952 s)
+
+Fault coverage: 100 %
+
+Elapsed Time: 0.368806 s

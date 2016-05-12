@@ -1,0 +1,36 @@
+Reading benchmark file: ./data/c17.bench
+Benchmark Name: c17
+INPUT: 5
+NAND: 6
+STEM: 6
+Total Gates: 17
+
+
+Starting ATPG using PODEM ...
+
+Current Fault: 1/SA1...........................Tested (1.643e-05 s)
+Current Fault: 1/SA0...........................Tested (1.1843e-05 s)
+Current Fault: 2/SA1...........................Tested (9.158e-06 s)
+Current Fault: 2/SA0...........................Tested (7.908e-06 s)
+Current Fault: 3/SA1...........................Tested (1.8366e-05 s)
+Current Fault: 3/SA0...........................Tested (1.7238e-05 s)
+Current Fault: 6/SA1...........................Tested (3.555e-05 s)
+Current Fault: 6/SA0...........................Tested (2.5328e-05 s)
+Current Fault: 7/SA1...........................Tested (2.0522e-05 s)
+Current Fault: 7/SA0...........................Tested (2.0982e-05 s)
+Current Fault: 11/SA1..........................Tested (1.7065e-05 s)
+Current Fault: 11/SA0..........................Tested (8.569e-06 s)
+Current Fault: 10/SA1..........................Tested (1.2467e-05 s)
+Current Fault: 10/SA0..........................Tested (7.574e-06 s)
+Current Fault: 16/SA1..........................Tested (9.143e-06 s)
+Current Fault: 16/SA0..........................Tested (1.1932e-05 s)
+Current Fault: 19/SA1..........................Tested (1.2124e-05 s)
+Current Fault: 19/SA0..........................Tested (8.653e-06 s)
+Current Fault: 23/SA1..........................Tested (1.1886e-05 s)
+Current Fault: 23/SA0..........................Tested (8.506e-06 s)
+Current Fault: 22/SA1..........................Tested (7.652e-06 s)
+Current Fault: 22/SA0..........................Tested (8.022e-06 s)
+
+Fault coverage: 100 %
+
+Elapsed Time: 0.000522218 s

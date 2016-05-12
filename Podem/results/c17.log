@@ -1,0 +1,22 @@
+Reading benchmark file: ./data/c17.bench
+Benchmark Name: c17
+INPUT: 5
+NAND: 6
+STEM: 6
+Total Gates: 17
+
+Reading fault file: ./data/c17.faults
+
+Starting ATPG using PODEM ...
+
+Current Fault: 11/SA0..........................Tested (2.4255e-05 s)
+Current Fault: 11/SA1..........................Tested (2.8188e-05 s)
+Current Fault: 16/SA0..........................Tested (1.9927e-05 s)
+Current Fault: 16/SA1..........................Tested (1.4464e-05 s)
+Current Fault: 19/SA1..........................Tested (1.959e-05 s)
+Current Fault: 22/SA0..........................Tested (1.4248e-05 s)
+Current Fault: 23/SA1..........................Tested (1.8322e-05 s)
+
+Fault coverage: 100 %
+
+Elapsed Time: 0.000422044 s

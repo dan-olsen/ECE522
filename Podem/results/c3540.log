@@ -1,0 +1,42 @@
+Reading benchmark file: ./data/c3540.bench
+Benchmark Name: c3540
+INPUT: 50
+NOT: 490
+BUFFER: 223
+AND: 498
+NAND: 298
+OR: 92
+NOR: 68
+STEM: 1821
+Total Gates: 3540
+
+Reading fault file: ./data/c3540.faults
+
+Starting ATPG using PODEM ...
+
+Current Fault: 1343/SA1........................Tested (0.046219 s)
+Current Fault: 1507/SA0........................Tested (0.00729581 s)
+Current Fault: 1508/SA1........................Tested (0.00625019 s)
+Current Fault: 1761/SA1........................Tested (0.014467 s)
+Current Fault: 1926/SA0........................Tested (0.0105956 s)
+Current Fault: 2444/SA1........................Tested (0.0546371 s)
+Current Fault: 2444/SA0........................Tested (0.0159781 s)
+Current Fault: 2746/SA1........................Tested (0.00724156 s)
+Current Fault: 3142/SA0........................Tested (0.0262846 s)
+Current Fault: 3194/SA1........................Tested (0.0165846 s)
+Current Fault: 3397/SA0........................Tested (0.0212615 s)
+Current Fault: 3398/SA1........................Tested (0.0151474 s)
+Current Fault: 3442/SA0........................Tested (0.0389502 s)
+Current Fault: 3935/SA0........................Tested (0.0416852 s)
+Current Fault: 4112/SA0........................Tested (0.0181607 s)
+Current Fault: 4253/SA1........................Tested (0.018513 s)
+Current Fault: 4448/SA0........................Tested (3.37834 s)
+Current Fault: 4503/SA1........................Tested (0.0157206 s)
+Current Fault: 4982/SA0........................Tested (0.0281163 s)
+Current Fault: 5133/SA1........................Tested (0.0201045 s)
+Current Fault: 5045/SA0........................Tested (0.0165168 s)
+Current Fault: 5361/SA1........................Tested (0.0280564 s)
+
+Fault coverage: 100 %
+
+Elapsed Time: 3.85985 s
