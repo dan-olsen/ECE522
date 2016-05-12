@@ -1,0 +1,40 @@
+Reading benchmark file: ./data/c7552.bench
+Benchmark Name: c7552
+INPUT: 207
+NOT: 876
+BUFFER: 534
+AND: 776
+NAND: 1028
+OR: 244
+NOR: 54
+STEM: 3833
+Total Gates: 7552
+
+Reading fault file: ./data/c7552.faults
+
+Starting ATPG using PODEM ...
+
+Current Fault: 2247/SA0........................Tested (0.113455 s)
+Current Fault: 2302/SA0........................Tested (0.115747 s)
+Current Fault: 4501/SA1........................Tested (0.156876 s)
+Current Fault: 5850/SA0........................Tested (0.097708 s)
+Current Fault: 7063/SA0........................Tested (0.229677 s)
+Current Fault: 7402/SA1........................Tested (0.237803 s)
+Current Fault: 8444/SA0........................Tested (0.181315 s)
+Current Fault: 8497/SA1........................Tested (0.209506 s)
+Current Fault: 8503/SA0........................Tested (0.084233 s)
+Current Fault: 8548/SA1........................Tested (0.229704 s)
+Current Fault: 9244/SA1........................Tested (0.0280825 s)
+Current Fault: 9252/SA0........................Tested (0.0230686 s)
+Current Fault: 9280/SA1........................Tested (0.116814 s)
+Current Fault: 9307/SA0........................Tested (0.181076 s)
+Current Fault: 9626/SA1........................Tested (0.0373784 s)
+Current Fault: 9734/SA0........................Tested (0.387032 s)
+Current Fault: 9735/SA1........................Tested (0.0263182 s)
+Current Fault: 10015/SA0.......................Tested (0.405031 s)
+Current Fault: 1113/SA0........................Tested (0.00530663 s)
+Current Fault: 10761/SA1.......................Tested (0.0265185 s)
+
+Fault coverage: 100 %
+
+Elapsed Time: 2.94841 s

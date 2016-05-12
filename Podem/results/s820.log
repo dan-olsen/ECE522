@@ -1,0 +1,20 @@
+Reading benchmark file: ./data/s820.bench
+Benchmark Name: s820
+INPUT: 23
+NOT: 33
+AND: 76
+NAND: 54
+OR: 60
+NOR: 66
+DFF: 5
+STEM: 508
+Total Gates: 825
+
+Reading fault file: ./data/s820.faults
+
+Starting ATPG using PODEM ...
+
+
+Fault coverage: -nan %
+
+Elapsed Time: 0.00404934 s

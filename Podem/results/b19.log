@@ -1,0 +1,64 @@
+Reading benchmark file: ./data/b19.bench
+Benchmark Name: b19
+INPUT: 6666
+NOT: 41107
+AND: 22774
+NAND: 158088
+OR: 1768
+NOR: 887
+DFF: 6642
+STEM: 273682
+Total Gates: 511614
+
+Reading fault file: ./data/b19.faults
+
+Starting ATPG using PODEM ...
+
+Current Fault: SUB_1487_37_U119/SA1............Tested (98.7222 s)
+Current Fault: SUB_1487_37_U119/SA0............Tested (99.7059 s)
+Current Fault: SUB_1487_37_U79/SA1.............Tested (94.953 s)
+Current Fault: SUB_1487_37_U80/SA0.............Tested (93.0779 s)
+Current Fault: SUB_1487_37_U75/SA1.............Tested (14.7648 s)
+Current Fault: SUB_1487_37_U6/SA0..............Tested (15.6102 s)
+Current Fault: P1_P1_READY21_REG/SA1...........Tested (5.75056 s)
+Current Fault: P1_P1_READY22_REG/SA0...........Tested (63.7976 s)
+Current Fault: P1_P1_READY11_REG/SA1...........Tested (84.9617 s)
+Current Fault: P1_P3_U4117/SA1.................Tested (4.61504 s)
+Current Fault: P1_P3_U4118/SA0.................Tested (15.4778 s)
+Current Fault: P1_P3_U4119/SA1.................Tested (1.91071 s)
+Current Fault: P2_MUL_1420_U4377/SA1...........Timeout Not Tested (600.319 s)
+Current Fault: P2_MUL_1420_U4378/SA1...........Tested (72.3629 s)
+Current Fault: P2_MUL_1420_U4379/SA0...........Tested (76.4171 s)
+Current Fault: P2_MUL_1420_U4380/SA0...........Tested (43.1253 s)
+Current Fault: P1_P2_P3_U7964/SA0..............Tested (9.38729 s)
+Current Fault: P1_P2_P3_U7965/SA0..............Tested (9.88648 s)
+Current Fault: P1_P2_P3_U7966/SA1..............Tested (9.79253 s)
+Current Fault: P1_P2_P3_U7967/SA1..............Tested (9.04538 s)
+Current Fault: P1_P2_P3_U7968/SA1..............Tested (10.8002 s)
+Current Fault: P1_P2_P3_U7969/SA1..............Tested (15.4619 s)
+Current Fault: P2_P2_P3_U7427/SA1..............Tested (33.5604 s)
+Current Fault: P2_P2_P3_U7428/SA0..............Tested (21.1407 s)
+Current Fault: P2_P2_P3_U7429/SA1..............Tested (20.4183 s)
+Current Fault: P2_P2_P3_U7430/SA0..............Tested (21.2747 s)
+Current Fault: P2_P2_P3_U7431/SA0..............Tested (20.0819 s)
+Current Fault: P2_P2_P3_U7432/SA0..............Tested (22.9003 s)
+Current Fault: P2_P4_R1165_U247/SA1............Tested (64.8349 s)
+Current Fault: P2_P4_R1165_U248/SA0............Tested (46.9596 s)
+Current Fault: P2_P4_R1165_U249/SA1............Tested (66.1479 s)
+Current Fault: P1_P2_P2_ADD_916_U96/SA1........Tested (33.4009 s)
+Current Fault: P1_P2_P2_ADD_916_U97/SA0........Tested (33.7313 s)
+Current Fault: P1_P2_P2_ADD_916_U98/SA1........Tested (31.2783 s)
+Current Fault: P2_P1_P3_ADD_829_U120/SA0.......Tested (32.1972 s)
+Current Fault: P2_P1_P3_ADD_829_U121/SA0.......Tested (32.3821 s)
+Current Fault: P2_P1_P3_ADD_829_U122/SA1.......Timeout Not Tested (600.713 s)
+Current Fault: P2_P1_P3_ADD_829_U123/SA0.......Tested (10.5965 s)
+Current Fault: P2_P1_P3_ADD_829_U124/SA1.......Tested (14.1676 s)
+Current Fault: P2_P1_P1_ADD_978_U122/SA1.......Tested (34.9469 s)
+Current Fault: P2_P1_P1_ADD_978_U123/SA0.......Tested (33.9081 s)
+Current Fault: P2_P1_P1_ADD_978_U124/SA1.......Tested (39.2522 s)
+Current Fault: P2_P2_P1_ADD_952_U57/SA1........Tested (83.8236 s)
+Current Fault: P2_P2_P1_ADD_952_U89/SA0........Tested (72.471 s)
+
+Fault coverage: 95.4545 %
+
+Elapsed Time: 2827.32 s

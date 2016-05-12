@@ -1,0 +1,61 @@
+Reading benchmark file: ./data/s35932.bench
+Benchmark Name: s35932
+INPUT: 1763
+NOT: 3861
+AND: 4032
+NAND: 7020
+OR: 1152
+DFF: 1728
+STEM: 17432
+Total Gates: 36988
+
+Reading fault file: ./data/s35932.faults
+
+Starting ATPG using PODEM ...
+
+Current Fault: WX1758/SA1......................Tested (0.26833 s)
+Current Fault: WX7642/SA0......................Tested (0.305463 s)
+Current Fault: WX2145/SA0......................Tested (0.0930002 s)
+Current Fault: WX2147/SA1......................Tested (0.048598 s)
+Current Fault: WX2892/SA0......................Tested (0.297363 s)
+Current Fault: WX2895/SA1......................Tested (0.280536 s)
+Current Fault: WX3017/SA0......................Tested (0.133049 s)
+Current Fault: WX5323/SA0......................Tested (0.143162 s)
+Current Fault: WX7233/SA1......................Tested (0.0351285 s)
+Current Fault: WX10213/SA0.....................Tested (0.309003 s)
+Current Fault: WX10184/SA1.....................Tested (0.333288 s)
+Current Fault: WX1433/SA1......................Tested (0.371873 s)
+Current Fault: WX8160/SA0......................Tested (0.333571 s)
+Current Fault: DATA_9_11/SA0...................Tested (0.241055 s)
+Current Fault: WX760/SA1.......................Tested (0.0549179 s)
+Current Fault: WX762/SA0.......................Tested (0.0863926 s)
+Current Fault: WX764/SA0.......................Tested (0.100549 s)
+Current Fault: WX766/SA1.......................Tested (0.0592304 s)
+Current Fault: WX768/SA1.......................Tested (0.0565544 s)
+Current Fault: WX770/SA0.......................Tested (0.092799 s)
+Current Fault: WX772/SA1.......................Tested (0.0481809 s)
+Current Fault: WX774/SA0.......................Tested (0.0922905 s)
+Current Fault: WX776/SA1.......................Tested (0.0509231 s)
+Current Fault: WX778/SA0.......................Tested (0.0957051 s)
+Current Fault: WX780/SA0.......................Tested (0.0891849 s)
+Current Fault: WX782/SA1.......................Tested (0.0480736 s)
+Current Fault: WX784/SA1.......................Tested (0.0507076 s)
+Current Fault: WX786/SA1.......................Tested (0.0515613 s)
+Current Fault: WX788/SA0.......................Tested (0.0930188 s)
+Current Fault: WX790/SA0.......................Tested (0.0776079 s)
+Current Fault: WX792/SA0.......................Tested (0.0730942 s)
+Current Fault: WX794/SA1.......................Tested (0.0395853 s)
+Current Fault: WX796/SA0.......................Tested (0.06592 s)
+Current Fault: WX798/SA1.......................Tested (0.0414948 s)
+Current Fault: WX800/SA1.......................Tested (0.039519 s)
+Current Fault: WX802/SA0.......................Tested (0.0770741 s)
+Current Fault: WX804/SA1.......................Tested (0.0397609 s)
+Current Fault: WX806/SA0.......................Tested (0.0670241 s)
+Current Fault: WX808/SA1.......................Tested (0.0489715 s)
+Current Fault: WX810/SA0.......................Tested (0.0867965 s)
+Current Fault: WX812/SA1.......................Tested (0.0446721 s)
+Current Fault: WX826/SA1.......................Tested (0.0547352 s)
+
+Fault coverage: 100 %
+
+Elapsed Time: 5.43709 s

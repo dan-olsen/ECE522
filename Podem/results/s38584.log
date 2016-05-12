@@ -1,0 +1,54 @@
+Reading benchmark file: ./data/s38584.bench
+Benchmark Name: s38584.1
+INPUT: 1464
+NOT: 7805
+AND: 5516
+NAND: 2126
+OR: 2621
+NOR: 1185
+DFF: 1426
+STEM: 17715
+Total Gates: 39858
+
+Reading fault file: ./data/s38584.faults
+
+Starting ATPG using PODEM ...
+
+Current Fault: g8291/SA1.......................Tested (0.0475285 s)
+Current Fault: g8291/SA0.......................Tested (0.040732 s)
+Current Fault: g14738/SA1......................Tested (0.0417039 s)
+Current Fault: g14738/SA0......................Tested (0.0409925 s)
+Current Fault: g3167/SA1.......................Tested (0.314471 s)
+Current Fault: g5615/SA1.......................Tested (0.126845 s)
+Current Fault: g4567/SA0.......................Tested (0.0846124 s)
+Current Fault: g3057/SA0.......................Tested (0.235661 s)
+Current Fault: I31569/SA1......................Tested (0.637238 s)
+Current Fault: g25219/SA0......................Tested (0.0432945 s)
+Current Fault: I27271/SA1......................Tested (0.0434094 s)
+Current Fault: g14591/SA1......................Tested (0.115472 s)
+Current Fault: I21226/SA0......................Not Tested (0.128073 s)
+Current Fault: g18331/SA0......................Tested (0.0820972 s)
+Current Fault: I27364/SA1......................Tested (0.534554 s)
+Current Fault: g24764/SA0......................Tested (0.277533 s)
+Current Fault: g29517/SA1......................Tested (0.241559 s)
+Current Fault: I31302/SA0......................Tested (0.840395 s)
+Current Fault: I31357/SA1......................Not Tested (1.67753 s)
+Current Fault: g18107/SA0......................Tested (0.107359 s)
+Current Fault: g27421/SA0......................Tested (0.499932 s)
+Current Fault: g34085/SA0......................Tested (0.830979 s)
+Current Fault: I31332/SA1......................Not Tested (1.7113 s)
+Current Fault: g21881/SA0......................Tested (0.0905819 s)
+Current Fault: g25657/SA1......................Tested (0.09609 s)
+Current Fault: g24253/SA0......................Tested (0.158398 s)
+Current Fault: g25774/SA1......................Tested (0.167599 s)
+Current Fault: g28172/SA0......................Tested (0.427596 s)
+Current Fault: g13109/SA0......................Tested (1.16797 s)
+Current Fault: g16772/SA0......................Tested (1.14441 s)
+Current Fault: g24787/SA1......................Tested (0.416428 s)
+Current Fault: g13086/SA1......................Tested (0.48188 s)
+Current Fault: g15709/SA0......................Tested (1.05156 s)
+Current Fault: g27882/SA1......................Tested (0.660946 s)
+
+Fault coverage: 91.1765 %
+
+Elapsed Time: 14.9109 s

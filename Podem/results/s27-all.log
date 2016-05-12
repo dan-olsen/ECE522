@@ -1,0 +1,59 @@
+Reading benchmark file: ./data/s27.bench
+Benchmark Name: s27
+INPUT: 7
+NOT: 2
+AND: 1
+NAND: 1
+OR: 2
+NOR: 4
+DFF: 3
+STEM: 9
+Total Gates: 29
+
+
+Starting ATPG using PODEM ...
+
+Current Fault: G0/SA1..........................Tested (1.7065e-05 s)
+Current Fault: G0/SA0..........................Tested (1.2388e-05 s)
+Current Fault: G1/SA1..........................Tested (3.3097e-05 s)
+Current Fault: G1/SA0..........................Tested (3.0967e-05 s)
+Current Fault: G2/SA1..........................Tested (2.0432e-05 s)
+Current Fault: G2/SA0..........................Tested (1.9722e-05 s)
+Current Fault: G3/SA1..........................Tested (3.0043e-05 s)
+Current Fault: G3/SA0..........................Tested (4.78e-05 s)
+Current Fault: G5/SA1..........................Tested (2.2637e-05 s)
+Current Fault: G5/SA0..........................Tested (2.1316e-05 s)
+Current Fault: G6/SA1..........................Tested (3.1267e-05 s)
+Current Fault: G6/SA0..........................Tested (2.9395e-05 s)
+Current Fault: G7/SA1..........................Tested (2.9905e-05 s)
+Current Fault: G7/SA0..........................Tested (3.0069e-05 s)
+Current Fault: G14/SA1.........................Tested (1.1087e-05 s)
+Current Fault: G14/SA0.........................Tested (1.0589e-05 s)
+Current Fault: G12/SA1.........................Tested (2.3595e-05 s)
+Current Fault: G12/SA0.........................Tested (2.9479e-05 s)
+Current Fault: G8/SA1..........................Tested (2.5382e-05 s)
+Current Fault: G8/SA0..........................Tested (3.0605e-05 s)
+Current Fault: G13/SA1.........................Tested (5.872e-06 s)
+Current Fault: G13/SA0.........................Tested (1.0824e-05 s)
+Current Fault: G7_OUT/SA1......................Tested (6.427e-06 s)
+Current Fault: G7_OUT/SA0......................Tested (1.1336e-05 s)
+Current Fault: G15/SA1.........................Tested (2.4655e-05 s)
+Current Fault: G15/SA0.........................Tested (2.3573e-05 s)
+Current Fault: G16/SA1.........................Tested (3.006e-05 s)
+Current Fault: G16/SA0.........................Tested (2.2522e-05 s)
+Current Fault: G9/SA1..........................Tested (2.4098e-05 s)
+Current Fault: G9/SA0..........................Tested (1.8205e-05 s)
+Current Fault: G11/SA1.........................Tested (6.892e-06 s)
+Current Fault: G11/SA0.........................Tested (2.4217e-05 s)
+Current Fault: G10/SA1.........................Tested (6.426e-06 s)
+Current Fault: G10/SA0.........................Tested (1.1107e-05 s)
+Current Fault: G17/SA1.........................Tested (2.2487e-05 s)
+Current Fault: G17/SA0.........................Tested (5.805e-06 s)
+Current Fault: G6_OUT/SA1......................Tested (6.685e-06 s)
+Current Fault: G6_OUT/SA0......................Tested (2.3033e-05 s)
+Current Fault: G5_OUT/SA1......................Tested (6.408e-06 s)
+Current Fault: G5_OUT/SA0......................Tested (1.1259e-05 s)
+
+Fault coverage: 100 %
+
+Elapsed Time: 0.00103831 s

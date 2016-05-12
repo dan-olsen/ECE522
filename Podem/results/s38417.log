@@ -1,0 +1,61 @@
+Reading benchmark file: ./data/s38417.bench
+Benchmark Name: s38417
+INPUT: 1664
+NOT: 13470
+AND: 4154
+NAND: 2050
+OR: 226
+NOR: 2279
+DFF: 1636
+STEM: 14496
+Total Gates: 39975
+
+Reading fault file: ./data/s38417.faults
+
+Starting ATPG using PODEM ...
+
+Current Fault: g797/SA1........................Tested (0.0386076 s)
+Current Fault: g2821/SA0.......................Tested (0.038871 s)
+Current Fault: g793/SA1........................Tested (0.0383216 s)
+Current Fault: g2824/SA0.......................Tested (0.0399427 s)
+Current Fault: g789/SA1........................Tested (0.0358163 s)
+Current Fault: g2827/SA0.......................Tested (0.0307698 s)
+Current Fault: g11069/SA1......................Tested (0.339389 s)
+Current Fault: g11078/SA0......................Tested (0.035116 s)
+Current Fault: I17989/SA1......................Tested (1.07017 s)
+Current Fault: g11079/SA1......................Tested (0.396653 s)
+Current Fault: I26240/SA0......................Tested (1.07094 s)
+Current Fault: g19799/SA0......................Tested (1.14444 s)
+Current Fault: g19802/SA1......................Tested (0.0928391 s)
+Current Fault: g19542/SA0......................Tested (0.444444 s)
+Current Fault: I26429/SA1......................Tested (1.53812 s)
+Current Fault: g19981/SA0......................Tested (1.22688 s)
+Current Fault: I26455/SA0......................Tested (1.07253 s)
+Current Fault: g20015/SA0......................Tested (1.26623 s)
+Current Fault: I26461/SA1......................Tested (1.44479 s)
+Current Fault: g21848/SA1......................Tested (1.02379 s)
+Current Fault: g21850/SA1......................Tested (1.12163 s)
+Current Fault: g21855/SA0......................Tested (1.55415 s)
+Current Fault: g21857/SA1......................Tested (1.01624 s)
+Current Fault: g21858/SA0......................Tested (1.47365 s)
+Current Fault: g21859/SA1......................Tested (0.858836 s)
+Current Fault: g21860/SA1......................Tested (0.959251 s)
+Current Fault: g22021/SA0......................Tested (0.391695 s)
+Current Fault: g22050/SA1......................Tested (0.335905 s)
+Current Fault: g22118/SA0......................Tested (0.325129 s)
+Current Fault: g22134/SA1......................Tested (0.252013 s)
+Current Fault: g22157/SA1......................Tested (0.258456 s)
+Current Fault: I28726/SA1......................Not Tested (1.25943 s)
+Current Fault: g13313/SA0......................Tested (0.337302 s)
+Current Fault: g13331/SA1......................Tested (0.399397 s)
+Current Fault: g13332/SA1......................Tested (0.386273 s)
+Current Fault: g13353/SA0......................Tested (0.391714 s)
+Current Fault: g13354/SA0......................Tested (0.380422 s)
+Current Fault: g13374/SA0......................Tested (0.395365 s)
+Current Fault: g13375/SA1......................Tested (0.323183 s)
+Current Fault: g8271/SA0.......................Tested (0.0411651 s)
+Current Fault: g16496/SA1......................Tested (0.0728191 s)
+
+Fault coverage: 97.561 %
+
+Elapsed Time: 25.3751 s
